@@ -53,7 +53,12 @@ namespace KnowledgeSpace.BackendServer.IdentityServer
                         IdentityServerConstants.StandardScopes.Profile,
                         IdentityServerConstants.StandardScopes.OfflineAccess,
                         "api.knowledgespace"
-                    }
+                    },
+                 
+                    //Access token life time is 7200 seconds (2 hour)
+                    AccessTokenLifetime = 30,
+                    //Identity token life time is 7200 seconds (2 hour)
+                    IdentityTokenLifetime = 30,
                  },
                 new Client
                 {

@@ -23,23 +23,31 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model.Items)
+                @if (Model?.Items != null)
                 {
-                    <tr>
-                        <td width="40%">@item.Title</td>
-                        <td>@item.CreateDate.ToString("dd/MM/yyyy hh:mm")</td>
-                        <td>@item.CategoryName</td>
-                        <td>@item.ViewCount.GetValueOrDefault(0).ToString("N0")</td>
-                        <td><a href="/edit-kb/@item.Id">Chỉnh sửa</a></td>
-                    </tr>
+                    @foreach (var item in Model.Items)
+                    {
+                        <tr>
+                            <td width="40%">@item.Title</td>
+                            <td>@item.CreateDate.ToString("dd/MM/yyyy hh:mm")</td>
+                            <td>@item.CategoryName</td>
+                            <td>@item.ViewCount.GetValueOrDefault(0).ToString("N0")</td>
+                            <td><a href="/edit-kb/@item.Id">Chỉnh sửa</a></td>
+                        </tr>
+                    }
                 }
+
             </tbody>
             <tfoot>
+                @if (Model != null)
+                {
                 <tr>
                     <td colspan="5">
                         @(await Component.InvokeAsync("Pager", Model))
                     </td>
                 </tr>
+                }
+                
             </tfoot>
         </table>
     </article>

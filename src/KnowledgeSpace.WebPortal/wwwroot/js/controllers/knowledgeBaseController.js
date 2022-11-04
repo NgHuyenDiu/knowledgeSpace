@@ -51,11 +51,11 @@
         });
 
         //Binding reply comment event
-        $('body').on('click', '.comment-reply-link', function (e) {
-           
+        $('body').on('click', '.comment-reply-link', function(e) {
+
             e.preventDefault();
             var commentId = $(this).data('commentid');
-           
+
             var template = $('#tmpl_reply_comment').html();
             var html = Mustache.render(template, {
                 commentId: commentId
@@ -66,7 +66,7 @@
             $("#frm_reply_comment_" + commentId).submit(function(e) {
                 e.preventDefault(); // avoid to execute the actual submit of the form.
                 var form = $(this);
-               
+
                 var url = form.attr('action');
 
                 $.post(url, form.serialize()).done(function(response) {
@@ -193,7 +193,7 @@
 
                         let nestedChildrenHtml = getComments(childItem.children.items, pageIndex, pageCount, childrenTemplate, template);
 
-                        if (pageIndex < pageCount) {
+                        if (childItem.children.pageIndex < childItem.children.pageCount) {
                             console.log("vao if cua each");
                             nestedChildrenHtml += '<a href="#" class="replied-comment-pagination" id="replied-comment-pagination-' + childItem.id + '" data-page-index="1" data-id="' + childItem.id + '">Xem thêm bình luận</a>';
 
@@ -209,13 +209,7 @@
                             createDate: formatRelativeTime(childItem.createDate),
                             ownerName: childItem.ownerName
                         });
-                        //childrenHtml += Mustache.render(nestedChildrenHtml, {
-                           
-                        //    id: childItem.id,
-                        //    content: childItem.content,
-                        //    createDate: formatRelativeTime(childItem.createDate),
-                        //    ownerName: childItem.ownerName
-                        //});
+
 
 
                     } else {
@@ -226,18 +220,12 @@
                             createDate: formatRelativeTime(childItem.createDate),
                             ownerName: childItem.ownerName
                         });
-                        //childrenHtml += Mustache.render(template, {
-                        //    childrenHtml: childrenTemplate,
-                        //    id: childItem.id,
-                        //    content: childItem.content,
-                        //    createDate: formatRelativeTime(childItem.createDate),
-                        //    ownerName: childItem.ownerName
-                        //});
+
                     }
 
                 });
             }
-            if (pageIndex < pageCount) {
+            if (item.children.pageIndex < item.children.pageCount) {
                 console.log("vao if ben ngoai");
                 childrenHtml += '<a href="#" class="replied-comment-pagination" id="replied-comment-pagination-' + item.id + '" data-page-index="1" data-id="' + item.id + '">Xem thêm bình luận</a>';
 
@@ -268,7 +256,7 @@
                     var childrenTemplate = $('#tmpl_children_comments').html();
                     if (response && response.items) {
                         var html = '';
-                        console.log("page index" + response.pageIndex + "page count" + response.pageCount );
+                        console.log("page index" + response.pageIndex + "page count" + response.pageCount);
                         //$.each(response.items, function (index, item) {
                         //    var childrenHtml = '';
                         //    if (item.children && item.children.items) {
