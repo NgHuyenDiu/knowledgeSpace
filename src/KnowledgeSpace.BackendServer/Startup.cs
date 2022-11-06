@@ -168,6 +168,10 @@ namespace KnowledgeSpace.BackendServer
                 o.SchemaName = "dbo";
                 o.TableName = "CacheTable";
             });
+
+            services.AddIdentityCore<User>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddTokenProvider<DataProtectorTokenProvider<User>>(TokenOptions.DefaultProvider);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
