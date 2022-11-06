@@ -172,6 +172,8 @@ namespace KnowledgeSpace.BackendServer
             services.AddIdentityCore<User>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddTokenProvider<DataProtectorTokenProvider<User>>(TokenOptions.DefaultProvider);
+
+            services.AddSingleton<IEmailSender, EmailSenderService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

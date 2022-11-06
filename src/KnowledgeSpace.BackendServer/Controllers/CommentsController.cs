@@ -121,7 +121,7 @@ namespace KnowledgeSpace.BackendServer.Controllers
                     };
                     //https://github.com/leemunroe/responsive-html-email-template
                     var htmlContent = await _viewRenderService.RenderToStringAsync("_RepliedCommentEmail", emailModel);
-                    await _emailSender.SendEmailAsync(repledUser.Email, "Có người đang trả lời bạn", htmlContent);
+                    await _emailSender.SendEmailAsync(repledUser.Email, "Có bình luận trả lời bạn trên knowledgeBase", htmlContent);
                 }
                 return CreatedAtAction(nameof(GetCommentDetail), new { id = knowledgeBaseId, commentId = comment.Id }, new CommentVm()
                 {
