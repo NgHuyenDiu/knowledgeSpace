@@ -37,6 +37,9 @@ export class FunctionsDetailComponent implements OnInit {
     'id': [
       { type: 'required', message: 'Bạn phải nhập mã duy nhất' }
     ],
+    'url': [
+      { type: 'required', message: 'Bạn phải nhập url' }
+    ],
     'sortOrder': [
       { type: 'required', message: 'Bạn phải nhập thứ tự' }
     ]
@@ -51,7 +54,7 @@ export class FunctionsDetailComponent implements OnInit {
         Validators.maxLength(255),
         Validators.minLength(3)
       ])),
-      'url': new FormControl(),
+      'url': new FormControl('', Validators.required),
       'icon': new FormControl(),
       'sortOrder': new FormControl(1, Validators.required)
     });

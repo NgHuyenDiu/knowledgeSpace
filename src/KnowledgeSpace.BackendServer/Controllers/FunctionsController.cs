@@ -191,6 +191,9 @@ namespace KnowledgeSpace.BackendServer.Controllers
             var commands = _context.CommandInFunctions.Where(x => x.FunctionId == id);
             _context.CommandInFunctions.RemoveRange(commands);
 
+            var permissions = _context.Permissions.Where(x => x.FunctionId == id);
+            _context.Permissions.RemoveRange(permissions);
+
             var result = await _context.SaveChangesAsync();
             if (result > 0)
             {

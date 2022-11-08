@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using KnowledgeSpace.ViewModels.Systems;
 
 namespace KnowledgeSpace.BackendServer.Areas.Identity.Pages.Account
 {
@@ -44,13 +45,16 @@ namespace KnowledgeSpace.BackendServer.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
+            [Display(Name = "Tên đăng nhập")]
             public string UserName { get; set; }
 
             [Required]
             [DataType(DataType.Password)]
+            [Display(Name = "Mật khẩu")]
             public string Password { get; set; }
 
             [Display(Name = "Remember me?")]
+            
             public bool RememberMe { get; set; }
         }
 
@@ -71,6 +75,7 @@ namespace KnowledgeSpace.BackendServer.Areas.Identity.Pages.Account
             ReturnUrl = returnUrl;
         }
 
+
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
             returnUrl = returnUrl ?? Url.Content("~/");
@@ -79,6 +84,15 @@ namespace KnowledgeSpace.BackendServer.Areas.Identity.Pages.Account
             {
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
+              
+                var user = await _userManager.FindByNameAsync(Input.UserName);
+
+                if (user.DeleteState == true)
+                {
+                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    return Page();
+                }
+                    
                 var result = await _signInManager.PasswordSignInAsync(Input.UserName, Input.Password, Input.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {

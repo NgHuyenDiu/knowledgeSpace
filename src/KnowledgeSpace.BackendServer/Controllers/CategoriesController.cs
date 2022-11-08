@@ -59,16 +59,23 @@ namespace KnowledgeSpace.BackendServer.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> GetCategories()
         {
+            //await _cacheService.RemoveAsync("Categories");
             var cachedData = await _cacheService.GetAsync<List<CategoryVm>>("Categories");
             if (cachedData == null)
             {
                 var categorys = await _context.Categories.ToListAsync();
-
-                var categoryVms = categorys.Select(c => CreateCategoryVm(c)).ToList();
+               
+                var categoryVms = categorys.Where(x => x.DeleteState == false).Select(c => CreateCategoryVm(c)).ToList();
                 await _cacheService.SetAsync("Categories", categoryVms);
                 cachedData = categoryVms;
             }
-
+            foreach ( var items in cachedData)
+            {
+                if( items.DeleteState == true)
+                {
+                    cachedData.Remove(items);
+                }
+            }
             return Ok(cachedData);
         }
 
@@ -83,6 +90,8 @@ namespace KnowledgeSpace.BackendServer.Controllers
                 || x.Name.Contains(filter));
             }
             var totalRecords = await query.CountAsync();
+            query = query.Where(x => x.DeleteState == false);
+
             var items = await query.Skip((pageIndex - 1) * pageSize)
                 .Take(pageSize).ToListAsync();
 
@@ -101,6 +110,10 @@ namespace KnowledgeSpace.BackendServer.Controllers
         public async Task<IActionResult> GetById(int id)
         {
             var category = await _context.Categories.FindAsync(id);
+            if(category.DeleteState == true)
+            {
+                return NotFound(new ApiNotFoundResponse($"Thể loại đã bị xoá"));
+            }
             if (category == null)
                 return NotFound(new ApiNotFoundResponse($"Category with id: {id} is not found"));
 
@@ -116,11 +129,14 @@ namespace KnowledgeSpace.BackendServer.Controllers
         {
             var category = await _context.Categories.FindAsync(id);
             if (category == null)
-                return NotFound(new ApiNotFoundResponse($"Category with id: {id} is not found"));
-
+                return NotFound(new ApiNotFoundResponse($"Không tìm thấy danh mục có id :{id}"));
+            if (category.DeleteState == true)
+            {
+                return NotFound(new ApiNotFoundResponse($"Thể loại đã bị xoá"));
+            }
             if (id == request.ParentId)
             {
-                return BadRequest(new ApiBadRequestResponse("Category cannot be a child itself."));
+                return BadRequest(new ApiBadRequestResponse("Không thể là con của chính mình."));
             }
 
             category.Name = request.Name;
@@ -149,7 +165,7 @@ namespace KnowledgeSpace.BackendServer.Controllers
             if (category == null)
                 return NotFound(new ApiNotFoundResponse($"Category with id: {id} is not found"));
 
-            _context.Categories.Remove(category);
+            category.DeleteState = true;
             var result = await _context.SaveChangesAsync();
             if (result > 0)
             {
@@ -171,7 +187,8 @@ namespace KnowledgeSpace.BackendServer.Controllers
                 ParentId = category.ParentId,
                 NumberOfTickets = category.NumberOfTickets,
                 SeoDescription = category.SeoDescription,
-                SeoAlias = category.SeoAlias
+                SeoAlias = category.SeoAlias,
+                DeleteState = category.DeleteState
             };
         }
     }

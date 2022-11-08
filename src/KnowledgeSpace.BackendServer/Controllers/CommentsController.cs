@@ -29,7 +29,8 @@ namespace KnowledgeSpace.BackendServer.Controllers
                         select new { c, u };
             if (knowledgeBaseId.HasValue)
             {
-                query = query.Where(x => x.c.KnowledgeBaseId == knowledgeBaseId.Value);
+                
+                query =  query.Where(x => x.c.KnowledgeBaseId == knowledgeBaseId.Value);
             }
             if (!string.IsNullOrEmpty(filter))
             {
@@ -97,7 +98,10 @@ namespace KnowledgeSpace.BackendServer.Controllers
             var knowledgeBase = await _context.KnowledgeBases.FindAsync(knowledgeBaseId);
             if (knowledgeBase == null)
                 return BadRequest(new ApiBadRequestResponse($"Cannot found knowledge base with id: {knowledgeBaseId}"));
-
+            if( knowledgeBase.DeleteState == true)
+            {
+                return BadRequest(new ApiBadRequestResponse($"bài viết có id: {knowledgeBaseId} đã bị xoá"));
+            }
             knowledgeBase.NumberOfComments = knowledgeBase.NumberOfComments.GetValueOrDefault(0) + 1;
             _context.KnowledgeBases.Update(knowledgeBase);
 
@@ -204,8 +208,9 @@ namespace KnowledgeSpace.BackendServer.Controllers
                             join u in _context.Users
                                 on c.OwnerUserId equals u.Id
                             join k in _context.KnowledgeBases
-                            on c.KnowledgeBaseId equals k.Id
+                            on c.KnowledgeBaseId equals k.Id                          
                             orderby c.CreateDate descending
+                            where k.DeleteState == false
                             select new { c, u, k };
 
                 var comments = await query.Take(take).Select(x => new CommentVm()
@@ -234,7 +239,7 @@ namespace KnowledgeSpace.BackendServer.Controllers
             var query = from c in _context.Comments
                         join u in _context.Users
                             on c.OwnerUserId equals u.Id
-                        where c.KnowledgeBaseId == knowledgeBaseId
+                        where c.KnowledgeBaseId == knowledgeBaseId 
                         where c.ReplyId == null
                         select new { c, u };
          
@@ -254,41 +259,6 @@ namespace KnowledgeSpace.BackendServer.Controllers
                 .ToListAsync();
 
 
-            //foreach (var comment in rootComments)//only loop through root categories
-            //    {
-            //        // you can skip the check if you want an empty list instead of null
-            //        // when there is no children
-            //        var repliedQuery = from c in _context.Comments
-            //                           join u in _context.Users
-            //                               on c.OwnerUserId equals u.Id
-            //                           where c.KnowledgeBaseId == knowledgeBaseId
-            //                           where c.ReplyId == comment.Id
-            //                           select new { c, u };
-
-            //        var totalRepliedCommentsRecords = await repliedQuery.CountAsync();
-            //        var repliedComments = await repliedQuery.OrderByDescending(x => x.c.CreateDate)
-            //            .Take(pageSize)
-            //            .Select(x => new CommentVm()
-            //            {
-            //                Id = x.c.Id,
-            //                Content = x.c.Content,
-            //                CreateDate = x.c.CreateDate,
-            //                KnowledgeBaseId = x.c.KnowledgeBaseId,
-            //                OwnerUserId = x.c.OwnerUserId,
-            //                OwnerName = x.u.FirstName + " " + x.u.LastName,
-            //                ReplyId = x.c.ReplyId
-            //            })
-            //            .ToListAsync();
-
-            //        comment.Children = new Pagination<CommentVm>()
-            //        {
-            //            PageIndex = 1,
-            //            PageSize = 10,
-            //            Items = repliedComments,
-            //            TotalRecords = totalRepliedCommentsRecords
-            //        };
-
-            //    }
             await getReplyId(rootComments, knowledgeBaseId, pageSize);
             
             return Ok(new Pagination<CommentVm>

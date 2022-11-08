@@ -31,7 +31,7 @@ namespace KnowledgeSpace.ViewModels.Systems
 
             RuleFor(x => x.NewPassword).Matches(@"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$")
                .When(x => x.NewPassword != null)
-               .WithMessage("Mật khẩu chưa đủ độ phức tạp");
+               .WithMessage("Mật khẩu ít nhất 8 ký tự . Mật khẩu phải bao gồm chữ hoa, chữ thường, số, ký tự đặc biệt.");
         }
     }
 }

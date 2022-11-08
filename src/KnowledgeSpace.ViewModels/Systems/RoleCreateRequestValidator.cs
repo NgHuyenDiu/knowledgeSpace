@@ -9,10 +9,10 @@ namespace KnowledgeSpace.ViewModels.Systems
     {
         public RoleCreateRequestValidator()
         {
-            RuleFor(x => x.Id).NotEmpty().WithMessage("Id value is required")
-                .MaximumLength(50).WithMessage("Role id cannot over limit 50 characters");
+            RuleFor(x => x.Id).NotEmpty().WithMessage("Mã quyền là bắt buộc")
+                .MaximumLength(50).WithMessage("Mã quyền không vượt quá 50 kí tự");
 
-            RuleFor(x => x.Name).NotEmpty().WithMessage("Role name is required");
+            RuleFor(x => x.Name).NotEmpty().WithMessage("Tên quyền là bắt buộc");
         }
     }
 }

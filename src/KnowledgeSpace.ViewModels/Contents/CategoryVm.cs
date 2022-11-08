@@ -18,5 +18,6 @@ namespace KnowledgeSpace.ViewModels.Contents
         public int? ParentId { get; set; }
 
         public int? NumberOfTickets { get; set; }
+        public bool DeleteState { get; set; }
     }
 }

@@ -114,7 +114,7 @@ namespace KnowledgeSpace.BackendServer.Controllers
         public async Task<IActionResult> GetKnowledgeBases()
         {
             var knowledgeBases = _context.KnowledgeBases;
-
+            knowledgeBases = (DbSet<KnowledgeBase>)knowledgeBases.Where(x => x.DeleteState == false);
             var knowledgeBasevms = await knowledgeBases.Select(u => new KnowledgeBaseQuickVm()
             {
                 Id = u.Id,
@@ -136,6 +136,7 @@ namespace KnowledgeSpace.BackendServer.Controllers
             {
                 var knowledgeBases = from k in _context.KnowledgeBases
                                      join c in _context.Categories on k.CategoryId equals c.Id
+                                     where k.DeleteState == false
                                      orderby k.CreateDate descending
                                      select new { k, c };
 
@@ -168,6 +169,7 @@ namespace KnowledgeSpace.BackendServer.Controllers
             {
                 var knowledgeBases = from k in _context.KnowledgeBases
                                      join c in _context.Categories on k.CategoryId equals c.Id
+                                     where k.DeleteState == false
                                      orderby k.ViewCount descending
                                      select new { k, c };
 
@@ -197,6 +199,7 @@ namespace KnowledgeSpace.BackendServer.Controllers
         {
             var query = from k in _context.KnowledgeBases
                         join c in _context.Categories on k.CategoryId equals c.Id
+                        where k.DeleteState == false
                         select new { k, c };
             if (!string.IsNullOrEmpty(filter))
             {
@@ -242,7 +245,7 @@ namespace KnowledgeSpace.BackendServer.Controllers
                         join lik in _context.LabelInKnowledgeBases on k.Id equals lik.KnowledgeBaseId
                         join l in _context.Labels on lik.LabelId equals l.Id
                         join c in _context.Categories on k.CategoryId equals c.Id
-                        where lik.LabelId == labelId
+                        where lik.LabelId == labelId && k.DeleteState == false
                         select new { k, l, c };
 
             var totalRecords = await query.CountAsync();
@@ -279,8 +282,11 @@ namespace KnowledgeSpace.BackendServer.Controllers
         {
             var knowledgeBase = await _context.KnowledgeBases.FindAsync(id);
             if (knowledgeBase == null)
-                return NotFound(new ApiNotFoundResponse($"Cannot found knowledge base with id: {id}"));
-
+                return NotFound(new ApiNotFoundResponse($"Không tìm thấy bài viết theo  id: {id}"));
+            if(knowledgeBase.DeleteState == true)
+            {
+                return BadRequest(new ApiNotFoundResponse($"Bài viết : {id} đã bị xoá"));
+            }
             var attachments = await _context.Attachments
                 .Where(x => x.KnowledgeBaseId == id)
                 .Select(x => new AttachmentVm()
@@ -305,7 +311,11 @@ namespace KnowledgeSpace.BackendServer.Controllers
         {
             var knowledgeBase = await _context.KnowledgeBases.FindAsync(id);
             if (knowledgeBase == null)
-                return NotFound(new ApiNotFoundResponse($"Cannot found knowledge base with id {id}"));
+                return NotFound(new ApiNotFoundResponse($"Không tìm thấy bài viết theo  id: {id}"));
+            if (knowledgeBase.DeleteState == true)
+            {
+                return BadRequest(new ApiNotFoundResponse($"Bài viết : {id} đã bị xoá"));
+            }
             UpdateKnowledgeBase(request, knowledgeBase);
 
             //Process attachment
@@ -339,10 +349,14 @@ namespace KnowledgeSpace.BackendServer.Controllers
         public async Task<IActionResult> DeleteKnowledgeBase(int id)
         {
             var knowledgeBase = await _context.KnowledgeBases.FindAsync(id);
+         
             if (knowledgeBase == null)
-                return NotFound();
-
-            _context.KnowledgeBases.Remove(knowledgeBase);
+                return NotFound(new ApiNotFoundResponse($"Không tìm thấy bài viết theo  id: {id}"));
+            if (knowledgeBase.DeleteState == true)
+            {
+                return BadRequest(new ApiNotFoundResponse($"Bài viết : {id} đã bị xoá"));
+            }
+            knowledgeBase.DeleteState = true;
             var result = await _context.SaveChangesAsync();
             if (result > 0)
             {
@@ -359,10 +373,20 @@ namespace KnowledgeSpace.BackendServer.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> GetLabelsByKnowledgeBaseId(int knowlegeBaseId)
         {
-            var query = from lik in _context.LabelInKnowledgeBases
+            var knowledgeBase = await _context.KnowledgeBases.FindAsync(knowlegeBaseId);
+
+            if (knowledgeBase == null)
+                return NotFound(new ApiNotFoundResponse($"Không tìm thấy bài viết theo  id: {knowlegeBaseId}"));
+            if (knowledgeBase.DeleteState == true)
+            {
+                return BadRequest(new ApiNotFoundResponse($"Bài viết : {knowlegeBaseId} đã bị xoá"));
+            }
+
+            var query = 
+                        from lik in _context.LabelInKnowledgeBases
                         join l in _context.Labels on lik.LabelId equals l.Id
                         orderby l.Name ascending
-                        where lik.KnowledgeBaseId == knowlegeBaseId
+                        where lik.KnowledgeBaseId == knowlegeBaseId 
                         select new { l.Id, l.Name };
 
             var labels = await query.Select(u => new LabelVm()
@@ -381,6 +405,10 @@ namespace KnowledgeSpace.BackendServer.Controllers
             var knowledgeBase = await _context.KnowledgeBases.FindAsync(id);
             if (knowledgeBase == null)
                 return NotFound();
+            if (knowledgeBase.DeleteState == true)
+            {
+                return BadRequest(new ApiNotFoundResponse($"Bài viết : {id} đã bị xoá"));
+            }
             if (knowledgeBase.ViewCount == null)
                 knowledgeBase.ViewCount = 0;
 

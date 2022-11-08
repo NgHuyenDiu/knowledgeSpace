@@ -22,5 +22,7 @@ namespace KnowledgeSpace.ViewModels.Systems
 
         public DateTime CreateDate { get; set; }
         public DateTime? LastModifiedDate { get; set; }
+
+       
     }
 }

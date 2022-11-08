@@ -1,8 +1,11 @@
 ﻿@page
 @model ConfirmEmailChangeModel
 @{
-    ViewData["Title"] = "Confirm email change";
+    ViewData["Title"] = "Xác nhận thay đổi email";
 }
 
 <h1>@ViewData["Title"]</h1>
 <partial name="_StatusMessage" model="Model.StatusMessage" />
+<p>
+    Email đã được thay đổi. Để đăng nhập vui lòng click:  <a asp-page="./Login">Đăng nhập</a>.
+</p>

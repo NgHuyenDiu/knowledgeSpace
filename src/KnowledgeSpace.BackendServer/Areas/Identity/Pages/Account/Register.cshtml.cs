@@ -52,30 +52,35 @@ namespace KnowledgeSpace.BackendServer.Areas.Identity.Pages.Account
             public string Email { get; set; }
 
             [Required]
-            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
+            [StringLength(100, ErrorMessage = " {0} chứa ít nhất {2} ký tự và tối đa {1} ký tự.", MinimumLength = 6)]
             [DataType(DataType.Password)]
-            [Display(Name = "Password")]
+            [Display(Name = "Mật khẩu")]
             public string Password { get; set; }
 
             [DataType(DataType.Password)]
-            [Display(Name = "Confirm password")]
-            [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+            [Display(Name = "Xác thực mật khẩu")]
+            [Compare("Password", ErrorMessage = "Mật khẩu và mật khẩu xác nhận không khớp.")]
             public string ConfirmPassword { get; set; }
 
             [Required]
-            [StringLength(50, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 3)]
+            [Display(Name = "Tên đăng nhập")]
+            [StringLength(50, ErrorMessage = " {0} chứa ít nhất {2} ký tự và tối đa {1} ký tự.", MinimumLength = 3)]
             public string username { get; set; }
             [Required]
-            [StringLength(50, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 3)]
+            [Display(Name = "Họ")]
+            [StringLength(50, ErrorMessage = " {0} chứa ít nhất {2} ký tự và tối đa {1} ký tự.", MinimumLength = 3)]
             public string FirstName { get; set; }
             [Required]
-            [StringLength(50, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 3)]
+            [Display(Name = "Tên")]
+            [StringLength(50, ErrorMessage = " {0} chứa ít nhất {2} ký tự và tối đa {1} ký tự.", MinimumLength = 3)]
             public string LastName { get; set; }
 
             [Required]
+            [Display(Name = "Ngày sinh")]
             public string Dob { get; set; }
             [Phone]
             [Required]
+            [Display(Name = "Số điện thoại")]
             public string PhoneNumber { get; set; }
 
 

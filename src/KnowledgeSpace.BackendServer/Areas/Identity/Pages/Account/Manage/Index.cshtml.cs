@@ -37,6 +37,17 @@ namespace KnowledgeSpace.BackendServer.Areas.Identity.Pages.Account.Manage
             [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
 
+            [Required]
+            [StringLength(50, ErrorMessage = " {0} chứa ít nhất {2} ký tự và tối đa {1} ký tự.", MinimumLength = 3)]
+            public string FirstName { get; set; }
+            [Required]
+            [StringLength(50, ErrorMessage = " {0} chứa ít nhất {2} ký tự và tối đa {1} ký tự.", MinimumLength = 3)]
+            public string LastName { get; set; }
+
+            [Required]
+
+            public string Dob { get; set; }
+
         }
 
         private async Task LoadAsync(User user)
@@ -48,7 +59,10 @@ namespace KnowledgeSpace.BackendServer.Areas.Identity.Pages.Account.Manage
 
             Input = new InputModel
             {
-                PhoneNumber = phoneNumber
+                PhoneNumber = phoneNumber,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Dob = Convert.ToDateTime(user.Dob).ToString("yyyy-MM-dd")
             };
         }
 
@@ -88,6 +102,19 @@ namespace KnowledgeSpace.BackendServer.Areas.Identity.Pages.Account.Manage
                     throw new InvalidOperationException($"Unexpected error occurred setting phone number for user with ID '{userId}'.");
                 }
             }
+            user.LastName = Input.LastName;
+            user.FirstName = Input.FirstName;           
+            user.Dob = DateTime.Parse(Input.Dob);
+            user.LastModifiedDate = DateTime.Now;
+
+            var result = await _userManager.UpdateAsync(user);
+
+            if (!result.Succeeded)
+            {
+                var userId = await _userManager.GetUserIdAsync(user);
+                throw new InvalidOperationException($"Unexpected error occurred setting lastname, firstname, day of birth for user with ID '{userId}'.");
+            }
+           
 
             await _signInManager.RefreshSignInAsync(user);
             StatusMessage = "Your profile has been updated";

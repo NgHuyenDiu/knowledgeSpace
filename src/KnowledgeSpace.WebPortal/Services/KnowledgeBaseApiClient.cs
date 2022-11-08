@@ -101,8 +101,22 @@ namespace KnowledgeSpace.WebPortal.Services
             }
             requestContent.Add(new StringContent(request.CategoryId.ToString()), "categoryId");
             requestContent.Add(new StringContent(request.Title.ToString()), "title");
-            requestContent.Add(new StringContent(request.Problem.ToString()), "problem");
-            requestContent.Add(new StringContent(request.Note.ToString()), "note");
+            if(request.Problem == null)
+            {
+                requestContent.Add(new StringContent(" "), "problem");
+            }
+            else
+            {
+                requestContent.Add(new StringContent(request.Problem.ToString()), "problem");
+            }
+            if(request.Note == null)
+            {
+                requestContent.Add(new StringContent(" "), "note");
+            }
+            else
+            {
+                requestContent.Add(new StringContent(request.Note.ToString()), "note");
+            }          
             requestContent.Add(new StringContent(request.Description.ToString()), "description");
             requestContent.Add(new StringContent(request.Environment.ToString()), "environment");
             requestContent.Add(new StringContent(request.StepToReproduce.ToString()), "stepToReproduce");

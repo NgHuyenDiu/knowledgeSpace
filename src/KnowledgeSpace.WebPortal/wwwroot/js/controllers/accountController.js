@@ -7,6 +7,8 @@
         CKEDITOR.replace('txt_problem');
         CKEDITOR.replace('txt_note');
 
+       
+
         CKEDITOR.on('instanceReady', function () {
             $.each(CKEDITOR.instances, function (instance) {
                 CKEDITOR.instances[instance].document.on("keyup", CK_jQ);

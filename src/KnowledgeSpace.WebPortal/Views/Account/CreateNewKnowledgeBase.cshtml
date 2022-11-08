@@ -1,4 +1,5 @@
-﻿@model KnowledgeSpace.ViewModels.Contents.KnowledgeBaseCreateRequest
+﻿
+@model KnowledgeSpace.ViewModels.Contents.KnowledgeBaseCreateRequest
 
 @{
     ViewData["Title"] = "Tạo mới bài đăng";
@@ -32,7 +33,7 @@
             Danh mục
         </div>
         <div class="span6">
-            <select asp-for="CategoryId" required class="required input-xlarge"
+            <select asp-for="CategoryId"  class="required input-xlarge"
                     asp-items="ViewBag.Categories">
             </select>
             <span asp-validation-for="CategoryId" class="text-danger"></span>
