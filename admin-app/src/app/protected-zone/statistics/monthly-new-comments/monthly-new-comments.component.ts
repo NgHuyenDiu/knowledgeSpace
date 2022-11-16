@@ -31,7 +31,7 @@ export class MonthlyNewCommentsComponent extends BaseComponent implements OnInit
         this.totalItems = 0;
         this.items = response;
         response.forEach(element => {
-          this.totalItems += element.NumberOfUsers;
+          this.totalItems += element.NumberOfComments;
         });
         setTimeout(() => { this.blockedPanel = false; }, 1000);
       }, error => {

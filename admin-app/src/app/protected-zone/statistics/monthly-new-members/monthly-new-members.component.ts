@@ -32,7 +32,7 @@ export class MonthlyNewMembersComponent extends BaseComponent implements OnInit 
         this.totalItems = 0;
         this.items = response;
         response.forEach(element => {
-          this.totalItems += element.NumberOfUsers;
+          this.totalItems += element.NumberOfRegisters;
         });
         setTimeout(() => { this.blockedPanel = false; }, 1000);
       }, error => {

@@ -29,7 +29,7 @@ namespace KnowledgeSpace.BackendServer.Data.Entities
         public int? ParentId { get; set; }
 
         public int? NumberOfTickets { get; set; }
-        public bool DeleteState { get; set; }
+       
 
         public ICollection<KnowledgeBase> knowledgeBases { get; set; }
     }

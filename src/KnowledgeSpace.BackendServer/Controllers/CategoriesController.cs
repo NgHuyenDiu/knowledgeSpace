@@ -32,6 +32,11 @@ namespace KnowledgeSpace.BackendServer.Controllers
         [ApiValidationFilter]
         public async Task<IActionResult> PostCategory([FromBody] CategoryCreateRequest request)
         {
+            
+            var category_name = await _context.Categories.SingleOrDefaultAsync(m => m.Name == request.Name);
+            if (category_name != null)
+                return BadRequest(new ApiBadRequestResponse("Tên danh mục đã tồn tại"));
+
             var category = new Category()
             {
                 Name = request.Name,
@@ -59,23 +64,17 @@ namespace KnowledgeSpace.BackendServer.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> GetCategories()
         {
-            //await _cacheService.RemoveAsync("Categories");
+            await _cacheService.RemoveAsync("Categories");
             var cachedData = await _cacheService.GetAsync<List<CategoryVm>>("Categories");
             if (cachedData == null)
             {
                 var categorys = await _context.Categories.ToListAsync();
                
-                var categoryVms = categorys.Where(x => x.DeleteState == false).Select(c => CreateCategoryVm(c)).ToList();
+                var categoryVms = categorys.Select(c => CreateCategoryVm(c)).ToList();
                 await _cacheService.SetAsync("Categories", categoryVms);
                 cachedData = categoryVms;
             }
-            foreach ( var items in cachedData)
-            {
-                if( items.DeleteState == true)
-                {
-                    cachedData.Remove(items);
-                }
-            }
+           
             return Ok(cachedData);
         }
 
@@ -89,8 +88,8 @@ namespace KnowledgeSpace.BackendServer.Controllers
                 query = query.Where(x => x.Name.Contains(filter)
                 || x.Name.Contains(filter));
             }
+         
             var totalRecords = await query.CountAsync();
-            query = query.Where(x => x.DeleteState == false);
 
             var items = await query.Skip((pageIndex - 1) * pageSize)
                 .Take(pageSize).ToListAsync();
@@ -110,10 +109,7 @@ namespace KnowledgeSpace.BackendServer.Controllers
         public async Task<IActionResult> GetById(int id)
         {
             var category = await _context.Categories.FindAsync(id);
-            if(category.DeleteState == true)
-            {
-                return NotFound(new ApiNotFoundResponse($"Thể loại đã bị xoá"));
-            }
+           
             if (category == null)
                 return NotFound(new ApiNotFoundResponse($"Category with id: {id} is not found"));
 
@@ -130,10 +126,7 @@ namespace KnowledgeSpace.BackendServer.Controllers
             var category = await _context.Categories.FindAsync(id);
             if (category == null)
                 return NotFound(new ApiNotFoundResponse($"Không tìm thấy danh mục có id :{id}"));
-            if (category.DeleteState == true)
-            {
-                return NotFound(new ApiNotFoundResponse($"Thể loại đã bị xoá"));
-            }
+           
             if (id == request.ParentId)
             {
                 return BadRequest(new ApiBadRequestResponse("Không thể là con của chính mình."));
@@ -165,8 +158,9 @@ namespace KnowledgeSpace.BackendServer.Controllers
             if (category == null)
                 return NotFound(new ApiNotFoundResponse($"Category with id: {id} is not found"));
 
-            category.DeleteState = true;
+            _context.Categories.Remove(category);
             var result = await _context.SaveChangesAsync();
+
             if (result > 0)
             {
                 await _cacheService.RemoveAsync("Categories");
@@ -188,7 +182,7 @@ namespace KnowledgeSpace.BackendServer.Controllers
                 NumberOfTickets = category.NumberOfTickets,
                 SeoDescription = category.SeoDescription,
                 SeoAlias = category.SeoAlias,
-                DeleteState = category.DeleteState
+                
             };
         }
     }

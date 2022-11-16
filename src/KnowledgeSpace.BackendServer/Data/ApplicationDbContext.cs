@@ -46,8 +46,7 @@ namespace KnowledgeSpace.BackendServer.Data
             builder.Entity<IdentityRole>().Property(x => x.Id).HasMaxLength(50).IsUnicode(false);
 
             builder.Entity<User>().Property(x => x.Id).HasMaxLength(50).IsUnicode(false);
-            builder.Entity<User>().Property(x => x.DeleteState).HasDefaultValue(false);
-            builder.Entity<Category>().Property(x => x.DeleteState).HasDefaultValue(false);
+           
             builder.Entity<LabelInKnowledgeBase>()
                         .HasKey(c => new { c.LabelId, c.KnowledgeBaseId });
 
@@ -130,7 +129,7 @@ namespace KnowledgeSpace.BackendServer.Data
 
             });
 
-            builder.Entity<KnowledgeBase>().Property(x => x.DeleteState).HasDefaultValue(false);
+           
             builder.Entity<KnowledgeBase>(entity =>
             {
 

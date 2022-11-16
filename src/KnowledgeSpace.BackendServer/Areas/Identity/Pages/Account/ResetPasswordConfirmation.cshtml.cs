@@ -10,6 +10,8 @@ namespace KnowledgeSpace.BackendServer.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class ResetPasswordConfirmationModel : PageModel
     {
+
+        public LogoutViewModel LogoutVm { get; set; }
         public void OnGet()
         {
 

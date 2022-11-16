@@ -41,6 +41,9 @@
                     <th [pSortableColumn]="'numberOfReports'">Báo cáo
                         <p-sortIcon [field]="'numberOfReports'"></p-sortIcon>
                     </th>
+                    <th [pSortableColumn]="'viewCount'">Lượt xem
+                        <p-sortIcon [field]="'viewCount'"></p-sortIcon>
+                    </th>
                 </tr>
 
             </ng-template>
@@ -56,6 +59,7 @@
                     <td>{{row.numberOfComments}}</td>
                     <td>{{row.numberOfVotes}}</td>
                     <td>{{row.numberOfReports}}</td>
+                    <td>{{row.viewCount}}</td>
                 </tr>
             </ng-template>
             <ng-template pTemplate="summary">

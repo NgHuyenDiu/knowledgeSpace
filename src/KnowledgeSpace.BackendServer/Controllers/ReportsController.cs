@@ -13,7 +13,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace KnowledgeSpace.BackendServer.Controllers
 {
-    public partial class KnowledgeBasesController
+    public partial class AttachmentsController
     {
         #region Reports
 

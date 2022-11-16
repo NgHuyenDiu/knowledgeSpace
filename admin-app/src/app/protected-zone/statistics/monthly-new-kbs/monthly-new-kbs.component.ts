@@ -32,7 +32,7 @@ loadData() {
       this.totalItems = 0;
       this.items = response;
       response.forEach(element => {
-        this.totalItems += element.NumberOfUsers;
+        this.totalItems += element.NumberOfNewKbs;
       });
       setTimeout(() => { this.blockedPanel = false; }, 1000);
     }, error => {

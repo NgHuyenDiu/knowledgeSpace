@@ -22,25 +22,24 @@ using System.Threading.Tasks;
 
 namespace KnowledgeSpace.BackendServer.Controllers
 {
-    public partial class KnowledgeBasesController : BaseController
+    public partial class AttachmentsController : BaseController
     {
         private readonly ApplicationDbContext _context;
         private readonly ISequenceService _sequenceService;
         private readonly IStorageService _storageService;
-        private readonly ILogger<KnowledgeBasesController> _logger;
+        private readonly ILogger<AttachmentsController> _logger;
         private readonly IEmailSender _emailSender;
         private readonly IViewRenderService _viewRenderService;
         private readonly ICacheService _cacheService;
-        private readonly IOneSignalService _oneSignalService;
 
-        public KnowledgeBasesController(ApplicationDbContext context,
+        public AttachmentsController(ApplicationDbContext context,
             ISequenceService sequenceService,
             IStorageService storageService,
-            ILogger<KnowledgeBasesController> logger,
+            ILogger<AttachmentsController> logger,
             IEmailSender emailSender,
             IViewRenderService viewRenderService,
-            ICacheService cacheService,
-            IOneSignalService oneSignalService)
+            ICacheService cacheService
+           )
         {
             _context = context;
             _sequenceService = sequenceService;
@@ -49,7 +48,6 @@ namespace KnowledgeSpace.BackendServer.Controllers
             _emailSender = emailSender;
             _viewRenderService = viewRenderService;
             _cacheService = cacheService;
-            _oneSignalService = oneSignalService;
         }
 
         [HttpPost]
@@ -93,9 +91,7 @@ namespace KnowledgeSpace.BackendServer.Controllers
 
                 _logger.LogInformation("End PostKnowledgeBase API - Success");
 
-                await _oneSignalService.SendAsync(request.Title, request.Description,
-                     string.Format(CommonConstants.KnowledgeBaseUrl, knowledgeBase.SeoAlias, knowledgeBase.Id));
-
+                
                 return CreatedAtAction(nameof(GetById), new
                 {
                     id = knowledgeBase.Id
@@ -114,7 +110,7 @@ namespace KnowledgeSpace.BackendServer.Controllers
         public async Task<IActionResult> GetKnowledgeBases()
         {
             var knowledgeBases = _context.KnowledgeBases;
-            knowledgeBases = (DbSet<KnowledgeBase>)knowledgeBases.Where(x => x.DeleteState == false);
+            knowledgeBases = (DbSet<KnowledgeBase>)knowledgeBases;
             var knowledgeBasevms = await knowledgeBases.Select(u => new KnowledgeBaseQuickVm()
             {
                 Id = u.Id,
@@ -136,7 +132,7 @@ namespace KnowledgeSpace.BackendServer.Controllers
             {
                 var knowledgeBases = from k in _context.KnowledgeBases
                                      join c in _context.Categories on k.CategoryId equals c.Id
-                                     where k.DeleteState == false
+                                   
                                      orderby k.CreateDate descending
                                      select new { k, c };
 
@@ -164,12 +160,13 @@ namespace KnowledgeSpace.BackendServer.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> GetPopularKnowledgeBases(int take)
         {
+
             var cachedData = await _cacheService.GetAsync<List<KnowledgeBaseQuickVm>>(CacheConstants.PopularKnowledgeBases);
             if (cachedData == null)
             {
                 var knowledgeBases = from k in _context.KnowledgeBases
                                      join c in _context.Categories on k.CategoryId equals c.Id
-                                     where k.DeleteState == false
+                                     
                                      orderby k.ViewCount descending
                                      select new { k, c };
 
@@ -199,11 +196,12 @@ namespace KnowledgeSpace.BackendServer.Controllers
         {
             var query = from k in _context.KnowledgeBases
                         join c in _context.Categories on k.CategoryId equals c.Id
-                        where k.DeleteState == false
-                        select new { k, c };
+                        join u in _context.Users on k.OwnerUserId equals u.Id
+                        
+                        select new { k, c, u };
             if (!string.IsNullOrEmpty(filter))
             {
-                query = query.Where(x => x.k.Title.Contains(filter));
+                query = query.Where(x => x.k.Title.Contains(filter) || x.u.FirstName.Contains(filter) || x.u.LastName.Contains(filter) || x.k.Problem.Contains(filter));
             }
             if (categoryId.HasValue)
             {
@@ -223,7 +221,9 @@ namespace KnowledgeSpace.BackendServer.Controllers
                     CategoryName = u.c.Name,
                     NumberOfVotes = u.k.NumberOfVotes,
                     CreateDate = u.k.CreateDate,
-                    NumberOfComments = u.k.NumberOfComments
+                    NumberOfComments = u.k.NumberOfComments,
+                    NumberOfReport = u.k.NumberOfReports,
+                    ViewCount = u.k.ViewCount
                 })
                 .ToListAsync();
 
@@ -245,7 +245,7 @@ namespace KnowledgeSpace.BackendServer.Controllers
                         join lik in _context.LabelInKnowledgeBases on k.Id equals lik.KnowledgeBaseId
                         join l in _context.Labels on lik.LabelId equals l.Id
                         join c in _context.Categories on k.CategoryId equals c.Id
-                        where lik.LabelId == labelId && k.DeleteState == false
+                        where lik.LabelId == labelId 
                         select new { k, l, c };
 
             var totalRecords = await query.CountAsync();
@@ -283,10 +283,7 @@ namespace KnowledgeSpace.BackendServer.Controllers
             var knowledgeBase = await _context.KnowledgeBases.FindAsync(id);
             if (knowledgeBase == null)
                 return NotFound(new ApiNotFoundResponse($"Không tìm thấy bài viết theo  id: {id}"));
-            if(knowledgeBase.DeleteState == true)
-            {
-                return BadRequest(new ApiNotFoundResponse($"Bài viết : {id} đã bị xoá"));
-            }
+           
             var attachments = await _context.Attachments
                 .Where(x => x.KnowledgeBaseId == id)
                 .Select(x => new AttachmentVm()
@@ -312,10 +309,7 @@ namespace KnowledgeSpace.BackendServer.Controllers
             var knowledgeBase = await _context.KnowledgeBases.FindAsync(id);
             if (knowledgeBase == null)
                 return NotFound(new ApiNotFoundResponse($"Không tìm thấy bài viết theo  id: {id}"));
-            if (knowledgeBase.DeleteState == true)
-            {
-                return BadRequest(new ApiNotFoundResponse($"Bài viết : {id} đã bị xoá"));
-            }
+            
             UpdateKnowledgeBase(request, knowledgeBase);
 
             //Process attachment
@@ -352,11 +346,8 @@ namespace KnowledgeSpace.BackendServer.Controllers
          
             if (knowledgeBase == null)
                 return NotFound(new ApiNotFoundResponse($"Không tìm thấy bài viết theo  id: {id}"));
-            if (knowledgeBase.DeleteState == true)
-            {
-                return BadRequest(new ApiNotFoundResponse($"Bài viết : {id} đã bị xoá"));
-            }
-            knowledgeBase.DeleteState = true;
+            
+            _context.KnowledgeBases.Remove(knowledgeBase);
             var result = await _context.SaveChangesAsync();
             if (result > 0)
             {
@@ -377,10 +368,7 @@ namespace KnowledgeSpace.BackendServer.Controllers
 
             if (knowledgeBase == null)
                 return NotFound(new ApiNotFoundResponse($"Không tìm thấy bài viết theo  id: {knowlegeBaseId}"));
-            if (knowledgeBase.DeleteState == true)
-            {
-                return BadRequest(new ApiNotFoundResponse($"Bài viết : {knowlegeBaseId} đã bị xoá"));
-            }
+           
 
             var query = 
                         from lik in _context.LabelInKnowledgeBases
@@ -405,10 +393,7 @@ namespace KnowledgeSpace.BackendServer.Controllers
             var knowledgeBase = await _context.KnowledgeBases.FindAsync(id);
             if (knowledgeBase == null)
                 return NotFound();
-            if (knowledgeBase.DeleteState == true)
-            {
-                return BadRequest(new ApiNotFoundResponse($"Bài viết : {id} đã bị xoá"));
-            }
+          
             if (knowledgeBase.ViewCount == null)
                 knowledgeBase.ViewCount = 0;
 

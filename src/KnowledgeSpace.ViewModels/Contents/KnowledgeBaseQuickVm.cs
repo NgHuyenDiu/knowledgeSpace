@@ -27,5 +27,8 @@ namespace KnowledgeSpace.ViewModels.Contents
         public int? NumberOfVotes { get; set; } = 0;
 
         public int? NumberOfComments { get; set; } = 0;
+
+        public int? NumberOfReport { get; set; } = 0;
+    
     }
 }

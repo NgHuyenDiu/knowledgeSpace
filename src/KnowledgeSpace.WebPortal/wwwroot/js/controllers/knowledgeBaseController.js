@@ -180,28 +180,26 @@
     }
 
     function getComments(items, pageIndex, pageCount, childrenTemplate, template) {
-        console.log("page index" + pageIndex + "page count" + pageCount);
+      
         let html = '';
-        console.log(items);
+        
         $.each(items, function(index, item) {
             let childrenHtml = '';
             if (item.children && item.children.items) {
                 $.each(item.children.items, function(childIndex, childItem) {
-                    console.log(childItem);
-                    if (childItem.children != null && childItem.children.items != null && childItem.children.items.length > 0) {
-                        console.log("go to nested");
-
+                    
+                    if (childItem.children != null && childItem.children.items != null && childItem.children.items.length > 0) {                       
                         let nestedChildrenHtml = getComments(childItem.children.items, pageIndex, pageCount, childrenTemplate, template);
-
+                       
                         if (childItem.children.pageIndex < childItem.children.pageCount) {
-                            console.log("vao if cua each");
+                            
                             nestedChildrenHtml += '<a href="#" class="replied-comment-pagination" id="replied-comment-pagination-' + childItem.id + '" data-page-index="1" data-id="' + childItem.id + '">Xem thêm bình luận</a>';
 
                         } else {
-                            console.log("vao else cua each");
+                            
                             nestedChildrenHtml += '<a href="#" class="replied-comment-pagination" id="replied-comment-pagination-' + childItem.id + '" data-page-index="1" data-id="' + childItem.id + '" style="display:none">Xem thêm bình luận</a>';
                         }
-
+                      
                         childrenHtml += Mustache.render(template, {
                             childrenHtml: nestedChildrenHtml,
                             id: childItem.id,
@@ -211,9 +209,8 @@
                         });
 
 
-
                     } else {
-                        console.log("render child");
+                        
                         childrenHtml += Mustache.render(childrenTemplate, {
                             id: childItem.id,
                             content: childItem.content,
@@ -225,14 +222,16 @@
 
                 });
             }
+           
             if (item.children.pageIndex < item.children.pageCount) {
-                console.log("vao if ben ngoai");
+               
                 childrenHtml += '<a href="#" class="replied-comment-pagination" id="replied-comment-pagination-' + item.id + '" data-page-index="1" data-id="' + item.id + '">Xem thêm bình luận</a>';
 
             } else {
-                console.log("vao else ben ngoai");
+               
                 childrenHtml += '<a href="#" class="replied-comment-pagination" id="replied-comment-pagination-' + item.id + '" data-page-index="1" data-id="' + item.id + '" style="display:none">Xem thêm bình luận</a>';
             }
+            
 
             html += Mustache.render(template, {
                 childrenHtml: childrenHtml,
@@ -241,6 +240,8 @@
                 createDate: formatRelativeTime(item.createDate),
                 ownerName: item.ownerName
             });
+
+            
 
         });
 
@@ -256,35 +257,7 @@
                     var childrenTemplate = $('#tmpl_children_comments').html();
                     if (response && response.items) {
                         var html = '';
-                        console.log("page index" + response.pageIndex + "page count" + response.pageCount);
-                        //$.each(response.items, function (index, item) {
-                        //    var childrenHtml = '';
-                        //    if (item.children && item.children.items) {
-                        //        $.each(item.children.items, function (childIndex, childItem) {
-                        //            childrenHtml += Mustache.render(childrenTemplate, {
-                        //                id: childItem.id,
-                        //                content: childItem.content,
-                        //                createDate: formatRelativeTime(childItem.createDate),
-                        //                ownerName: childItem.ownerName
-                        //            });
-                        //        });
-                        //    }
-                        //    if (response.pageIndex < response.pageCount) {
-                        //        childrenHtml += '<a href="#" class="replied-comment-pagination" id="replied-comment-pagination-' + item.id + '" data-page-index="1" data-id="' + item.id + '">Xem thêm bình luận</a>';
-
-                        //    }
-                        //    else {
-                        //        childrenHtml += '<a href="#" class="replied-comment-pagination" id="replied-comment-pagination-' + item.id + '" data-page-index="1" data-id="' + item.id + '" style="display:none">Xem thêm bình luận</a>';
-                        //    }
-
-                        //    html += Mustache.render(template, {
-                        //        childrenHtml: childrenHtml,
-                        //        id: item.id,
-                        //        content: item.content,
-                        //        createDate: formatRelativeTime(item.createDate),
-                        //        ownerName: item.ownerName
-                        //    });
-                        //});
+                       
                         html += getComments(response.items, response.pageIndex, response.pageCount, childrenTemplate, template);
 
                         $('#comment_list').append(html);
@@ -304,17 +277,21 @@
                 '&pageIndex=' + pageIndex)
             .done(function(response, statusText, xhr) {
                 if (xhr.status === 200) {
-                    var template = $('#tmpl_children_comments').html();
+                    //var template = $('#tmpl_children_comments').html();
+                    var template = $('#tmpl_comments').html();
+                    var childrenTemplate = $('#tmpl_children_comments').html();
                     if (response && response.items) {
                         var html = '';
-                        $.each(response.items, function(index, item) {
-                            html += Mustache.render(template, {
-                                id: item.id,
-                                content: item.content,
-                                createDate: formatRelativeTime(item.createDate),
-                                ownerName: item.ownerName
-                            });
-                        });
+                        html += getComments(response.items, response.pageIndex, response.pageCount, childrenTemplate, template);
+
+                        //$.each(response.items, function(index, item) {
+                        //    html += Mustache.render(template, {
+                        //        id: item.id,
+                        //        content: item.content,
+                        //        createDate: formatRelativeTime(item.createDate),
+                        //        ownerName: item.ownerName
+                        //    });
+                        //});
                         $('#children_comments_' + rootCommentId).append(html);
                         if (response.pageIndex < response.pageCount) {
                             $('#replied-comment-pagination-' + rootCommentId).show();

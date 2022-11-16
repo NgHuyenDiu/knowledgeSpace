@@ -26,15 +26,19 @@ namespace KnowledgeSpace.BackendServer.Data.Entities
         [Column(TypeName = "varchar(500)")]
         public string SeoAlias { get; set; }
 
+      
         [MaxLength(500)]
         public string Description { get; set; }
 
+        
         [MaxLength(500)]
         public string Environment { get; set; }
 
+        
         [MaxLength(500)]
         public string Problem { get; set; }
 
+        
         public string StepToReproduce { get; set; }
 
         [MaxLength(500)]
@@ -63,7 +67,7 @@ namespace KnowledgeSpace.BackendServer.Data.Entities
         public int? NumberOfReports { get; set; }
 
         public int? ViewCount { get; set; }
-        public bool DeleteState { get; set; }
+        
         public ICollection<Comment> Comments  { get; set; }
         public ICollection<Attachment> Attachments { get; set; }
         public ICollection<Report> Reports { get; set; }

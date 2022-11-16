@@ -132,7 +132,7 @@ namespace KnowledgeSpace.BackendServer
             services.Configure<EmailSettings>(Configuration.GetSection("EmailSettings"));
             services.AddTransient<IViewRenderService, ViewRenderService>();
             services.AddTransient<ICacheService, DistributedCacheService>();
-            services.AddTransient<IOneSignalService, OneSignalService>();
+            //services.AddTransient<IOneSignalService, OneSignalService>();
 
             services.AddSwaggerGen(c =>
             {

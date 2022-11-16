@@ -39,7 +39,7 @@ namespace KnowledgeSpace.BackendServer.Controllers
         [ClaimRequirement(FunctionCode.STATISTIC, CommandCode.VIEW)]
         public async Task<IActionResult> GetMonthlyNewKbs(int year)
         {
-            var data = await _context.KnowledgeBases.Where(x => x.CreateDate.Date.Year == year)
+            var data = await _context.KnowledgeBases.Where(x => x.CreateDate.Date.Year == year )
                 .GroupBy(x => x.CreateDate.Date.Month)
                 .Select(g => new MonthlyNewKbsVm()
                 {
@@ -55,12 +55,12 @@ namespace KnowledgeSpace.BackendServer.Controllers
         [ClaimRequirement(FunctionCode.STATISTIC, CommandCode.VIEW)]
         public async Task<IActionResult> GetMonthlyNewRegisters(int year)
         {
-            var data = await _context.Users.Where(x => x.CreateDate.Date.Year == year)
+            var data = await _context.Users.Where(x => x.CreateDate.Date.Year == year )
                .GroupBy(x => x.CreateDate.Date.Month)
-               .Select(g => new MonthlyNewKbsVm()
+               .Select(g => new MonthlyNewRegistersVm()
                {
                    Month = g.Key,
-                   NumberOfNewKbs = g.Count()
+                   NumberOfRegisters = g.Count()
                })
                .ToListAsync();
 

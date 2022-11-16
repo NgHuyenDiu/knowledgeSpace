@@ -7,7 +7,7 @@
                 <input style="width: 100%;" pInputText (keyup.enter)="loadData()" [(ngModel)]="year" type="number" />
             </div>
             <div class="ui-g-6">
-                <button pButton type="button" label="Tải báo cáo" icon="fa fa-plus" (click)="loadData()"></button>
+                <button pButton type="button" label="Thống kê" (click)="loadData()"></button>
             </div>
         </p-header>
         <p-table #dt [value]="items" [metaKeySelection]="true" [resizableColumns]="true" columnResizeMode="expand" [responsive]="true" [scrollable]="true">
@@ -25,7 +25,7 @@
             <ng-template pTemplate="body" let-row>
                 <tr [pSelectableRow]="row">
                     <td>
-                        <span class="ui-column-title">Tháng</span>{{row.month}}</td>
+                        <span class="ui-column-title">Tháng: </span>{{row.month}}</td>
                     <td>
                         <span class="ui-column-title"></span>{{row.numberOfRegisters | number}}</td>
 

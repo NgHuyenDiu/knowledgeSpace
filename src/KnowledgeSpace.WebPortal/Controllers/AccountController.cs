@@ -67,6 +67,16 @@ namespace KnowledgeSpace.WebPortal.Controllers
             {
                 return BadRequest(ModelState);
             }
+            if (request.Problem == null)
+            {
+                ModelState.AddModelError("", "Vấn đề không được bỏ trống");
+                return BadRequest(ModelState);
+            }
+            if (request.Note == null)
+            {
+                ModelState.AddModelError("", "Giải pháp không được bỏ trống");
+                return BadRequest(ModelState);
+            }
             if (!Captcha.ValidateCaptchaCode(request.CaptchaCode, HttpContext))
             {
                 ModelState.AddModelError("", "Mã xác nhận không đúng");
@@ -86,6 +96,7 @@ namespace KnowledgeSpace.WebPortal.Controllers
         {
             var knowledgeBase = await _knowledgeBaseApiClient.GetKnowledgeBaseDetail(id);
             await SetCategoriesViewBag();
+            
             return View(new KnowledgeBaseCreateRequest()
             {
                 CategoryId = knowledgeBase.CategoryId,
@@ -114,7 +125,16 @@ namespace KnowledgeSpace.WebPortal.Controllers
                 ModelState.AddModelError("", "Mã xác nhận không đúng");
                 return BadRequest(ModelState);
             }
-
+            if( request.Problem == null)
+            {
+                ModelState.AddModelError("", "Vấn đề không được bỏ trống");
+                return BadRequest(ModelState);
+            }
+            if (request.Note == null)
+            {
+                ModelState.AddModelError("", "Cách giải quyết không được bỏ trống");
+                return BadRequest(ModelState);
+            }
             var result = await _knowledgeBaseApiClient.PutKnowlegdeBase(request.Id.Value, request);
             if (result)
             {

@@ -93,13 +93,13 @@ namespace KnowledgeSpace.WebPortal.Controllers
 
         #region AJAX Methods
 
-        public async Task<IActionResult> GetCommentsByKnowledgeBaseId(int knowledgeBaseId, int pageIndex = 1, int pageSize = 10)
+        public async Task<IActionResult> GetCommentsByKnowledgeBaseId(int knowledgeBaseId, int pageIndex = 1, int pageSize = 2)
         {
             var data = await _knowledgeBaseApiClient.GetCommentsTree(knowledgeBaseId, pageIndex, pageSize);
             return Ok(data);
         }
 
-        public async Task<IActionResult> GetRepliedCommentsByKnowledgeBaseId(int knowledgeBaseId, int rootCommentId, int pageIndex = 1, int pageSize = 10)
+        public async Task<IActionResult> GetRepliedCommentsByKnowledgeBaseId(int knowledgeBaseId, int rootCommentId, int pageIndex = 1, int pageSize = 2)
         {
             var data = await _knowledgeBaseApiClient.GetRepliedComments(knowledgeBaseId, rootCommentId, pageIndex, pageSize);
             return Ok(data);
@@ -112,12 +112,17 @@ namespace KnowledgeSpace.WebPortal.Controllers
             {
                 return BadRequest(ModelState);
             }
+           
             if (!Captcha.ValidateCaptchaCode(request.CaptchaCode, HttpContext))
             {
                 ModelState.AddModelError("", "Mã xác nhận không đúng");
                 return BadRequest(ModelState);
             }
-
+            if (request.Content == null)
+            {
+                ModelState.AddModelError("", "Nội dung không được để trống");
+                return BadRequest(ModelState);
+            }
             var result = await _knowledgeBaseApiClient.PostComment(request);
             if (result != null)
                 return Ok(result);
@@ -136,6 +141,11 @@ namespace KnowledgeSpace.WebPortal.Controllers
         {
             if (!ModelState.IsValid)
             {
+                return BadRequest(ModelState);
+            }
+            if (request.Content == null)
+            {
+                ModelState.AddModelError("", "Nội dung không được để trống");
                 return BadRequest(ModelState);
             }
             if (!Captcha.ValidateCaptchaCode(request.CaptchaCode, HttpContext))
