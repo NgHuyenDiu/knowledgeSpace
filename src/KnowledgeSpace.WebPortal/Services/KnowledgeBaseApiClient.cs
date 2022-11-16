@@ -116,10 +116,32 @@ namespace KnowledgeSpace.WebPortal.Services
             else
             {
                 requestContent.Add(new StringContent(request.Note.ToString()), "note");
-            }          
-            requestContent.Add(new StringContent(request.Description.ToString()), "description");
-            requestContent.Add(new StringContent(request.Environment.ToString()), "environment");
-            requestContent.Add(new StringContent(request.StepToReproduce.ToString()), "stepToReproduce");
+            }
+            if (request.Description == null)
+            {
+                requestContent.Add(new StringContent(" "), "description");
+            }
+            else
+            {
+                requestContent.Add(new StringContent(request.Description.ToString()), "description");
+            }
+            if (request.Environment == null)
+            {
+                requestContent.Add(new StringContent(" "), "environment");
+            }
+            else
+            {
+                requestContent.Add(new StringContent(request.Environment.ToString()), "environment");
+            }
+
+            if (request.StepToReproduce == null)
+            {
+                requestContent.Add(new StringContent(" "), "stepToReproduce");
+            }
+            else
+            {
+                requestContent.Add(new StringContent(request.StepToReproduce.ToString()), "stepToReproduce");
+            }
             if (request.ErrorMessage == null)
             {
                 requestContent.Add(new StringContent(" "), "errorMessage");
@@ -128,9 +150,16 @@ namespace KnowledgeSpace.WebPortal.Services
             {
                 requestContent.Add(new StringContent(request.ErrorMessage.ToString()), "errorMessage");
             }
+            if (request.Workaround == null)
+            {
+                requestContent.Add(new StringContent(" "), "workaround");
+            }
+            else
+            {
+                requestContent.Add(new StringContent(request.Workaround.ToString()), "workaround");
+            }
 
-           
-            requestContent.Add(new StringContent(request.Workaround.ToString()), "workaround");
+            
             if (request.Labels?.Length > 0)
             {
                 foreach (var label in request.Labels)
@@ -171,7 +200,6 @@ namespace KnowledgeSpace.WebPortal.Services
             if (request.Problem == null)
             {
                 requestContent.Add(new StringContent(" "), "problem");
-                
             }
             else
             {
@@ -185,11 +213,31 @@ namespace KnowledgeSpace.WebPortal.Services
             {
                 requestContent.Add(new StringContent(request.Note.ToString()), "note");
             }
-            requestContent.Add(new StringContent(request.Description.ToString()), "description");
-            requestContent.Add(new StringContent(request.Environment.ToString()), "environment");
-            requestContent.Add(new StringContent(request.StepToReproduce.ToString()), "stepToReproduce");
-           
-              
+            if (request.Description == null)
+            {
+                requestContent.Add(new StringContent(" "), "description");
+            }
+            else
+            {
+                requestContent.Add(new StringContent(request.Description.ToString()), "description");
+            }
+            if (request.Environment == null)
+            {
+                requestContent.Add(new StringContent(" "), "environment");
+            }
+            else
+            {
+                requestContent.Add(new StringContent(request.Environment.ToString()), "environment");
+            }
+
+            if (request.StepToReproduce == null)
+            {
+                requestContent.Add(new StringContent(" "), "stepToReproduce");
+            }
+            else
+            {
+                requestContent.Add(new StringContent(request.StepToReproduce.ToString()), "stepToReproduce");
+            }
             if (request.ErrorMessage == null)
             {
                 requestContent.Add(new StringContent(" "), "errorMessage");
@@ -198,7 +246,14 @@ namespace KnowledgeSpace.WebPortal.Services
             {
                 requestContent.Add(new StringContent(request.ErrorMessage.ToString()), "errorMessage");
             }
-            requestContent.Add(new StringContent(request.Workaround.ToString()), "workaround");
+            if (request.Workaround == null)
+            {
+                requestContent.Add(new StringContent(" "), "workaround");
+            }
+            else
+            {
+                requestContent.Add(new StringContent(request.Workaround.ToString()), "workaround");
+            }
             if (request.Labels?.Length > 0)
             {
                 foreach (var label in request.Labels)

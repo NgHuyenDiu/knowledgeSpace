@@ -198,6 +198,7 @@ namespace KnowledgeSpace.BackendServer.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> GetRecentComments(int take)
         {
+            //await _cacheService.RemoveAsync(CacheConstants.RecentComments);
             var cachedData = await _cacheService.GetAsync<List<CommentVm>>(CacheConstants.RecentComments);
             if (cachedData == null)
             {

@@ -127,6 +127,7 @@ namespace KnowledgeSpace.BackendServer.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> GetLatestKnowledgeBases(int take)
         {
+            //await _cacheService.RemoveAsync(CacheConstants.LatestKnowledgeBases);
             var cachedData = await _cacheService.GetAsync<List<KnowledgeBaseQuickVm>>(CacheConstants.LatestKnowledgeBases);
             if (cachedData == null)
             {
@@ -160,7 +161,7 @@ namespace KnowledgeSpace.BackendServer.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> GetPopularKnowledgeBases(int take)
         {
-
+            //await _cacheService.RemoveAsync(CacheConstants.PopularKnowledgeBases);
             var cachedData = await _cacheService.GetAsync<List<KnowledgeBaseQuickVm>>(CacheConstants.PopularKnowledgeBases);
             if (cachedData == null)
             {

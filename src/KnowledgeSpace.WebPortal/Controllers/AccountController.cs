@@ -67,16 +67,23 @@ namespace KnowledgeSpace.WebPortal.Controllers
             {
                 return BadRequest(ModelState);
             }
+            if (request.Title == null)
+            {
+                ModelState.AddModelError("", "Tiêu đề không được bỏ trống");
+                return BadRequest(ModelState);
+            }
+            if (request.Description == null)
+            {
+                ModelState.AddModelError("", "Mô tả không được bỏ trống");
+                return BadRequest(ModelState);
+            }
+           
             if (request.Problem == null)
             {
                 ModelState.AddModelError("", "Vấn đề không được bỏ trống");
                 return BadRequest(ModelState);
             }
-            if (request.Note == null)
-            {
-                ModelState.AddModelError("", "Giải pháp không được bỏ trống");
-                return BadRequest(ModelState);
-            }
+           
             if (!Captcha.ValidateCaptchaCode(request.CaptchaCode, HttpContext))
             {
                 ModelState.AddModelError("", "Mã xác nhận không đúng");
@@ -125,14 +132,20 @@ namespace KnowledgeSpace.WebPortal.Controllers
                 ModelState.AddModelError("", "Mã xác nhận không đúng");
                 return BadRequest(ModelState);
             }
-            if( request.Problem == null)
+            if (request.Title == null)
             {
-                ModelState.AddModelError("", "Vấn đề không được bỏ trống");
+                ModelState.AddModelError("", "Tiêu đề không được bỏ trống");
                 return BadRequest(ModelState);
             }
-            if (request.Note == null)
+            if (request.Description == null)
             {
-                ModelState.AddModelError("", "Cách giải quyết không được bỏ trống");
+                ModelState.AddModelError("", "Mô tả không được bỏ trống");
+                return BadRequest(ModelState);
+            }
+
+            if (request.Problem == null)
+            {
+                ModelState.AddModelError("", "Vấn đề không được bỏ trống");
                 return BadRequest(ModelState);
             }
             var result = await _knowledgeBaseApiClient.PutKnowlegdeBase(request.Id.Value, request);

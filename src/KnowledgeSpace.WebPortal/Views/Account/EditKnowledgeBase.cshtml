@@ -17,7 +17,7 @@
 
     <article class="type-page hentry clearfix">
         <h1 class="post-title">
-            <a href="#">Đăng bài mới</a>
+            <a href="#">Chỉnh sửa bài viết</a>
         </h1>
         <hr>
     </article>
@@ -36,7 +36,7 @@
             <select asp-for="CategoryId" required class="required input-xlarge"
                     asp-items="ViewBag.Categories">
             </select>
-            <span asp-validation-for="CategoryId" class="text-danger"></span>
+          
         </div>
 
         <div class="span2">
@@ -44,23 +44,23 @@
         </div>
         <div class="span6">
             <input asp-for="Title" class="required input-xlarge" />
-            <span asp-validation-for="Title" class="text-danger"></span>
+          
         </div>
 
         <div class="span2">
             Mô tả
         </div>
         <div class="span6">
-            <textarea asp-for="Description" rows="5" class="span6"></textarea>
-            <span asp-validation-for="Description" class="text-danger"></span>
+            <textarea asp-for="Description" rows="5" class=" required span6"></textarea>
+            
         </div>
 
         <div class="span2">
             Môi trường
         </div>
         <div class="span6">
-            <textarea asp-for="Environment" id="txt_environment" rows="5" class="required span6"></textarea>
-            <span asp-validation-for="Environment" class="text-danger"></span>
+            <textarea asp-for="Environment" id="txt_environment" rows="5" class=" span6"></textarea>
+            
         </div>
 
         <div class="span2">
@@ -68,15 +68,15 @@
         </div>
         <div class="span6">
             <textarea asp-for="Problem" rows="5" id="txt_problem" class="required span6"></textarea>
-            <span asp-validation-for="Problem" class="text-danger"></span>
+           
         </div>
 
         <div class="span2">
             Cách tái hiện
         </div>
         <div class="span6">
-            <textarea asp-for="StepToReproduce" id="txt_step_reproduce" rows="5" class="required span6"></textarea>
-            <span asp-validation-for="StepToReproduce" class="text-danger"></span>
+            <textarea asp-for="StepToReproduce" id="txt_step_reproduce" rows="5" class=" span6"></textarea>
+           
         </div>
 
         <div class="span2">
@@ -84,23 +84,23 @@
         </div>
         <div class="span6">
             <input asp-for="ErrorMessage" class="input-xlarge" />
-            <span asp-validation-for="ErrorMessage" class="text-danger"></span>
+            
         </div>
 
         <div class="span2">
             Cách sửa nhanh
         </div>
         <div class="span6">
-            <textarea asp-for="Workaround" id="txt_workaround" rows="5" class="required span6"></textarea>
-            <span asp-validation-for="Workaround" class="text-danger"></span>
+            <textarea asp-for="Workaround" id="txt_workaround" rows="5" class=" span6"></textarea>
+          
         </div>
 
         <div class="span2">
             Giải pháp
         </div>
         <div class="span6">
-            <textarea asp-for="Note" rows="5" id="txt_note" class="required span6"></textarea>
-            <span asp-validation-for="Note" class="text-danger"></span>
+            <textarea asp-for="Note" rows="5" id="txt_note" class=" span6"></textarea>
+          
         </div>
 
         <div class="span2">
