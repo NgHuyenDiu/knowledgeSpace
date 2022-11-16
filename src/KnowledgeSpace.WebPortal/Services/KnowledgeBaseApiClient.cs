@@ -120,7 +120,16 @@ namespace KnowledgeSpace.WebPortal.Services
             requestContent.Add(new StringContent(request.Description.ToString()), "description");
             requestContent.Add(new StringContent(request.Environment.ToString()), "environment");
             requestContent.Add(new StringContent(request.StepToReproduce.ToString()), "stepToReproduce");
-            requestContent.Add(new StringContent(request.ErrorMessage.ToString()), "errorMessage");
+            if (request.ErrorMessage == null)
+            {
+                requestContent.Add(new StringContent(" "), "errorMessage");
+            }
+            else
+            {
+                requestContent.Add(new StringContent(request.ErrorMessage.ToString()), "errorMessage");
+            }
+
+           
             requestContent.Add(new StringContent(request.Workaround.ToString()), "workaround");
             if (request.Labels?.Length > 0)
             {
@@ -180,7 +189,8 @@ namespace KnowledgeSpace.WebPortal.Services
             requestContent.Add(new StringContent(request.Environment.ToString()), "environment");
             requestContent.Add(new StringContent(request.StepToReproduce.ToString()), "stepToReproduce");
            
-            if (request.Note == null)
+              
+            if (request.ErrorMessage == null)
             {
                 requestContent.Add(new StringContent(" "), "errorMessage");
             }

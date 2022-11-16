@@ -18,7 +18,7 @@ namespace KnowledgeSpace.BackendServer.UnitTest.Controllers
         private ApplicationDbContext _context;
         private Mock<ISequenceService> _mockSequenceService;
         private Mock<IStorageService> _mockStorageService;
-        private Mock<ILogger<AttachmentsController>> _mockLoggerService;
+        private Mock<ILogger<KnowledgeBasesController>> _mockLoggerService;
         private Mock<IEmailSender> _mockEmailSender;
         private Mock<IViewRenderService> _mockViewRenderService;
         private Mock<ICacheService> _mockCacheService;
@@ -27,7 +27,7 @@ namespace KnowledgeSpace.BackendServer.UnitTest.Controllers
             _context = new InMemoryDbContextFactory().GetApplicationDbContext();
             _mockSequenceService = new Mock<ISequenceService>();
             _mockStorageService = new Mock<IStorageService>();
-            _mockLoggerService = new Mock<ILogger<AttachmentsController>>();
+            _mockLoggerService = new Mock<ILogger<KnowledgeBasesController>>();
             _mockEmailSender = new Mock<IEmailSender>();
             _mockViewRenderService = new Mock<IViewRenderService>();
             _mockCacheService = new Mock<ICacheService>();
@@ -36,7 +36,7 @@ namespace KnowledgeSpace.BackendServer.UnitTest.Controllers
         [Fact]
         public void ShouldCreateInstance_NotNull_Success()
         {
-            var controller = new AttachmentsController(_context, _mockSequenceService.Object, _mockStorageService.Object,
+            var controller = new KnowledgeBasesController(_context, _mockSequenceService.Object, _mockStorageService.Object,
                 _mockLoggerService.Object, _mockEmailSender.Object, _mockViewRenderService.Object, _mockCacheService.Object);
             Assert.NotNull(controller);
         }
@@ -45,7 +45,7 @@ namespace KnowledgeSpace.BackendServer.UnitTest.Controllers
         public async Task PostKnowledgeBase_ValidInput_Success()
         {
             _mockSequenceService.Setup(x => x.GetKnowledgeBaseNewId()).ReturnsAsync(1);
-            var controller = new AttachmentsController(_context, _mockSequenceService.Object, _mockStorageService.Object,
+            var controller = new KnowledgeBasesController(_context, _mockSequenceService.Object, _mockStorageService.Object,
                            _mockLoggerService.Object, _mockEmailSender.Object, _mockViewRenderService.Object, _mockCacheService.Object);
             var user = new ClaimsPrincipal(new ClaimsIdentity(new Claim[]{
                     new Claim(ClaimTypes.NameIdentifier, "1"),

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace KnowledgeSpace.BackendServer.Controllers
 {
-    public partial class AttachmentsController
+    public partial class KnowledgeBasesController
     {
         #region Attachments
 

@@ -22,20 +22,20 @@ using System.Threading.Tasks;
 
 namespace KnowledgeSpace.BackendServer.Controllers
 {
-    public partial class AttachmentsController : BaseController
+    public partial class KnowledgeBasesController : BaseController
     {
         private readonly ApplicationDbContext _context;
         private readonly ISequenceService _sequenceService;
         private readonly IStorageService _storageService;
-        private readonly ILogger<AttachmentsController> _logger;
+        private readonly ILogger<KnowledgeBasesController> _logger;
         private readonly IEmailSender _emailSender;
         private readonly IViewRenderService _viewRenderService;
         private readonly ICacheService _cacheService;
 
-        public AttachmentsController(ApplicationDbContext context,
+        public KnowledgeBasesController(ApplicationDbContext context,
             ISequenceService sequenceService,
             IStorageService storageService,
-            ILogger<AttachmentsController> logger,
+            ILogger<KnowledgeBasesController> logger,
             IEmailSender emailSender,
             IViewRenderService viewRenderService,
             ICacheService cacheService

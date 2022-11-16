@@ -19,6 +19,7 @@
         height: 32px;
         font-size: 20px;
         padding: 14px 10px 10px 10px;
+        background: #353b65;
     }
 
 .field-validation-error {
