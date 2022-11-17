@@ -43,7 +43,7 @@ namespace KnowledgeSpace.BackendServer.Data.Entities
         public int? NumberOfReports { get; set; }
         public DateTime CreateDate { get; set; }
         public DateTime? LastModifiedDate { get; set; }
-        
+        public bool DeleteState { get; set; }
         public ICollection<ActivityLog> ActivityLogs { get; set; }
         public ICollection<Report> Reports { get; set; }
         public ICollection<Comment>Comments { get; set; }

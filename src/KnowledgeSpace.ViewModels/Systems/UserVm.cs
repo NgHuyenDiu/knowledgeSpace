@@ -22,7 +22,7 @@ namespace KnowledgeSpace.ViewModels.Systems
 
         public DateTime CreateDate { get; set; }
         public DateTime? LastModifiedDate { get; set; }
+        public bool DeleteState { get; set; }
 
-       
     }
 }

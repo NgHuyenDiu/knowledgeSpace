@@ -1,6 +1,7 @@
 export class MessageConstants {
     public static SYSTEM_ERROR_MSG = 'Có lỗi kết nối đến máy chủ';
     public static CONFIRM_DELETE_MSG = 'Bạn có chắc muốn xóa bản ghi này?';
+    public static CONFIRM_OPEN_MSG = 'Bạn có chắc muốn mở khoá tài khoản này?';
     public static CONFIRM_PAY_MSG = 'Bạn có chắc muốn thanh toán khoản này?';
     public static CONFIRM_SET_DEFAULT_MSG = 'Bạn có chắc muốn đặt mặc định bản ghi này?';
     public static CONFIRM_SET_IS_HOME_MSG = 'Bạn có chắc muốn hiển thị bản ghi này tại trang chủ?';

@@ -89,7 +89,7 @@ namespace KnowledgeSpace.BackendServer.Controllers
         public async Task<IActionResult> GetUsersPaging(string filter, int pageIndex, int pageSize)
         {
             var query = _userManager.Users;
-          
+           // query = query.Where(x => x.DeleteState == false);
             if (!string.IsNullOrEmpty(filter))
             {
                 query = query.Where(x => x.Email.Contains(filter)
@@ -108,7 +108,8 @@ namespace KnowledgeSpace.BackendServer.Controllers
                     PhoneNumber = u.PhoneNumber,
                     FirstName = u.FirstName,
                     LastName = u.LastName,
-                    CreateDate = u.CreateDate
+                    CreateDate = u.CreateDate,
+                    DeleteState = u.DeleteState
                 })
                 .ToListAsync();
 
@@ -129,7 +130,10 @@ namespace KnowledgeSpace.BackendServer.Controllers
             var user = await _userManager.FindByIdAsync(id);
             if (user == null)
                 return NotFound(new ApiNotFoundResponse($"Không tìm thấy người dùng với id: {id}"));
-           
+            if (user.DeleteState == true)
+            {
+                return BadRequest(new ApiNotFoundResponse($"Người dùng đã bị xoá: {id}"));
+            }
             var userVm = new UserVm()
             {
                 Id = user.Id,
@@ -144,14 +148,36 @@ namespace KnowledgeSpace.BackendServer.Controllers
             return Ok(userVm);
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("{id}/open-account")]
         [ClaimRequirement(FunctionCode.SYSTEM_USER, CommandCode.UPDATE)]
-        public async Task<IActionResult> PutUser(string id, [FromBody]UserCreateRequest request)
+        public async Task<IActionResult> OpenUser(string id)
         {
             var user = await _userManager.FindByIdAsync(id);
             if (user == null)
                 return NotFound(new ApiNotFoundResponse($"Không tìm thấy người dùng với id: {id}"));
             
+            user.DeleteState = false;
+
+            var result = await _userManager.UpdateAsync(user);
+
+            if (result.Succeeded)
+            {
+                return NoContent();
+            }
+            return BadRequest(new ApiBadRequestResponse(result));
+        }
+
+        [HttpPut("{id}")]
+        [ClaimRequirement(FunctionCode.SYSTEM_USER, CommandCode.UPDATE)]
+        public async Task<IActionResult> PutUser(string id, [FromBody] UserCreateRequest request)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+            if (user == null)
+                return NotFound(new ApiNotFoundResponse($"Không tìm thấy người dùng với id: {id}"));
+            if (user.DeleteState == true)
+            {
+                return BadRequest(new ApiNotFoundResponse($"Người dùng đã bị xoá: {id}"));
+            }
             user.FirstName = request.FirstName;
             user.LastName = request.LastName;
             user.Dob = DateTime.Parse(request.Dob);
@@ -174,7 +200,10 @@ namespace KnowledgeSpace.BackendServer.Controllers
             var user = await _userManager.FindByIdAsync(id);
             if (user == null)
                 return NotFound(new ApiNotFoundResponse($"Không tìm thấy người dùng với id: {id}"));
-           
+            if (user.DeleteState == true)
+            {
+                return BadRequest(new ApiNotFoundResponse($"Người dùng đã bị xoá: {id}"));
+            }
             var result = await _userManager.ChangePasswordAsync(user, request.CurrentPassword, request.NewPassword);
 
             if (result.Succeeded)
@@ -200,7 +229,9 @@ namespace KnowledgeSpace.BackendServer.Controllers
             }
             
          
-            var result = await _userManager.DeleteAsync(user);
+            //var result = await _userManager.DeleteAsync(user);
+            user.DeleteState = true;
+            var result = await _userManager.UpdateAsync(user);
             if (result.Succeeded)
             {
                 var uservm = new UserVm()
@@ -223,7 +254,10 @@ namespace KnowledgeSpace.BackendServer.Controllers
         public async Task<IActionResult> GetMenuByUserPermission(string userId)
         {
             var user = await _userManager.FindByIdAsync(userId);
-           
+            if (user.DeleteState == true)
+            {
+                return BadRequest(new ApiNotFoundResponse($"Người dùng đã bị xoá: {userId}"));
+            }
             var roles = await _userManager.GetRolesAsync(user);
             var query = from f in _context.Functions
                         join p in _context.Permissions
@@ -255,7 +289,11 @@ namespace KnowledgeSpace.BackendServer.Controllers
             var user = await _userManager.FindByIdAsync(userId);
             if (user == null)
                 return NotFound(new ApiNotFoundResponse($"Không tìm thấy người dùng với id: {userId}"));
-            
+           
+            if (user.DeleteState == true)
+            {
+                return BadRequest(new ApiNotFoundResponse($"Người dùng đã bị xoá: {userId}"));
+            }
             var roles = await _userManager.GetRolesAsync(user);
             return Ok(roles);
         }
@@ -293,7 +331,10 @@ namespace KnowledgeSpace.BackendServer.Controllers
             var user = await _userManager.FindByIdAsync(userId);
             if (user == null)
                 return NotFound(new ApiNotFoundResponse($"Không tìm thấy người dùng với id: {userId}"));
-           
+            if (user.DeleteState == true)
+            {
+                return BadRequest(new ApiNotFoundResponse($"Người dùng đã bị xoá: {userId}"));
+            }
             var result = await _userManager.RemoveFromRolesAsync(user, request.RoleNames);
             if (result.Succeeded)
                 return Ok();
@@ -304,10 +345,14 @@ namespace KnowledgeSpace.BackendServer.Controllers
         [HttpGet("{userId}/knowledgeBases")]
         public async Task<IActionResult> GetKnowledgeBasesByUserId(string userId, int pageIndex, int pageSize)
         {
+           
             var user = await _userManager.FindByIdAsync(userId);
             if (user == null)
                 return NotFound(new ApiNotFoundResponse($"Không tìm thấy người dùng với id: {userId}"));
-           
+            if (user.DeleteState == true)
+            {
+                return BadRequest(new ApiNotFoundResponse($"Người dùng đã bị xoá: {userId}"));
+            }
             var query = from k in _context.KnowledgeBases
                         join c in _context.Categories on k.CategoryId equals c.Id
                         where k.OwnerUserId == userId

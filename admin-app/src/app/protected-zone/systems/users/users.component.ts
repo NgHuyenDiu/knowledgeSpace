@@ -156,7 +156,29 @@ export class UsersComponent extends BaseComponent implements OnInit {
     this.notificationService.showConfirmation(MessageConstants.CONFIRM_DELETE_MSG,
       () => this.deleteItemsConfirm(id));
   }
+open(){
+  if (this.selectedItems.length === 0) {
+    this.notificationService.showError(MessageConstants.NOT_CHOOSE_ANY_RECORD);
+    return;
+  }
+  const id = this.selectedItems[0].id;
+  this.notificationService.showConfirmation(MessageConstants.CONFIRM_OPEN_MSG,
+    () => this.openConfirm(id));
+}
+openConfirm(ids: any) {
+  this.blockedPanel = true;
+  this.usersService.open(ids).subscribe(() => {
+    this.notificationService.showSuccess(MessageConstants.DELETED_OK_MSG);
+    this.loadData();
+    this.selectedItems = [];
+    this.loadUserRoles();
+    setTimeout(() => { this.blockedPanel = false; }, 1000);
+  }, error => {
+    this.notificationService.showError(error);
 
+    setTimeout(() => { this.blockedPanel = false; }, 1000);
+  });
+}
   deleteItemsConfirm(ids: any[]) {
     this.blockedPanel = true;
     this.usersService.delete(ids).subscribe(() => {

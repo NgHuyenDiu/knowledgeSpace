@@ -3,12 +3,13 @@
     <p-panel #pnl [style]="{'margin-bottom':'10px'}">
 
         <p-header [style]="{'display':'flex','align-items': 'center'}">
-            <div class="ui-grid-col-6">
+            <div class="ui-grid-col-10">
                 <button appPermission appFunction="SYSTEM_USER" appAction="CREATE" pButton type="button" label="Thêm" icon="fa fa-plus" (click)="showAddModal()"></button>
-                <button style="margin: 0 22px;" appPermission appFunction="SYSTEM_USER" appAction="DELETE" pButton type="button" label="Xóa" icon="fa fa-trash" class="p-button-danger" *ngIf="selectedItems.length > 0" (click)="deleteItems()"></button>
-                <button appPermission appFunction="SYSTEM_USER" appAction="UPDATE" pButton type="button" label="Sửa" icon="fa fa-edit" class="p-button-warning" *ngIf="selectedItems.length== 1" (click)="showEditModal()"></button>
+                <button style="margin: 0 22px;" appPermission appFunction="SYSTEM_USER" appAction="UPDATE" pButton type="button" label="Sửa" icon="fa fa-edit" class="p-button-warning" *ngIf="selectedItems.length== 1" (click)="showEditModal()"></button>
+                <button appPermission appFunction="SYSTEM_USER" appAction="DELETE" pButton type="button" label="Khoá tài khoản" icon="fa fa-trash" class="p-button-danger" *ngIf="selectedItems.length > 0" (click)="deleteItems()"></button>
+                <button style="margin: 0 22px;" appPermission appFunction="SYSTEM_USER" appAction="UPDATE" pButton type="button" label="Mở khoá tài khoản" icon="fa fa-edit" class="p-button-primary" *ngIf="selectedItems.length > 0" (click)="open()"></button>
             </div>
-            <div class="ui-grid-col-6">
+            <div class="ui-grid-col-2">
                 <p-checkbox label="Gán quyền" [(ngModel)]="showRoleAssign" (click)="showHideRoleTable()" binary="true">
                 </p-checkbox>
             </div>
@@ -41,6 +42,9 @@
                     <th [pSortableColumn]="'phoneNumber'">Số điện thoại
                         <p-sortIcon [field]="'phoneNumber'"></p-sortIcon>
                     </th>
+                    <th [pSortableColumn]="'deleteState'">Trạng thái xoá
+                        <p-sortIcon [field]="'deleteState'"></p-sortIcon>
+                    </th>
                 </tr>
 
             </ng-template>
@@ -55,6 +59,7 @@
                     <td>{{row.email}}</td>
                     <td>{{row.dob | date:'dd/MM/yyyy'}}</td>
                     <td>{{row.phoneNumber}}</td>
+                    <td>{{row.deleteState}}</td>
                 </tr>
             </ng-template>
             <ng-template pTemplate="summary">

@@ -25,6 +25,10 @@ export class UsersService extends BaseService {
             .pipe(catchError(this.handleError));
     }
 
+    open(id: string){
+        return this.http.put(`${environment.apiUrl}/api/users/${id}/open-account`, id) .pipe(catchError(this.handleError));
+    }
+
     getDetail(id) {
         return this.http.get<User>(`${environment.apiUrl}/api/users/${id}`, { headers: this._sharedHeaders })
             .pipe(catchError(this.handleError));
