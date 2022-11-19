@@ -107,7 +107,7 @@ namespace KnowledgeSpace.BackendServer.Areas.Identity.Pages.Account
                     LastName = Input.LastName,
                     FirstName = Input.FirstName,
                     PhoneNumber = Input.PhoneNumber,
-                    CreateDate = DateTime.Now,
+                    CreateDate = DateTime.Now
                 };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)

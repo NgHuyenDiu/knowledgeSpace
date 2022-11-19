@@ -17,6 +17,7 @@
         </p-header>
 
         <p-table #dt [value]="items" selectionMode="multiple" [(selection)]="selectedItems" [metaKeySelection]="true" [responsive]="true" [scrollable]="true">
+
             <ng-template pTemplate="header">
                 <tr>
                     <th style="width: 35px">
@@ -38,8 +39,8 @@
                     <th [pSortableColumn]="'numberOfVotes'">Thích
                         <p-sortIcon [field]="'numberOfVotes'"></p-sortIcon>
                     </th>
-                    <th [pSortableColumn]="'numberOfReports'">Báo cáo
-                        <p-sortIcon [field]="'numberOfReports'"></p-sortIcon>
+                    <th [pSortableColumn]="'numberOfReport'">Báo cáo
+                        <p-sortIcon [field]="'numberOfReport'"></p-sortIcon>
                     </th>
                     <th [pSortableColumn]="'viewCount'">Lượt xem
                         <p-sortIcon [field]="'viewCount'"></p-sortIcon>
@@ -49,17 +50,17 @@
             </ng-template>
             <ng-template pTemplate="body" let-row>
                 <tr [pSelectableRow]="row">
-                    <td style="width: 35px;">
+                    <td style>
                         <span class="ui-column-title"></span>
                         <p-tableCheckbox [value]="row"></p-tableCheckbox>
                     </td>
                     <td>{{row.id}}</td>
                     <td>{{row.title}}</td>
                     <td>{{row.categoryName}}</td>
-                    <td>{{row.numberOfComments}}</td>
-                    <td>{{row.numberOfVotes}}</td>
-                    <td>{{row.numberOfReports}}</td>
-                    <td>{{row.viewCount}}</td>
+                    <td>{{row.numberOfComments ?? 0}}</td>
+                    <td>{{row.numberOfVotes ?? 0}}</td>
+                    <td>{{row.numberOfReport ?? 0}}</td>
+                    <td>{{row.viewCount ?? 0}}</td>
                 </tr>
             </ng-template>
             <ng-template pTemplate="summary">

@@ -53,15 +53,15 @@ namespace KnowledgeSpace.BackendServer.Data
                 var result = await _userManager.CreateAsync(new User
                 {
                     Id = Guid.NewGuid().ToString(),
-                    UserName = "admin",
+                    UserName = "diu",
                     FirstName = "Quản trị",
                     LastName = "1",
-                    Email = "tedu.international@gmail.com",
+                    Email = "huyendiusmilef5@gmail.com",
                     LockoutEnabled = false
-                }, "Admin@123");
+                }, "Diu@123456");
                 if (result.Succeeded)
                 {
-                    var user = await _userManager.FindByNameAsync("admin");
+                    var user = await _userManager.FindByNameAsync("diu");
                     await _userManager.AddToRoleAsync(user, AdminRoleName);
                 }
             }

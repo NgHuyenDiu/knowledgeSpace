@@ -34,6 +34,7 @@ namespace KnowledgeSpace.WebPortal.Services
         Task<bool> PostKnowlegdeBase(KnowledgeBaseCreateRequest request);
 
         Task<bool> PutKnowlegdeBase(int id, KnowledgeBaseCreateRequest request);
+        Task<bool> deleteAttachment(int knowledgeBaseId, int attachmentId);
 
         Task<bool> UpdateViewCount(int id);
 

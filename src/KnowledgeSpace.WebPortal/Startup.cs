@@ -52,7 +52,7 @@ namespace KnowledgeSpace.WebPortal
             });
             services.AddSession(options =>
             {
-                options.IdleTimeout = TimeSpan.FromMinutes(30);
+                options.IdleTimeout = TimeSpan.FromDays(3);
                 options.Cookie.HttpOnly = true;
             });
 
@@ -244,6 +244,11 @@ namespace KnowledgeSpace.WebPortal
                     name: "Edit KB",
                     pattern: "/edit-kb/{id}",
                     new { controller = "Account", action = "EditKnowledgeBase" });
+            
+            //endpoints.MapControllerRoute(
+            //       name: "delete attachment",
+            //       pattern: "/{knowledgeBaseId}/del-att/{attachmentId}",
+            //       new { controller = "Account", action = "deleteAttachment" });
 
             endpoints.MapControllerRoute(
                     name: "List By Tag Id",
@@ -259,7 +264,7 @@ namespace KnowledgeSpace.WebPortal
                     name: "KnowledgeBaseDetails",
                     pattern: "/kb/{seoAlias}-{id}",
                     new { controller = "KnowledgeBase", action = "Details" });
-
+            
             endpoints.MapControllerRoute(
                     name: "ListByCategoryId",
                     pattern: "/cat/{categoryAlias}-{id}",

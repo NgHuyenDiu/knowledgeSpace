@@ -11,7 +11,7 @@
             <div class="row">
                 <label for="keyword" class="col-md-3">Nhóm người dùng</label>
                 <div class="col-md-9">
-                    <p-dropdown [options]="roles" (onChange)="changeRole($event)" [style]="{'width':'100%'}" name="roleList" placeholder="Chọn nhóm quyền" optionLabel="name" filter="true" [showClear]="true" [(ngModel)]="selectedRole.id">
+                    <p-dropdown appendTo="body" [options]="roles" (onChange)="changeRole($event)" [style]="{'width':'100%'}" name="roleList" placeholder="Chọn nhóm quyền" optionLabel="name" filter="true" [showClear]="true" [(ngModel)]="selectedRole.id">
                     </p-dropdown>
                 </div>
             </div>

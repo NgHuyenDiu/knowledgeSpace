@@ -13,6 +13,6 @@ note :string ;
 ownerUserId :string ;
 numberOfComments : number;
 numberOfVotes : number;
-numberOfReports: number ;
+numberOfReport : number;
 viewCount : number;
 }

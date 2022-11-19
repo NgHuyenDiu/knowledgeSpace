@@ -52,6 +52,7 @@ namespace KnowledgeSpace.BackendServer
                 options.Events.RaiseInformationEvents = true;
                 options.Events.RaiseFailureEvents = true;
                 options.Events.RaiseSuccessEvents = true;
+                
             })
             .AddInMemoryApiResources(Config.Apis)
             .AddInMemoryApiScopes(Config.ApiScopes)
@@ -76,7 +77,7 @@ namespace KnowledgeSpace.BackendServer
             services.Configure<IdentityOptions>(options =>
             {
                 // Default Lockout settings.
-                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(1);
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(10);
                 
                 options.Lockout.MaxFailedAccessAttempts = 5;
                 options.Lockout.AllowedForNewUsers = true;
@@ -87,7 +88,9 @@ namespace KnowledgeSpace.BackendServer
                 options.Password.RequireDigit = true;
                 options.Password.RequireUppercase = true;
                 options.User.RequireUniqueEmail = true;
+                
             });
+           
 
             services.Configure<ApiBehaviorOptions>(options =>
             {

@@ -53,8 +53,10 @@ export class AuthService extends BaseService {
     get profile() {
         return this.user != null ? this.user.profile : null;
     }
+  
     async signout() {
         await this.manager.signoutRedirect();
+        
     }
 }
 

@@ -31,7 +31,7 @@ namespace KnowledgeSpace.BackendServer.Controllers
         private readonly IEmailSender _emailSender;
         private readonly IViewRenderService _viewRenderService;
         private readonly ICacheService _cacheService;
-
+      
         public KnowledgeBasesController(ApplicationDbContext context,
             ISequenceService sequenceService,
             IStorageService storageService,
@@ -307,6 +307,16 @@ namespace KnowledgeSpace.BackendServer.Controllers
         [Consumes("multipart/form-data")]
         public async Task<IActionResult> PutKnowledgeBase(int id, [FromForm]KnowledgeBaseCreateRequest request)
         {
+            var query = from lik in _context.LabelInKnowledgeBases                        
+                        where lik.KnowledgeBaseId == id
+                        select new { lik };
+            var labels = await query.Select(u => new LabelInKnowledgeBase()
+            {
+                KnowledgeBaseId = u.lik.KnowledgeBaseId,
+                LabelId = u.lik.LabelId
+            }).ToListAsync();
+            _context.RemoveRange(labels);
+
             var knowledgeBase = await _context.KnowledgeBases.FindAsync(id);
             if (knowledgeBase == null)
                 return NotFound(new ApiNotFoundResponse($"Không tìm thấy bài viết theo  id: {id}"));
@@ -354,7 +364,7 @@ namespace KnowledgeSpace.BackendServer.Controllers
             {
                 await _cacheService.RemoveAsync(CacheConstants.LatestKnowledgeBases);
                 await _cacheService.RemoveAsync(CacheConstants.PopularKnowledgeBases);
-
+                await _cacheService.RemoveAsync(CacheConstants.RecentComments);
                 KnowledgeBaseVm knowledgeBasevm = CreateKnowledgeBaseVm(knowledgeBase);
                 return Ok(knowledgeBasevm);
             }
@@ -485,6 +495,7 @@ namespace KnowledgeSpace.BackendServer.Controllers
 
         private async Task<Attachment> SaveFile(int knowledegeBaseId, IFormFile file)
         {
+           
             var originalFileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
             var fileName = $"{originalFileName.Substring(0, originalFileName.LastIndexOf('.'))}{Path.GetExtension(originalFileName)}";
             await _storageService.SaveFileAsync(file.OpenReadStream(), fileName);
@@ -553,6 +564,7 @@ namespace KnowledgeSpace.BackendServer.Controllers
 
             if (request.Labels != null)
                 knowledgeBase.Labels = string.Join(',', request.Labels);
+
         }
 
         #endregion Private methods

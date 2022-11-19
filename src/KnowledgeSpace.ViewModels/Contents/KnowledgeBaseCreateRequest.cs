@@ -32,6 +32,8 @@ namespace KnowledgeSpace.ViewModels.Contents
 
         public string[] Labels { get; set; }
 
+        [MaxFileSize(5 * 1024 * 1024)]
+        [AllowedExtensions(new string[] { ".jpg", ".png", ".doc",".pdf", ".docx", ".txt" })]
         public List<IFormFile> Attachments { get; set; }
 
         public string CaptchaCode { get; set; }

@@ -1,4 +1,5 @@
 ﻿using KnowledgeSpace.BackendServer.Data.Interfaces;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -32,6 +33,6 @@ namespace KnowledgeSpace.BackendServer.Data.Entities
 
         public DateTime CreateDate { get; set; }
         public DateTime? LastModifiedDate { get; set; }
-        public KnowledgeBase knowledgeBase { get; set; }
+        public KnowledgeBase knowledgeBase { get; set; }      
     }
 }

@@ -81,7 +81,20 @@
                 <a href="/tag/@label.Id" rel="tag" title="@label.Name">@label.Name</a>
             }
         </span>
+        <div>
+            <span class="attachments">
+                <strong>Attachments:&nbsp;&nbsp;</strong>
+                <br />
+                @foreach (var att in Model.Detail.Attachments)
+                {
+                    <a href="https://localhost:5000/user-attachments/@att.FileName"  title="@att.FileName">@att.FileName</a>
+                    <br />
+                }
+            </span>
+        </div>
+
     </div>
+   
 
     <section id="comments">
         <input type="hidden" value="@Model.Detail.NumberOfComments.GetValueOrDefault(0)" id="hid_number_comments" />

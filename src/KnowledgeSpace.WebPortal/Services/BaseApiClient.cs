@@ -85,6 +85,28 @@ namespace KnowledgeSpace.WebPortal.Services
             throw new Exception(body);
         }
 
+        public async Task<TResponse> DeleteAsync<TRequest, TResponse>(string url,bool requiredLogin = true)
+        {
+            var client = _httpClientFactory.CreateClient("BackendApi");
+            client.BaseAddress = new Uri(_configuration["BackendApiUrl"]);
+            StringContent httpContent = null;
+           
+
+            if (requiredLogin)
+            {
+                var token = await _httpContextAccessor.HttpContext.GetTokenAsync("access_token");
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+            }
+            var response = await client.PostAsync(url, httpContent);
+            var body = await response.Content.ReadAsStringAsync();
+
+            if (response.IsSuccessStatusCode)
+            {
+                return JsonConvert.DeserializeObject<TResponse>(body);
+            }
+            throw new Exception(body);
+        }
+
         public async Task<bool> PutAsync<TRequest, TResponse>(string url, TRequest requestContent, bool requiredLogin = true)
         {
             var client = _httpClientFactory.CreateClient("BackendApi");

@@ -1,4 +1,5 @@
-﻿var accountController = function () {
+﻿
+var accountController = function () {
     this.initialize = function () {
         registerEvents();
     };
@@ -18,7 +19,7 @@
                 CKEDITOR.instances[instance].document.on("change", CK_jQ);
             });
         });
-
+        
         $('#btn_add_attachment').off('click').on('click', function () {
             $('#attachment_items').prepend('<p><input type="file" name="attachments" /></p>');
             return false;
@@ -108,6 +109,7 @@
             }
         });
 
+
         $('body').on('click', '#img-captcha', function (e) {
             resetCaptchaImage('img-captcha');
         });
@@ -118,6 +120,22 @@
             CKEDITOR.instances[instance].updateElement();
         }
     }
+
+  
+    //function deleteAttachment(knowledgeBaseId, attachmentId) {
+    //        $.ajax({
+    //            type: "DELETE",
+    //            url: '/AccountController/deleteAttachment',
+    //            data: $('form').serialize(),
+    //            dataType: "json",
+    //            success: function (result) {
+    //                // action to do after form submit
+    //            },
+    //            error: function () {
+    //                alert("Error while inserting data");
+    //            }
+    //        });
+  
 
     function resetCaptchaImage(id) {
         d = new Date();

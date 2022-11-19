@@ -1,16 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using KnowledgeSpace.ViewModels.Contents;
 using KnowledgeSpace.WebPortal.Extensions;
 using KnowledgeSpace.WebPortal.Helpers;
+using KnowledgeSpace.WebPortal.Models;
 using KnowledgeSpace.WebPortal.Services;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Syncfusion.EJ2;
+
 
 namespace KnowledgeSpace.WebPortal.Controllers
 {
@@ -104,25 +107,35 @@ namespace KnowledgeSpace.WebPortal.Controllers
         {
             var knowledgeBase = await _knowledgeBaseApiClient.GetKnowledgeBaseDetail(id);
             await SetCategoriesViewBag();
-            
-            return View(new KnowledgeBaseCreateRequest()
+            var kb = new KnowledgeBaseEditModel()
             {
-                CategoryId = knowledgeBase.CategoryId,
-                Description = knowledgeBase.Description,
-                Environment = knowledgeBase.Environment,
-                ErrorMessage = knowledgeBase.ErrorMessage,
-                Labels = knowledgeBase.Labels,
-                Note = knowledgeBase.Note,
-                Problem = knowledgeBase.Problem,
-                StepToReproduce = knowledgeBase.StepToReproduce,
-                Title = knowledgeBase.Title,
-                Workaround = knowledgeBase.Workaround,
-                Id = knowledgeBase.Id
-            });
+                Detail = knowledgeBase
+            };
+        
+            return View(kb);
+
+        }
+        [HttpGet]
+        public async Task<IActionResult> DeleteAttachment (int knowledgeBaseId , int attachmentId)
+        {
+            var result = await _knowledgeBaseApiClient.deleteAttachment(knowledgeBaseId, attachmentId);
+            if (result)
+            {
+                var knowledgeBase = await _knowledgeBaseApiClient.GetKnowledgeBaseDetail(knowledgeBaseId);
+                await SetCategoriesViewBag();
+                var kb = new KnowledgeBaseEditModel()
+                {
+                    Detail = knowledgeBase
+                };
+
+                return View("EditKnowledgeBase", kb);
+            }
+            return BadRequest();
+
         }
 
         [HttpPost]
-        public async Task<IActionResult> EditKnowledgeBase([FromForm]KnowledgeBaseCreateRequest request)
+        public async Task<IActionResult> EditKnowledgeBase([FromForm] KnowledgeBaseEditModel request)
         {
             if (!ModelState.IsValid)
             {
@@ -133,23 +146,40 @@ namespace KnowledgeSpace.WebPortal.Controllers
                 ModelState.AddModelError("", "Mã xác nhận không đúng");
                 return BadRequest(ModelState);
             }
-            if (request.Title == null)
+            if (request.Detail.Title == null)
             {
                 ModelState.AddModelError("", "Tiêu đề không được bỏ trống");
                 return BadRequest(ModelState);
             }
-            if (request.Description == null)
+            if (request.Detail.Description == null)
             {
                 ModelState.AddModelError("", "Mô tả không được bỏ trống");
                 return BadRequest(ModelState);
             }
 
-            if (request.Problem == null)
+            if (request.Detail.Problem == null)
             {
                 ModelState.AddModelError("", "Vấn đề không được bỏ trống");
                 return BadRequest(ModelState);
             }
-            var result = await _knowledgeBaseApiClient.PutKnowlegdeBase(request.Id.Value, request);
+            var KB= new KnowledgeBaseCreateRequest()
+            {
+                CategoryId = request.Detail.CategoryId,
+                Description = request.Detail.Description,
+                Environment = request.Detail.Environment,
+                ErrorMessage = request.Detail.ErrorMessage,
+                Labels = request.Detail.Labels,
+                Note = request.Detail.Note,
+                Problem = request.Detail.Problem,
+                StepToReproduce = request.Detail.StepToReproduce,
+                Title = request.Detail.Title,
+                Workaround = request.Detail.Workaround,
+                Id = request.Detail.Id,
+                Attachments = request.Attachments
+
+            };
+
+            var result = await _knowledgeBaseApiClient.PutKnowlegdeBase(request.Detail.Id, KB);
             if (result)
             {
                 return Ok();

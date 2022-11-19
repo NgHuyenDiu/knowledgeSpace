@@ -79,7 +79,18 @@ namespace KnowledgeSpace.WebPortal.Services
             return await PostAsync<CommentCreateRequest, CommentVm>($"/api/knowledgeBases/{request.KnowledgeBaseId}/comments", request);
         }
 
-        public async Task<bool> PostKnowlegdeBase(KnowledgeBaseCreateRequest request)
+        public async Task<bool> deleteAttachment(int knowledgeBaseId, int attachmentId)
+        {
+            var client = _httpClientFactory.CreateClient("BackendApi");
+            client.BaseAddress = new Uri(_configuration["BackendApiUrl"]);
+            var token = await _httpContextAccessor.HttpContext.GetTokenAsync("access_token");
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+            var response = await client.DeleteAsync($"/api/knowledgeBases/{knowledgeBaseId}/attachments/{attachmentId}");
+            return response.IsSuccessStatusCode;
+        }
+
+            public async Task<bool> PostKnowlegdeBase(KnowledgeBaseCreateRequest request)
         {
             var client = _httpClientFactory.CreateClient("BackendApi");
 

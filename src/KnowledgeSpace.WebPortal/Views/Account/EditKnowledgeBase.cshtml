@@ -1,4 +1,4 @@
-﻿@model KnowledgeSpace.ViewModels.Contents.KnowledgeBaseCreateRequest
+﻿@model KnowledgeSpace.WebPortal.Models.KnowledgeBaseEditModel
 
 @{
     ViewData["Title"] = "Cập nhật bài đăng";
@@ -27,88 +27,117 @@
         </div>
         <div class="span6">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="@Model.Detail.Id" />
         </div>
         <div class="span2">
             Danh mục
         </div>
         <div class="span6">
-            <select asp-for="CategoryId" required class="required input-xlarge"
+            <select asp-for="@Model.Detail.CategoryId" required class="required input-xlarge"
                     asp-items="ViewBag.Categories">
             </select>
-          
+
         </div>
 
         <div class="span2">
             Tiêu đề
         </div>
         <div class="span6">
-            <input asp-for="Title" class="required input-xlarge" />
-          
+            <input asp-for="@Model.Detail.Title" class="required input-xlarge" />
+
         </div>
 
         <div class="span2">
             Mô tả
         </div>
         <div class="span6">
-            <textarea asp-for="Description" rows="5" class=" required span6"></textarea>
-            
+            <textarea asp-for="@Model.Detail.Description" rows="5" class=" required span6"></textarea>
+
         </div>
 
         <div class="span2">
             Môi trường
         </div>
         <div class="span6">
-            <textarea asp-for="Environment" id="txt_environment" rows="5" class=" span6"></textarea>
-            
+            <textarea asp-for="@Model.Detail.Environment" id="txt_environment" rows="5" class=" span6"></textarea>
+
         </div>
 
         <div class="span2">
             Vấn đề
         </div>
         <div class="span6">
-            <textarea asp-for="Problem" rows="5" id="txt_problem" class="required span6"></textarea>
-           
+            <textarea asp-for="@Model.Detail.Problem" rows="5" id="txt_problem" class="required span6"></textarea>
+
         </div>
 
         <div class="span2">
             Cách tái hiện
         </div>
         <div class="span6">
-            <textarea asp-for="StepToReproduce" id="txt_step_reproduce" rows="5" class=" span6"></textarea>
-           
+            <textarea asp-for="@Model.Detail.StepToReproduce" id="txt_step_reproduce" rows="5" class=" span6"></textarea>
+
         </div>
 
         <div class="span2">
             Thông báo lỗi
         </div>
         <div class="span6">
-            <input asp-for="ErrorMessage" class="input-xlarge" />
-            
+            <input asp-for="@Model.Detail.ErrorMessage" class="input-xlarge" />
+
         </div>
 
         <div class="span2">
             Cách sửa nhanh
         </div>
         <div class="span6">
-            <textarea asp-for="Workaround" id="txt_workaround" rows="5" class=" span6"></textarea>
-          
+            <textarea asp-for="@Model.Detail.Workaround" id="txt_workaround" rows="5" class=" span6"></textarea>
+
         </div>
 
         <div class="span2">
             Giải pháp
         </div>
         <div class="span6">
-            <textarea asp-for="Note" rows="5" id="txt_note" class=" span6"></textarea>
-          
-        </div>
+            <textarea asp-for="@Model.Detail.Note" rows="5" id="txt_note" class=" span6"></textarea>
 
+        </div>
+        <div class="span2">
+            Tags
+        </div>
+        <div class="span6">
+            @if (@Model.Detail.Labels != null)
+            {
+                <input id="label" asp-for="@Model.Detail.Labels" placeholder="Các tag cách nhau bằng dấu phẩy" data-role="tagsinput" id="txt_tags" class=" span6" value=" @String.Join(",",@Model.Detail.Labels)" />
+
+            }
+            else {
+            <input id="label" asp-for="@Model.Detail.Labels" placeholder="Các tag cách nhau bằng dấu phẩy" data-role="tagsinput" id="txt_tags" class=" span6" />
+
+            }
+
+
+        </div>
         <div class="span2">
             File đính kèm
         </div>
         <div class="span6" id="attachment_items">
-            <p><input type="file" name="attachments" /></p>
+            @if(@Model.Detail.Attachments != null){
+            @foreach (var att in @Model.Detail.Attachments)
+            {
+            <div>
+                <a href="https://localhost:5000/user-attachments/@att.FileName" title="@att.FileName">@att.FileName</a>
+                <button type="button"   onclick="location.href='@Url.Action( "DeleteAttachment","Account", new { KnowledgeBaseId= @Model.Detail.Id, AttachmentId= @att.Id })'">Xoá</button>
+                @*<input type="button" value="Xoá" onclick="deleteAttachment(@Model.Detail.Id, @att.Id)" />*@
+                <br />
+            </div>
+                
+            }
+            }
+
+            <p><input asp-for="@Model.Attachments" type="file" name="attachments" /></p>
             <a id="btn_add_attachment" href="#">Thêm đính kèm</a>
+
         </div>
 
         <div class="span6 offset2 bm30">

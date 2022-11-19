@@ -42,17 +42,17 @@
         <div class="span2">
             Tiêu đề
         </div>
-        
+
         <div class="span6">
             <textarea asp-for="Title" rows="5" id="Title" class="required span6"></textarea>
-           
+
         </div>
         <div class="span2">
             Mô tả
         </div>
         <div class="span6">
             <textarea asp-for="Description" rows="5" class="required span6"></textarea>
-            
+
         </div>
 
         <div class="span2">
@@ -60,7 +60,7 @@
         </div>
         <div class="span6">
             <textarea asp-for="Environment" id="txt_environment" rows="5" class=" span6"></textarea>
-           
+
         </div>
 
         <div class="span2">
@@ -68,7 +68,7 @@
         </div>
         <div class="span6">
             <textarea asp-for="Problem" rows="5" id="txt_problem" class="required span6"></textarea>
-           
+
         </div>
 
         <div class="span2">
@@ -76,14 +76,14 @@
         </div>
         <div class="span6">
             <textarea asp-for="StepToReproduce" id="txt_step_reproduce" rows="5" class=" span6"></textarea>
-          
+
         </div>
         <div class="span2">
             Thông báo lỗi
         </div>
         <div class="span6">
             <textarea asp-for="ErrorMessage" id="txt_ErrorMessage" rows="5" class=" span6"></textarea>
-            
+
         </div>
 
         <div class="span2">
@@ -91,7 +91,7 @@
         </div>
         <div class="span6">
             <textarea asp-for="Workaround" id="txt_workaround" rows="5" class=" span6"></textarea>
-           
+
         </div>
 
         <div class="span2">
@@ -99,7 +99,14 @@
         </div>
         <div class="span6">
             <textarea asp-for="Note" rows="5" id="txt_note" class=" span6"></textarea>
-           
+
+        </div>
+        <div class="span2">
+            Tags
+        </div>
+        <div class="span6">
+            <input asp-for="Labels" placeholder="Các tag cách nhau bằng dấu phẩy" data-role="tagsinput" id="txt_tags" class=" span6"/>
+
         </div>
 
         <div class="span2">
