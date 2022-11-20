@@ -22,7 +22,7 @@ namespace KnowledgeSpace.WebPortal.Controllers
         private readonly IUserApiClient _userApiClient;
         private readonly IKnowledgeBaseApiClient _knowledgeBaseApiClient;
         private readonly ICategoryApiClient _categoryApiClient;
-
+        private int[] listAttDelete;
         public AccountController(IUserApiClient userApiClient,
             IKnowledgeBaseApiClient knowledgeBaseApiClient,
             ICategoryApiClient categoryApiClient)
@@ -30,6 +30,7 @@ namespace KnowledgeSpace.WebPortal.Controllers
             _userApiClient = userApiClient;
             _categoryApiClient = categoryApiClient;
             _knowledgeBaseApiClient = knowledgeBaseApiClient;
+            
         }
 
         public IActionResult SignIn()
@@ -133,6 +134,7 @@ namespace KnowledgeSpace.WebPortal.Controllers
             return BadRequest();
 
         }
+       
 
         [HttpPost]
         public async Task<IActionResult> EditKnowledgeBase([FromForm] KnowledgeBaseEditModel request)

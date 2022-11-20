@@ -8,7 +8,7 @@ var accountController = function () {
         CKEDITOR.replace('txt_problem');
         CKEDITOR.replace('txt_note');
 
-       
+
 
         CKEDITOR.on('instanceReady', function () {
             $.each(CKEDITOR.instances, function (instance) {
@@ -19,7 +19,7 @@ var accountController = function () {
                 CKEDITOR.instances[instance].document.on("change", CK_jQ);
             });
         });
-        
+
         $('#btn_add_attachment').off('click').on('click', function () {
             $('#attachment_items').prepend('<p><input type="file" name="attachments" /></p>');
             return false;
@@ -121,21 +121,26 @@ var accountController = function () {
         }
     }
 
-  
-    //function deleteAttachment(knowledgeBaseId, attachmentId) {
-    //        $.ajax({
-    //            type: "DELETE",
-    //            url: '/AccountController/deleteAttachment',
-    //            data: $('form').serialize(),
-    //            dataType: "json",
-    //            success: function (result) {
-    //                // action to do after form submit
-    //            },
-    //            error: function () {
-    //                alert("Error while inserting data");
-    //            }
-    //        });
-  
+    //function Delete(obj) {
+    //    var ele = $(obj);
+    //    var knId = $(this).data('hid_knowledge_base_id');
+    //    var AttId = $(this).data('attId');
+    //    var url = "/Account/DeleteAttachment/";
+    //    $.ajax({
+    //        url: url,
+    //        type: "POST",
+    //        data: { knowledgeBaseId = knId, attachmentId = AttId },
+    //        success: function () {
+
+    //            ele.closest("a").remove();
+    //        },
+
+    //        error: function () {
+    //            alert("Fails");
+    //        }
+    //    });
+    //});
+
 
     function resetCaptchaImage(id) {
         d = new Date();

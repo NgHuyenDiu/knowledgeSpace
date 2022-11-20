@@ -126,10 +126,10 @@
             @foreach (var att in @Model.Detail.Attachments)
             {
             <div>
+               
                 <a href="https://localhost:5000/user-attachments/@att.FileName" title="@att.FileName">@att.FileName</a>
                 <button type="button"   onclick="location.href='@Url.Action( "DeleteAttachment","Account", new { KnowledgeBaseId= @Model.Detail.Id, AttachmentId= @att.Id })'">Xoá</button>
-                @*<input type="button" value="Xoá" onclick="deleteAttachment(@Model.Detail.Id, @att.Id)" />*@
-                <br />
+               
             </div>
                 
             }

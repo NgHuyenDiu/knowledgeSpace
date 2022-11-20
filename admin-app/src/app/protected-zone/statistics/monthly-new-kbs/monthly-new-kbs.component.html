@@ -11,6 +11,14 @@
             </div>
         </p-header>
         <p-table #dt [value]="items" [metaKeySelection]="true" [resizableColumns]="true" columnResizeMode="expand" [responsive]="true" [scrollable]="true">
+            <ng-template pTemplate="caption">
+                <div class="flex">
+
+                    <button type="button" pButton pRipple icon="pi pi-file-excel" (click)="exportExcel()" class="p-button-success mr-2" pTooltip="XLS" tooltipPosition="bottom"></button>
+                    <button type="button" pButton pRipple icon="pi pi-file-pdf" (click)="exportPdf()" class="p-button-warning mr-2" pTooltip="PDF" tooltipPosition="bottom"></button>
+
+                </div>
+            </ng-template>
             <ng-template pTemplate="header">
                 <tr>
                     <th [pSortableColumn]="'month'">Tháng
