@@ -11,6 +11,19 @@
         var controller = new accountController();
         controller.initialize();
     </script>
+    <script>
+        function deleteAtt(knid, attid)
+            {
+              $.ajax({
+                 dataType: "json",
+                 url: '/account/DeleteAttachment?knowledgeBaseId=' + knid + '&attachmentId=' + attid ,
+                 
+                  success: function (result) {
+                      document.getElementById(attid).remove();
+                        }
+                   });
+                }
+    </script>
 }
 
 <div class="span8 page-content">
@@ -111,8 +124,9 @@
                 <input id="label" asp-for="@Model.Detail.Labels" placeholder="Các tag cách nhau bằng dấu phẩy" data-role="tagsinput" id="txt_tags" class=" span6" value=" @String.Join(",",@Model.Detail.Labels)" />
 
             }
-            else {
-            <input id="label" asp-for="@Model.Detail.Labels" placeholder="Các tag cách nhau bằng dấu phẩy" data-role="tagsinput" id="txt_tags" class=" span6" />
+            else
+            {
+                <input id="label" asp-for="@Model.Detail.Labels" placeholder="Các tag cách nhau bằng dấu phẩy" data-role="tagsinput" id="txt_tags" class=" span6" />
 
             }
 
@@ -121,22 +135,30 @@
         <div class="span2">
             File đính kèm
         </div>
+        
         <div class="span6" id="attachment_items">
-            @if(@Model.Detail.Attachments != null){
-            @foreach (var att in @Model.Detail.Attachments)
+            <button id="btn_add_attachment" href="#">Thêm đính kèm</button>
+
+
+
+            @if (@Model.Detail.Attachments != null)
             {
-            <div>
-               
-                <a href="https://localhost:5000/user-attachments/@att.FileName" title="@att.FileName">@att.FileName</a>
-                <button type="button"   onclick="location.href='@Url.Action( "DeleteAttachment","Account", new { KnowledgeBaseId= @Model.Detail.Id, AttachmentId= @att.Id })'">Xoá</button>
-               
-            </div>
-                
-            }
+                @foreach (var att in @Model.Detail.Attachments)
+                {
+                    <div id="@att.Id">
+
+                        <a href="https://localhost:5000/user-attachments/@att.FileName" title="@att.FileName">@att.FileName</a>
+                        @*<button type="button" onclick="location.href='@Url.Action( "DeleteAttachment","Account", new { KnowledgeBaseId= @Model.Detail.Id, AttachmentId= @att.Id })'">Xoá</button>*@
+                        <button type="button" onclick="deleteAtt( '@Model.Detail.Id',  '@att.Id')">Xoá</button>
+
+                    </div>
+
+                }
             }
 
-            <p><input asp-for="@Model.Attachments" type="file" name="attachments" /></p>
-            <a id="btn_add_attachment" href="#">Thêm đính kèm</a>
+            <p>
+                <input asp-for="@Model.Attachments" type="file" name="attachments" />
+            </p>
 
         </div>
 

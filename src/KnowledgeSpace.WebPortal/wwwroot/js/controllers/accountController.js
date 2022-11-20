@@ -21,7 +21,7 @@ var accountController = function () {
         });
 
         $('#btn_add_attachment').off('click').on('click', function () {
-            $('#attachment_items').prepend('<p><input type="file" name="attachments" /></p>');
+            $('#attachment_items').append('<p><input type="file" name="attachments" /></p>');
             return false;
         });
 

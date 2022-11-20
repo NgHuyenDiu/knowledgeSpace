@@ -123,13 +123,13 @@ namespace KnowledgeSpace.WebPortal.Controllers
             if (result)
             {
                 var knowledgeBase = await _knowledgeBaseApiClient.GetKnowledgeBaseDetail(knowledgeBaseId);
-                await SetCategoriesViewBag();
+               
                 var kb = new KnowledgeBaseEditModel()
                 {
                     Detail = knowledgeBase
                 };
 
-                return View("EditKnowledgeBase", kb);
+                return Ok(kb);
             }
             return BadRequest();
 

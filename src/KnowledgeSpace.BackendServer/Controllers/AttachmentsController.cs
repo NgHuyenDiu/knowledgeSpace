@@ -35,14 +35,16 @@ namespace KnowledgeSpace.BackendServer.Controllers
         public async Task<IActionResult> DeleteAttachment(int attachmentId)
         {
             var attachment = await _context.Attachments.FindAsync(attachmentId);
+            string filename = attachment.FileName;
+           
             if (attachment == null)
                 return BadRequest(new ApiBadRequestResponse($"Cannot found attachment with id {attachmentId}"));
 
             _context.Attachments.Remove(attachment);
-
             var result = await _context.SaveChangesAsync();
             if (result > 0)
             {
+               await _storageService.DeleteFileAsync(filename);
                 return Ok();
             }
             return BadRequest(new ApiBadRequestResponse($"Delete attachment failed"));
