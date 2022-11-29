@@ -46,12 +46,12 @@ namespace KnowledgeSpace.BackendServer.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            [Required]
+            [Required (ErrorMessage = "Email không được để trống")]
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
 
-            [Required]
+            [Required(ErrorMessage = "Mật khẩu không được để trống")]
             [StringLength(100, ErrorMessage = " {0} chứa ít nhất {2} ký tự và tối đa {1} ký tự.", MinimumLength = 6)]
             [DataType(DataType.Password)]
             [Display(Name = "Mật khẩu")]
@@ -62,24 +62,27 @@ namespace KnowledgeSpace.BackendServer.Areas.Identity.Pages.Account
             [Compare("Password", ErrorMessage = "Mật khẩu và mật khẩu xác nhận không khớp.")]
             public string ConfirmPassword { get; set; }
 
-            [Required]
+            [Required (ErrorMessage = "Tên đăng nhập không được để trống")]
             [Display(Name = "Tên đăng nhập")]
             [StringLength(50, ErrorMessage = " {0} chứa ít nhất {2} ký tự và tối đa {1} ký tự.", MinimumLength = 3)]
             public string username { get; set; }
-            [Required]
+
+            [Required (ErrorMessage = "Họ không được để trống") ]
             [Display(Name = "Họ")]
             [StringLength(50, ErrorMessage = " {0} chứa ít nhất {2} ký tự và tối đa {1} ký tự.", MinimumLength = 3)]
             public string FirstName { get; set; }
-            [Required]
+
+            [Required (ErrorMessage = "Tên không được để trống") ]
             [Display(Name = "Tên")]
             [StringLength(50, ErrorMessage = " {0} chứa ít nhất {2} ký tự và tối đa {1} ký tự.", MinimumLength = 3)]
             public string LastName { get; set; }
 
-            [Required]
+            [Required (ErrorMessage = "Ngày sinh không được để trống") ]
             [Display(Name = "Ngày sinh")]
             public string Dob { get; set; }
+
             [Phone]
-            [Required]
+            [Required (ErrorMessage = "Số điện thoại không được để trống") ]
             [Display(Name = "Số điện thoại")]
             public string PhoneNumber { get; set; }
 
@@ -97,6 +100,10 @@ namespace KnowledgeSpace.BackendServer.Areas.Identity.Pages.Account
         {
             returnUrl = returnUrl ?? Url.Content("~/");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+            //if(Input.LastName == null)
+            //{
+            //    ModelState.AddModelError("Tên không thể để trống")
+            //}
             if (ModelState.IsValid)
             {
                 var user = new User {

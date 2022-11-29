@@ -365,8 +365,8 @@ namespace KnowledgeSpace.BackendServer.Controllers
                 await _cacheService.RemoveAsync(CacheConstants.LatestKnowledgeBases);
                 await _cacheService.RemoveAsync(CacheConstants.PopularKnowledgeBases);
                 await _cacheService.RemoveAsync(CacheConstants.RecentComments);
-                KnowledgeBaseVm knowledgeBasevm = CreateKnowledgeBaseVm(knowledgeBase);
-                return Ok(knowledgeBasevm);
+                
+                return Ok();
             }
             return BadRequest();
         }

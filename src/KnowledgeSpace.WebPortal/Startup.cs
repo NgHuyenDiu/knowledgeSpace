@@ -52,7 +52,7 @@ namespace KnowledgeSpace.WebPortal
             });
             services.AddSession(options =>
             {
-                options.IdleTimeout = TimeSpan.FromDays(3);
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
                 options.Cookie.HttpOnly = true;
             });
 

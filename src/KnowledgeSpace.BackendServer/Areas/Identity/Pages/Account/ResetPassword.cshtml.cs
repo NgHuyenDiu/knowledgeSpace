@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 
+
 namespace KnowledgeSpace.BackendServer.Areas.Identity.Pages.Account
 {
     [AllowAnonymous]
@@ -72,14 +73,16 @@ namespace KnowledgeSpace.BackendServer.Areas.Identity.Pages.Account
             var user = await _userManager.FindByEmailAsync(Input.Email);
             if (user == null)
             {
-                // Don't reveal that the user does not exist
-                return RedirectToPage("./ResetPasswordConfirmation");
+                ModelState.AddModelError("", "Email không tồn tại");
+                return BadRequest(ModelState);
+                
             }
 
             var result = await _userManager.ResetPasswordAsync(user, Input.Code, Input.Password);
             if (result.Succeeded)
             {
                 return RedirectToPage("./ResetPasswordConfirmation");
+               
             }
 
             foreach (var error in result.Errors)

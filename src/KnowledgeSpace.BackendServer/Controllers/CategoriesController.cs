@@ -167,8 +167,8 @@ namespace KnowledgeSpace.BackendServer.Controllers
                 await _cacheService.RemoveAsync(CacheConstants.LatestKnowledgeBases);
                 await _cacheService.RemoveAsync(CacheConstants.PopularKnowledgeBases);
                 await _cacheService.RemoveAsync(CacheConstants.RecentComments);
-                CategoryVm categoryvm = CreateCategoryVm(category);
-                return Ok(categoryvm);
+               
+                return Ok();
             }
             return BadRequest();
         }

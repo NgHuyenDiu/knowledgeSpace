@@ -23,6 +23,7 @@ namespace KnowledgeSpace.WebPortal
                 {
                     webBuilder.UseContentRoot(Directory.GetCurrentDirectory());
                     webBuilder.UseStartup<Startup>();
+                    webBuilder.UseKestrel(c => c.AddServerHeader = false);
                     webBuilder.UseIISIntegration();
                 });
     }

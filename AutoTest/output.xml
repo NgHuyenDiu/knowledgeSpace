@@ -1,0 +1,1457 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.0.1 (Python 3.10.2 on win32)" generated="20221129 17:18:44.350" rpa="false" schemaversion="3">
+<suite id="s1" name="Testcases" source="D:\diu\diu\AutoTest\Testcases">
+<suite id="s1-s1" name="CreateKnowledgeBase.Testcase" source="D:\diu\diu\AutoTest\Testcases\CreateKnowledgeBase.Testcase.robot">
+<test id="s1-s1-t1" name="Create successfully new knowledge" line="15">
+<kw name="Open my browser" library="CommonResource" type="SETUP">
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<arg>${chromedriver}</arg>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<arg>executable_path=${driver}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20221129 17:18:44.757" level="INFO">Opening browser 'chrome' to base url 'https://localhost:5002/'.</msg>
+<msg timestamp="20221129 17:18:50.995" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-3.png"&gt;&lt;img src="selenium-screenshot-3.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20221129 17:18:50.995" level="FAIL">WebDriverException: Message: unknown error: net::ERR_CONNECTION_REFUSED
+  (Session info: chrome=107.0.5304.122)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x0104ACD3+2075859]
+	Ordinal0 [0x00FDEE61+1633889]
+	Ordinal0 [0x00EDB7BD+571325]
+	Ordinal0 [0x00ED7CD2+556242]
+	Ordinal0 [0x00ECEC5D+519261]
+	Ordinal0 [0x00ECFAEC+522988]
+	Ordinal0 [0x00ECEF27+519975]
+	Ordinal0 [0x00ECE2EB+516843]
+	Ordinal0 [0x00ECE231+516657]
+	Ordinal0 [0x00ECD0A3+512163]
+	Ordinal0 [0x00ECD5AD+513453]
+	Ordinal0 [0x00EDD0CE+577742]
+	Ordinal0 [0x00F3BC7D+965757]
+	Ordinal0 [0x00F2731C+881436]
+	Ordinal0 [0x00F3B56A+963946]
+	Ordinal0 [0x00F27136+880950]
+	Ordinal0 [0x00EFFEFD+720637]
+	Ordinal0 [0x00F00F3F+724799]
+	GetHandleVerifier [0x012FEED2+2769538]
+	GetHandleVerifier [0x012F0D95+2711877]
+	GetHandleVerifier [0x010DA03A+521194]
+	GetHandleVerifier [0x010D8DA0+516432]
+	Ordinal0 [0x00FE682C+1665068]
+	Ordinal0 [0x00FEB128+1683752]
+	Ordinal0 [0x00FEB215+1683989]
+	Ordinal0 [0x00FF6484+1729668]
+	BaseThreadInitThunk [0x75D37BA9+25]
+	RtlInitializeExceptionChain [0x7741BB9B+107]
+	RtlClearBits [0x7741BB1F+191]
+</msg>
+<status status="FAIL" starttime="20221129 17:18:44.756" endtime="20221129 17:18:50.999"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="NOT RUN" starttime="20221129 17:18:50.999" endtime="20221129 17:18:50.999"/>
+</kw>
+<status status="FAIL" starttime="20221129 17:18:44.755" endtime="20221129 17:18:51.000"/>
+</kw>
+<kw name="Close my browser" library="CommonResource" type="TEARDOWN">
+<kw name="Close All Browsers" library="SeleniumLibrary">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20221129 17:18:51.003" endtime="20221129 17:18:54.433"/>
+</kw>
+<status status="PASS" starttime="20221129 17:18:51.002" endtime="20221129 17:18:54.433"/>
+</kw>
+<tag>CreateKnowledgeBase</tag>
+<status status="FAIL" starttime="20221129 17:18:44.753" endtime="20221129 17:18:54.436">Setup failed:
+WebDriverException: Message: unknown error: net::ERR_CONNECTION_REFUSED
+  (Session info: chrome=107.0.5304.122)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x0104ACD3+2075859]
+	Ordinal0 [0x00FDEE61+1633889]
+	Ordinal0 [0x00EDB7BD+571325]
+	Ordinal0 [0x00ED7CD2+556242]
+	Ordinal0 [0x00ECEC5D+519261]
+	Ordinal0 [0x00ECFAEC+522988]
+	Ordinal0 [0x00ECEF27+519975]
+	Ordinal0 [0x00ECE2EB+516843]
+	Ordinal0 [0x00ECE231+516657]
+	Ordinal0 [0x00ECD0A3+512163]
+	Ordinal0 [0x00ECD5AD+513453]
+	Ordinal0 [0x00EDD0CE+577742]
+	Ordinal0 [0x00F3BC7D+965757]
+	Ordinal0 [0x00F2731C+881436]
+	Ordinal0 [0x00F3B56A+963946]
+	Ordinal0 [0x00F27136+880950]
+	Ordinal0 [0x00EFFEFD+720637]
+	Ordinal0 [0x00F00F3F+724799]
+	GetHandleVerifier [0x012FEED2+2769538]
+	GetHandleVerifier [0x012F0D95+2711877]
+	GetHandleVerifier [0x010DA03A+521194]
+	GetHandleVerifier [0x010D8DA0+516432]
+	Ordinal0 [0x00FE682C+1665068]
+	Ordinal0 [0x00FEB128+1683752]
+	Ordinal0 [0x00FEB215+1683989]
+	Ordinal0 [0x00FF6484+1729668]
+	BaseThreadInitThunk [0x75D37BA9+25]
+	RtlInitializeExceptionChain [0x7741BB9B+107]
+	RtlClearBits [0x7741BB1F+191]
+</status>
+</test>
+<status status="FAIL" starttime="20221129 17:18:44.375" endtime="20221129 17:18:54.455"/>
+</suite>
+<suite id="s1-s2" name="DetailKb.Testcase" source="D:\diu\diu\AutoTest\Testcases\DetailKb.Testcase.robot">
+<test id="s1-s2-t1" name="Report kb" line="15">
+<kw name="Open my browser" library="CommonResource" type="SETUP">
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<arg>${chromedriver}</arg>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<arg>executable_path=${driver}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20221129 17:18:54.530" level="INFO">Opening browser 'chrome' to base url 'https://localhost:5002/'.</msg>
+<msg timestamp="20221129 17:18:59.353" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-4.png"&gt;&lt;img src="selenium-screenshot-4.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20221129 17:18:59.353" level="FAIL">WebDriverException: Message: unknown error: net::ERR_CONNECTION_REFUSED
+  (Session info: chrome=107.0.5304.122)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x0104ACD3+2075859]
+	Ordinal0 [0x00FDEE61+1633889]
+	Ordinal0 [0x00EDB7BD+571325]
+	Ordinal0 [0x00ED7CD2+556242]
+	Ordinal0 [0x00ECEC5D+519261]
+	Ordinal0 [0x00ECFAEC+522988]
+	Ordinal0 [0x00ECEF27+519975]
+	Ordinal0 [0x00ECE2EB+516843]
+	Ordinal0 [0x00ECE231+516657]
+	Ordinal0 [0x00ECD0A3+512163]
+	Ordinal0 [0x00ECD5AD+513453]
+	Ordinal0 [0x00EDD0CE+577742]
+	Ordinal0 [0x00F3BC7D+965757]
+	Ordinal0 [0x00F2731C+881436]
+	Ordinal0 [0x00F3B56A+963946]
+	Ordinal0 [0x00F27136+880950]
+	Ordinal0 [0x00EFFEFD+720637]
+	Ordinal0 [0x00F00F3F+724799]
+	GetHandleVerifier [0x012FEED2+2769538]
+	GetHandleVerifier [0x012F0D95+2711877]
+	GetHandleVerifier [0x010DA03A+521194]
+	GetHandleVerifier [0x010D8DA0+516432]
+	Ordinal0 [0x00FE682C+1665068]
+	Ordinal0 [0x00FEB128+1683752]
+	Ordinal0 [0x00FEB215+1683989]
+	Ordinal0 [0x00FF6484+1729668]
+	BaseThreadInitThunk [0x75D37BA9+25]
+	RtlInitializeExceptionChain [0x7741BB9B+107]
+	RtlClearBits [0x7741BB1F+191]
+</msg>
+<status status="FAIL" starttime="20221129 17:18:54.528" endtime="20221129 17:18:59.354"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="NOT RUN" starttime="20221129 17:18:59.354" endtime="20221129 17:18:59.354"/>
+</kw>
+<status status="FAIL" starttime="20221129 17:18:54.527" endtime="20221129 17:18:59.355"/>
+</kw>
+<kw name="Close my browser" library="CommonResource" type="TEARDOWN">
+<kw name="Close All Browsers" library="SeleniumLibrary">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20221129 17:18:59.373" endtime="20221129 17:19:04.160"/>
+</kw>
+<status status="PASS" starttime="20221129 17:18:59.373" endtime="20221129 17:19:04.160"/>
+</kw>
+<tag>CreateKnowledgeBase</tag>
+<status status="FAIL" starttime="20221129 17:18:54.525" endtime="20221129 17:19:04.168">Setup failed:
+WebDriverException: Message: unknown error: net::ERR_CONNECTION_REFUSED
+  (Session info: chrome=107.0.5304.122)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x0104ACD3+2075859]
+	Ordinal0 [0x00FDEE61+1633889]
+	Ordinal0 [0x00EDB7BD+571325]
+	Ordinal0 [0x00ED7CD2+556242]
+	Ordinal0 [0x00ECEC5D+519261]
+	Ordinal0 [0x00ECFAEC+522988]
+	Ordinal0 [0x00ECEF27+519975]
+	Ordinal0 [0x00ECE2EB+516843]
+	Ordinal0 [0x00ECE231+516657]
+	Ordinal0 [0x00ECD0A3+512163]
+	Ordinal0 [0x00ECD5AD+513453]
+	Ordinal0 [0x00EDD0CE+577742]
+	Ordinal0 [0x00F3BC7D+965757]
+	Ordinal0 [0x00F2731C+881436]
+	Ordinal0 [0x00F3B56A+963946]
+	Ordinal0 [0x00F27136+880950]
+	Ordinal0 [0x00EFFEFD+720637]
+	Ordinal0 [0x00F00F3F+724799]
+	GetHandleVerifier [0x012FEED2+2769538]
+	GetHandleVerifier [0x012F0D95+2711877]
+	GetHandleVerifier [0x010DA03A+521194]
+	GetHandleVerifier [0x010D8DA0+516432]
+	Ordinal0 [0x00FE682C+1665068]
+	Ordinal0 [0x00FEB128+1683752]
+	Ordinal0 [0x00FEB215+1683989]
+	Ordinal0 [0x00FF6484+1729668]
+	BaseThreadInitThunk [0x75D37BA9+25]
+	RtlInitializeExceptionChain [0x7741BB9B+107]
+	RtlClearBits [0x7741BB1F+191]
+</status>
+</test>
+<test id="s1-s2-t2" name="Like kb" line="24">
+<kw name="Open my browser" library="CommonResource" type="SETUP">
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<arg>${chromedriver}</arg>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<arg>executable_path=${driver}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20221129 17:19:04.173" level="INFO">Opening browser 'chrome' to base url 'https://localhost:5002/'.</msg>
+<status status="PASS" starttime="20221129 17:19:04.172" endtime="20221129 17:19:12.979"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20221129 17:19:12.979" endtime="20221129 17:19:13.186"/>
+</kw>
+<status status="PASS" starttime="20221129 17:19:04.171" endtime="20221129 17:19:13.186"/>
+</kw>
+<kw name=" Click btn Login" library="Login.resource">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${btn_login}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20221129 17:19:13.194" level="INFO">Clicking element 'xpath://a[text() ='Đăng nhập']'.</msg>
+<msg timestamp="20221129 17:19:13.639" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-5.png"&gt;&lt;img src="selenium-screenshot-5.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20221129 17:19:13.640" level="FAIL">Element with locator 'xpath://a[text() ='Đăng nhập']' not found.</msg>
+<status status="FAIL" starttime="20221129 17:19:13.192" endtime="20221129 17:19:13.642"/>
+</kw>
+<status status="FAIL" starttime="20221129 17:19:13.192" endtime="20221129 17:19:13.643"/>
+</kw>
+<kw name="Fill username" library="Login.resource">
+<arg>diu1</arg>
+<status status="NOT RUN" starttime="20221129 17:19:13.649" endtime="20221129 17:19:13.649"/>
+</kw>
+<kw name="Fill password" library="Login.resource">
+<arg>Diu@123456</arg>
+<status status="NOT RUN" starttime="20221129 17:19:13.649" endtime="20221129 17:19:13.649"/>
+</kw>
+<kw name="Click submit login" library="Login.resource">
+<status status="NOT RUN" starttime="20221129 17:19:13.650" endtime="20221129 17:19:13.650"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" starttime="20221129 17:19:13.650" endtime="20221129 17:19:13.650"/>
+</kw>
+<kw name="Choose kb 1 in kb popular" library="DetailKb.Resource">
+<status status="NOT RUN" starttime="20221129 17:19:13.650" endtime="20221129 17:19:13.650"/>
+</kw>
+<kw name="Post like kb" library="DetailKb.Resource">
+<status status="NOT RUN" starttime="20221129 17:19:13.650" endtime="20221129 17:19:13.650"/>
+</kw>
+<kw name="Close my browser" library="CommonResource" type="TEARDOWN">
+<kw name="Close All Browsers" library="SeleniumLibrary">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20221129 17:19:13.652" endtime="20221129 17:19:22.159"/>
+</kw>
+<status status="PASS" starttime="20221129 17:19:13.651" endtime="20221129 17:19:22.160"/>
+</kw>
+<tag>CreateKnowledgeBase</tag>
+<status status="FAIL" starttime="20221129 17:19:04.170" endtime="20221129 17:19:22.160">Element with locator 'xpath://a[text() ='Đăng nhập']' not found.</status>
+</test>
+<test id="s1-s2-t3" name="Post comment" line="33">
+<kw name="Open my browser" library="CommonResource" type="SETUP">
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<arg>${chromedriver}</arg>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<arg>executable_path=${driver}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20221129 17:19:22.168" level="INFO">Opening browser 'chrome' to base url 'https://localhost:5002/'.</msg>
+<status status="PASS" starttime="20221129 17:19:22.166" endtime="20221129 17:19:28.817"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20221129 17:19:28.817" endtime="20221129 17:19:29.009"/>
+</kw>
+<status status="PASS" starttime="20221129 17:19:22.165" endtime="20221129 17:19:29.010"/>
+</kw>
+<kw name=" Click btn Login" library="Login.resource">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${btn_login}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20221129 17:19:29.019" level="INFO">Clicking element 'xpath://a[text() ='Đăng nhập']'.</msg>
+<status status="PASS" starttime="20221129 17:19:29.018" endtime="20221129 17:19:31.112"/>
+</kw>
+<status status="PASS" starttime="20221129 17:19:29.014" endtime="20221129 17:19:31.112"/>
+</kw>
+<kw name="Fill username" library="Login.resource">
+<arg>diu1</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${txt_usernamelg}</arg>
+<arg>${data}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221129 17:19:31.133" level="INFO">Typing text 'diu1' into text field 'xpath://input[@id ='Input_UserName']'.</msg>
+<status status="PASS" starttime="20221129 17:19:31.133" endtime="20221129 17:19:31.363"/>
+</kw>
+<status status="PASS" starttime="20221129 17:19:31.130" endtime="20221129 17:19:31.363"/>
+</kw>
+<kw name="Fill password" library="Login.resource">
+<arg>Diu@123456</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${txt_passwordlg}</arg>
+<arg>${data}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221129 17:19:31.369" level="INFO">Typing text 'Diu@123456' into text field 'xpath://input[@id ='Input_Password']'.</msg>
+<status status="PASS" starttime="20221129 17:19:31.368" endtime="20221129 17:19:31.564"/>
+</kw>
+<status status="PASS" starttime="20221129 17:19:31.368" endtime="20221129 17:19:31.564"/>
+</kw>
+<kw name="Click submit login" library="Login.resource">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${btn_login_submit}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20221129 17:19:31.569" level="INFO">Clicking element 'xpath://button[text() ='Đăng nhập']'.</msg>
+<status status="PASS" starttime="20221129 17:19:31.568" endtime="20221129 17:19:36.796"/>
+</kw>
+<status status="PASS" starttime="20221129 17:19:31.568" endtime="20221129 17:19:36.797"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20221129 17:19:37.848" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20221129 17:19:36.834" endtime="20221129 17:19:37.848"/>
+</kw>
+<kw name="Choose kb 1 in kb popular" library="DetailKb.Resource">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${kb_popular_1}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20221129 17:19:37.850" level="INFO">Clicking element 'xpath://h3[text() = 'Bài bài viết xem nhiều']/following-sibling::ul[@class = 'articles']/li[1]/h4/a'.</msg>
+<status status="PASS" starttime="20221129 17:19:37.849" endtime="20221129 17:19:42.785"/>
+</kw>
+<status status="PASS" starttime="20221129 17:19:37.849" endtime="20221129 17:19:42.786"/>
+</kw>
+<kw name="Fill new comment" library="DetailKb.Resource">
+<kw name="Scroll Element Into View" library="SeleniumLibrary">
+<arg>${txt_new_comment}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" starttime="20221129 17:19:42.796" endtime="20221129 17:19:43.112"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${txt_new_comment}</arg>
+<arg>comment1</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221129 17:19:43.114" level="INFO">Typing text 'comment1' into text field 'xpath://textarea[@id='txt_new_comment_content']'.</msg>
+<status status="PASS" starttime="20221129 17:19:43.113" endtime="20221129 17:19:43.342"/>
+</kw>
+<status status="PASS" starttime="20221129 17:19:42.796" endtime="20221129 17:19:43.343"/>
+</kw>
+<kw name="Click btn send comment" library="DetailKb.Resource">
+<kw name="Scroll Element Into View" library="SeleniumLibrary">
+<arg>${btn_send_commnet}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" starttime="20221129 17:19:43.363" endtime="20221129 17:19:43.727"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${btn_send_commnet}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20221129 17:19:43.728" level="INFO">Clicking element 'xpath://input[@id='btn_send_comment']'.</msg>
+<status status="PASS" starttime="20221129 17:19:43.727" endtime="20221129 17:19:43.809"/>
+</kw>
+<status status="PASS" starttime="20221129 17:19:43.363" endtime="20221129 17:19:43.810"/>
+</kw>
+<kw name="Close my browser" library="CommonResource" type="TEARDOWN">
+<kw name="Close All Browsers" library="SeleniumLibrary">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20221129 17:19:43.819" endtime="20221129 17:19:50.428"/>
+</kw>
+<status status="PASS" starttime="20221129 17:19:43.818" endtime="20221129 17:19:50.428"/>
+</kw>
+<tag>CreateKnowledgeBase</tag>
+<status status="PASS" starttime="20221129 17:19:22.165" endtime="20221129 17:19:50.456"/>
+</test>
+<status status="FAIL" starttime="20221129 17:18:54.494" endtime="20221129 17:19:50.463"/>
+</suite>
+<suite id="s1-s3" name="Home.Testcase" source="D:\diu\diu\AutoTest\Testcases\Home.Testcase.robot">
+<test id="s1-s3-t1" name="search kb" line="15">
+<kw name="Open my browser" library="CommonResource" type="SETUP">
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<arg>${chromedriver}</arg>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<arg>executable_path=${driver}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20221129 17:19:59.357" level="INFO">Opening browser 'chrome' to base url 'https://localhost:5002/'.</msg>
+<status status="PASS" starttime="20221129 17:19:59.355" endtime="20221129 17:20:03.447"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20221129 17:20:03.447" endtime="20221129 17:20:03.593"/>
+</kw>
+<status status="PASS" starttime="20221129 17:19:59.354" endtime="20221129 17:20:03.594"/>
+</kw>
+<kw name="Fill input search" library="Home.Resource">
+<arg>test</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${input_search}</arg>
+<arg>${keyword}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221129 17:20:03.600" level="INFO">Typing text 'test' into text field 'xpath://input[@id = 'txt_keyword']'.</msg>
+<status status="PASS" starttime="20221129 17:20:03.599" endtime="20221129 17:20:03.786"/>
+</kw>
+<status status="PASS" starttime="20221129 17:20:03.598" endtime="20221129 17:20:03.787"/>
+</kw>
+<kw name="Click btn search" library="Home.Resource">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${btn_search}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20221129 17:20:03.790" level="INFO">Clicking element 'xpath: //input[@class = 'search-btn']'.</msg>
+<status status="PASS" starttime="20221129 17:20:03.789" endtime="20221129 17:20:05.393"/>
+</kw>
+<status status="PASS" starttime="20221129 17:20:03.788" endtime="20221129 17:20:05.393"/>
+</kw>
+<kw name="Verify search successfully" library="Home.Resource">
+<arg>test</arg>
+<kw name="Get Location" library="SeleniumLibrary">
+<var>${url}</var>
+<doc>Returns the current browser window URL.</doc>
+<msg timestamp="20221129 17:20:05.453" level="INFO">${url} = https://localhost:5002/search?keyword=test</msg>
+<status status="PASS" starttime="20221129 17:20:05.445" endtime="20221129 17:20:05.453"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${url}</arg>
+<arg>${keyword}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20221129 17:20:05.453" endtime="20221129 17:20:05.454"/>
+</kw>
+<status status="PASS" starttime="20221129 17:20:05.444" endtime="20221129 17:20:05.454"/>
+</kw>
+<kw name="Close my browser" library="CommonResource" type="TEARDOWN">
+<kw name="Close All Browsers" library="SeleniumLibrary">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20221129 17:20:05.472" endtime="20221129 17:20:12.287"/>
+</kw>
+<status status="PASS" starttime="20221129 17:20:05.470" endtime="20221129 17:20:12.287"/>
+</kw>
+<tag>Home</tag>
+<status status="PASS" starttime="20221129 17:19:59.353" endtime="20221129 17:20:12.302"/>
+</test>
+<test id="s1-s3-t2" name="Go to my knowledge base" line="20">
+<kw name="Open my browser" library="CommonResource" type="SETUP">
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<arg>${chromedriver}</arg>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<arg>executable_path=${driver}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20221129 17:20:12.306" level="INFO">Opening browser 'chrome' to base url 'https://localhost:5002/'.</msg>
+<status status="PASS" starttime="20221129 17:20:12.305" endtime="20221129 17:20:15.590"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20221129 17:20:15.591" endtime="20221129 17:20:15.732"/>
+</kw>
+<status status="PASS" starttime="20221129 17:20:12.305" endtime="20221129 17:20:15.732"/>
+</kw>
+<kw name=" Click btn Login" library="Login.resource">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${btn_login}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20221129 17:20:15.735" level="INFO">Clicking element 'xpath://a[text() ='Đăng nhập']'.</msg>
+<status status="PASS" starttime="20221129 17:20:15.734" endtime="20221129 17:20:16.125"/>
+</kw>
+<status status="PASS" starttime="20221129 17:20:15.733" endtime="20221129 17:20:16.125"/>
+</kw>
+<kw name="Fill username" library="Login.resource">
+<arg>diu1</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${txt_usernamelg}</arg>
+<arg>${data}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221129 17:20:16.128" level="INFO">Typing text 'diu1' into text field 'xpath://input[@id ='Input_UserName']'.</msg>
+<status status="PASS" starttime="20221129 17:20:16.126" endtime="20221129 17:20:16.261"/>
+</kw>
+<status status="PASS" starttime="20221129 17:20:16.126" endtime="20221129 17:20:16.261"/>
+</kw>
+<kw name="Fill password" library="Login.resource">
+<arg>Diu@123456</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${txt_passwordlg}</arg>
+<arg>${data}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221129 17:20:16.263" level="INFO">Typing text 'Diu@123456' into text field 'xpath://input[@id ='Input_Password']'.</msg>
+<status status="PASS" starttime="20221129 17:20:16.262" endtime="20221129 17:20:16.403"/>
+</kw>
+<status status="PASS" starttime="20221129 17:20:16.262" endtime="20221129 17:20:16.404"/>
+</kw>
+<kw name="Click submit login" library="Login.resource">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${btn_login_submit}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20221129 17:20:16.407" level="INFO">Clicking element 'xpath://button[text() ='Đăng nhập']'.</msg>
+<status status="PASS" starttime="20221129 17:20:16.405" endtime="20221129 17:20:17.493"/>
+</kw>
+<status status="PASS" starttime="20221129 17:20:16.405" endtime="20221129 17:20:17.494"/>
+</kw>
+<kw name="Click btn my kb" library="Home.Resource">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${btn_my_kb}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20221129 17:20:17.496" level="INFO">Clicking element 'xpath://a[text() = 'Bài đăng của tôi']'.</msg>
+<status status="PASS" starttime="20221129 17:20:17.495" endtime="20221129 17:20:18.772"/>
+</kw>
+<status status="PASS" starttime="20221129 17:20:17.494" endtime="20221129 17:20:18.772"/>
+</kw>
+<kw name="Verify go to my kb successful" library="Home.Resource">
+<kw name="Get Location" library="SeleniumLibrary">
+<var>${url}</var>
+<doc>Returns the current browser window URL.</doc>
+<msg timestamp="20221129 17:20:18.797" level="INFO">${url} = https://localhost:5002/my-kbs</msg>
+<status status="PASS" starttime="20221129 17:20:18.777" endtime="20221129 17:20:18.797"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${url}</arg>
+<arg>https://localhost:5002/my-kbs</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20221129 17:20:18.797" endtime="20221129 17:20:18.798"/>
+</kw>
+<status status="PASS" starttime="20221129 17:20:18.777" endtime="20221129 17:20:18.798"/>
+</kw>
+<kw name="Close my browser" library="CommonResource" type="TEARDOWN">
+<kw name="Close All Browsers" library="SeleniumLibrary">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20221129 17:20:18.828" endtime="20221129 17:20:25.335"/>
+</kw>
+<status status="PASS" starttime="20221129 17:20:18.827" endtime="20221129 17:20:25.335"/>
+</kw>
+<tag>Home</tag>
+<status status="PASS" starttime="20221129 17:20:12.304" endtime="20221129 17:20:25.352"/>
+</test>
+<status status="PASS" starttime="20221129 17:19:50.478" endtime="20221129 17:20:25.354"/>
+</suite>
+<suite id="s1-s4" name="Login.Testcase" source="D:\diu\diu\AutoTest\Testcases\Login.Testcase.robot">
+<test id="s1-s4-t1" name="Login successfully" line="14">
+<kw name="Open my browser" library="CommonResource" type="SETUP">
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<arg>${chromedriver}</arg>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<arg>executable_path=${driver}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20221129 17:20:25.369" level="INFO">Opening browser 'chrome' to base url 'https://localhost:5002/'.</msg>
+<status status="PASS" starttime="20221129 17:20:25.368" endtime="20221129 17:20:27.795"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20221129 17:20:27.795" endtime="20221129 17:20:27.927"/>
+</kw>
+<status status="PASS" starttime="20221129 17:20:25.367" endtime="20221129 17:20:27.927"/>
+</kw>
+<kw name=" Click btn Login" library="Login.resource">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${btn_login}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20221129 17:20:27.929" level="INFO">Clicking element 'xpath://a[text() ='Đăng nhập']'.</msg>
+<status status="PASS" starttime="20221129 17:20:27.928" endtime="20221129 17:20:28.469"/>
+</kw>
+<status status="PASS" starttime="20221129 17:20:27.928" endtime="20221129 17:20:28.470"/>
+</kw>
+<kw name="Fill username" library="Login.resource">
+<arg>diu1</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${txt_usernamelg}</arg>
+<arg>${data}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221129 17:20:28.472" level="INFO">Typing text 'diu1' into text field 'xpath://input[@id ='Input_UserName']'.</msg>
+<status status="PASS" starttime="20221129 17:20:28.471" endtime="20221129 17:20:28.810"/>
+</kw>
+<status status="PASS" starttime="20221129 17:20:28.470" endtime="20221129 17:20:28.810"/>
+</kw>
+<kw name="Fill password" library="Login.resource">
+<arg>Diu@123456</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${txt_passwordlg}</arg>
+<arg>${data}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221129 17:20:28.814" level="INFO">Typing text 'Diu@123456' into text field 'xpath://input[@id ='Input_Password']'.</msg>
+<status status="PASS" starttime="20221129 17:20:28.813" endtime="20221129 17:20:29.164"/>
+</kw>
+<status status="PASS" starttime="20221129 17:20:28.812" endtime="20221129 17:20:29.164"/>
+</kw>
+<kw name="Click submit login" library="Login.resource">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${btn_login_submit}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20221129 17:20:29.178" level="INFO">Clicking element 'xpath://button[text() ='Đăng nhập']'.</msg>
+<status status="PASS" starttime="20221129 17:20:29.176" endtime="20221129 17:20:31.040"/>
+</kw>
+<status status="PASS" starttime="20221129 17:20:29.175" endtime="20221129 17:20:31.040"/>
+</kw>
+<kw name="Verify login successfully" library="Login.resource">
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>${btn_my_kb}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20221129 17:20:31.081" level="INFO">Element 'xpath://a[text() = 'Bài đăng của tôi']' is displayed.</msg>
+<status status="PASS" starttime="20221129 17:20:31.041" endtime="20221129 17:20:31.081"/>
+</kw>
+<status status="PASS" starttime="20221129 17:20:31.040" endtime="20221129 17:20:31.082"/>
+</kw>
+<kw name="Close my browser" library="CommonResource" type="TEARDOWN">
+<kw name="Close All Browsers" library="SeleniumLibrary">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20221129 17:20:31.083" endtime="20221129 17:20:37.409"/>
+</kw>
+<status status="PASS" starttime="20221129 17:20:31.082" endtime="20221129 17:20:37.410"/>
+</kw>
+<tag>Login</tag>
+<status status="PASS" starttime="20221129 17:20:25.366" endtime="20221129 17:20:37.412"/>
+</test>
+<status status="PASS" starttime="20221129 17:20:25.357" endtime="20221129 17:20:37.413"/>
+</suite>
+<suite id="s1-s5" name="Profile.Testcase" source="D:\diu\diu\AutoTest\Testcases\Profile.Testcase.robot">
+<test id="s1-s5-t1" name="Update profile" line="14">
+<kw name="Open my browser" library="CommonResource" type="SETUP">
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<arg>${chromedriver}</arg>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<arg>executable_path=${driver}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20221129 17:20:37.552" level="INFO">Opening browser 'chrome' to base url 'https://localhost:5002/'.</msg>
+<status status="PASS" starttime="20221129 17:20:37.552" endtime="20221129 17:20:40.710"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20221129 17:20:40.710" endtime="20221129 17:20:40.848"/>
+</kw>
+<status status="PASS" starttime="20221129 17:20:37.551" endtime="20221129 17:20:40.849"/>
+</kw>
+<kw name=" Click btn Login" library="Login.resource">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${btn_login}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20221129 17:20:40.852" level="INFO">Clicking element 'xpath://a[text() ='Đăng nhập']'.</msg>
+<status status="PASS" starttime="20221129 17:20:40.850" endtime="20221129 17:20:41.150"/>
+</kw>
+<status status="PASS" starttime="20221129 17:20:40.850" endtime="20221129 17:20:41.150"/>
+</kw>
+<kw name="Fill username" library="Login.resource">
+<arg>diu1</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${txt_usernamelg}</arg>
+<arg>${data}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221129 17:20:41.153" level="INFO">Typing text 'diu1' into text field 'xpath://input[@id ='Input_UserName']'.</msg>
+<status status="PASS" starttime="20221129 17:20:41.151" endtime="20221129 17:20:41.278"/>
+</kw>
+<status status="PASS" starttime="20221129 17:20:41.151" endtime="20221129 17:20:41.278"/>
+</kw>
+<kw name="Fill password" library="Login.resource">
+<arg>Diu@123456</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${txt_passwordlg}</arg>
+<arg>${data}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221129 17:20:41.280" level="INFO">Typing text 'Diu@123456' into text field 'xpath://input[@id ='Input_Password']'.</msg>
+<status status="PASS" starttime="20221129 17:20:41.279" endtime="20221129 17:20:41.425"/>
+</kw>
+<status status="PASS" starttime="20221129 17:20:41.279" endtime="20221129 17:20:41.426"/>
+</kw>
+<kw name="Click submit login" library="Login.resource">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${btn_login_submit}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20221129 17:20:41.428" level="INFO">Clicking element 'xpath://button[text() ='Đăng nhập']'.</msg>
+<status status="PASS" starttime="20221129 17:20:41.427" endtime="20221129 17:20:42.444"/>
+</kw>
+<status status="PASS" starttime="20221129 17:20:41.426" endtime="20221129 17:20:42.445"/>
+</kw>
+<kw name="Click to update account" library="Profile.Resource">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${my_profile}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20221129 17:20:42.462" level="INFO">Clicking element 'xpath://a[@title = 'Thông tin cá nhân']'.</msg>
+<status status="PASS" starttime="20221129 17:20:42.460" endtime="20221129 17:20:43.466"/>
+</kw>
+<status status="PASS" starttime="20221129 17:20:42.459" endtime="20221129 17:20:43.467"/>
+</kw>
+<kw name="Click btn go to change profile" library="Profile.Resource">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${btn_change}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20221129 17:20:43.472" level="INFO">Clicking element 'xpath: //a[text() ='Chỉnh sửa']'.</msg>
+<status status="PASS" starttime="20221129 17:20:43.470" endtime="20221129 17:20:43.688"/>
+</kw>
+<status status="PASS" starttime="20221129 17:20:43.470" endtime="20221129 17:20:43.688"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20221129 17:20:45.690" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20221129 17:20:43.688" endtime="20221129 17:20:45.690"/>
+</kw>
+<kw name="Get Window Handles" library="SeleniumLibrary">
+<var>${handles}</var>
+<doc>Returns all child window handles of the selected browser as a list.</doc>
+<msg timestamp="20221129 17:20:45.694" level="INFO">${handles} = ['CDwindow-C8F9B10ADF4927278DCAED3120B75DC1', 'CDwindow-D7AD87193A82CC3ABF78DA2C0EB812AD']</msg>
+<status status="PASS" starttime="20221129 17:20:45.690" endtime="20221129 17:20:45.694"/>
+</kw>
+<kw name="Switch Window" library="SeleniumLibrary">
+<arg>${handles}[1]</arg>
+<doc>Switches to browser window matching ``locator``.</doc>
+<status status="PASS" starttime="20221129 17:20:45.695" endtime="20221129 17:20:45.820"/>
+</kw>
+<kw name="Update firstname" library="Profile.Resource">
+<arg>nguyễn nguyễn</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${txt_firstname_profile}</arg>
+<arg>${Firstname}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221129 17:20:45.824" level="INFO">Typing text 'nguyễn nguyễn' into text field 'xpath: //input[@id='Input_FirstName']'.</msg>
+<status status="PASS" starttime="20221129 17:20:45.822" endtime="20221129 17:20:46.000"/>
+</kw>
+<status status="PASS" starttime="20221129 17:20:45.821" endtime="20221129 17:20:46.000"/>
+</kw>
+<kw name="Update lastname" library="Profile.Resource">
+<arg>diu dịu</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${txt_lastname_profile}</arg>
+<arg>${lastname}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221129 17:20:46.002" level="INFO">Typing text 'diu dịu' into text field 'xpath: //input[@id='Input_LastName']'.</msg>
+<status status="PASS" starttime="20221129 17:20:46.001" endtime="20221129 17:20:46.163"/>
+</kw>
+<status status="PASS" starttime="20221129 17:20:46.001" endtime="20221129 17:20:46.163"/>
+</kw>
+<kw name="Update dob" library="Profile.Resource">
+<arg>12/12/1212</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${txt_dob_profile}</arg>
+<arg>${dob}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221129 17:20:46.166" level="INFO">Typing text '12/12/1212' into text field 'xpath: //input[@id='Input_Dob']'.</msg>
+<status status="PASS" starttime="20221129 17:20:46.165" endtime="20221129 17:20:46.305"/>
+</kw>
+<status status="PASS" starttime="20221129 17:20:46.164" endtime="20221129 17:20:46.305"/>
+</kw>
+<kw name="Click button submit change profile" library="Profile.Resource">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${btn_change_account}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20221129 17:20:46.308" level="INFO">Clicking element 'xpath: //button[@id = 'update-profile-button']'.</msg>
+<status status="PASS" starttime="20221129 17:20:46.306" endtime="20221129 17:20:46.588"/>
+</kw>
+<status status="PASS" starttime="20221129 17:20:46.306" endtime="20221129 17:20:46.588"/>
+</kw>
+<kw name="Verify change profile successfully" library="Profile.Resource">
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${result}</var>
+<arg>${alert_display_successfully}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20221129 17:20:46.659" level="INFO">${result} = ×
+Your profile has been updated</msg>
+<status status="PASS" starttime="20221129 17:20:46.592" endtime="20221129 17:20:46.659"/>
+</kw>
+<kw name="Strip String" library="String">
+<var>${result}</var>
+<arg>${result.replace('×','')}</arg>
+<doc>Remove leading and/or trailing whitespaces from the given string.</doc>
+<msg timestamp="20221129 17:20:46.660" level="INFO">${result} = Your profile has been updated</msg>
+<status status="PASS" starttime="20221129 17:20:46.659" endtime="20221129 17:20:46.660"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${result}</arg>
+<arg>Your profile has been updated</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20221129 17:20:46.661" endtime="20221129 17:20:46.662"/>
+</kw>
+<status status="PASS" starttime="20221129 17:20:46.591" endtime="20221129 17:20:46.662"/>
+</kw>
+<kw name="Close my browser" library="CommonResource" type="TEARDOWN">
+<kw name="Close All Browsers" library="SeleniumLibrary">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20221129 17:20:46.663" endtime="20221129 17:20:53.122"/>
+</kw>
+<status status="PASS" starttime="20221129 17:20:46.663" endtime="20221129 17:20:53.122"/>
+</kw>
+<tag>Login</tag>
+<status status="PASS" starttime="20221129 17:20:37.550" endtime="20221129 17:20:53.175"/>
+</test>
+<test id="s1-s5-t2" name="Change password" line="30">
+<kw name="Open my browser" library="CommonResource" type="SETUP">
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<arg>${chromedriver}</arg>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<arg>executable_path=${driver}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20221129 17:20:53.180" level="INFO">Opening browser 'chrome' to base url 'https://localhost:5002/'.</msg>
+<status status="PASS" starttime="20221129 17:20:53.179" endtime="20221129 17:20:55.566"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20221129 17:20:55.567" endtime="20221129 17:20:55.707"/>
+</kw>
+<status status="PASS" starttime="20221129 17:20:53.178" endtime="20221129 17:20:55.708"/>
+</kw>
+<kw name=" Click btn Login" library="Login.resource">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${btn_login}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20221129 17:20:55.748" level="INFO">Clicking element 'xpath://a[text() ='Đăng nhập']'.</msg>
+<status status="PASS" starttime="20221129 17:20:55.746" endtime="20221129 17:20:56.299"/>
+</kw>
+<status status="PASS" starttime="20221129 17:20:55.745" endtime="20221129 17:20:56.299"/>
+</kw>
+<kw name="Fill username" library="Login.resource">
+<arg>diu1</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${txt_usernamelg}</arg>
+<arg>${data}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221129 17:20:56.304" level="INFO">Typing text 'diu1' into text field 'xpath://input[@id ='Input_UserName']'.</msg>
+<status status="PASS" starttime="20221129 17:20:56.304" endtime="20221129 17:20:56.642"/>
+</kw>
+<status status="PASS" starttime="20221129 17:20:56.303" endtime="20221129 17:20:56.642"/>
+</kw>
+<kw name="Fill password" library="Login.resource">
+<arg>Diu@123456</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${txt_passwordlg}</arg>
+<arg>${data}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221129 17:20:56.644" level="INFO">Typing text 'Diu@123456' into text field 'xpath://input[@id ='Input_Password']'.</msg>
+<status status="PASS" starttime="20221129 17:20:56.643" endtime="20221129 17:20:56.872"/>
+</kw>
+<status status="PASS" starttime="20221129 17:20:56.643" endtime="20221129 17:20:56.872"/>
+</kw>
+<kw name="Click submit login" library="Login.resource">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${btn_login_submit}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20221129 17:20:56.873" level="INFO">Clicking element 'xpath://button[text() ='Đăng nhập']'.</msg>
+<status status="PASS" starttime="20221129 17:20:56.873" endtime="20221129 17:20:58.517"/>
+</kw>
+<status status="PASS" starttime="20221129 17:20:56.872" endtime="20221129 17:20:58.517"/>
+</kw>
+<kw name="Click to update account" library="Profile.Resource">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${my_profile}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20221129 17:20:58.520" level="INFO">Clicking element 'xpath://a[@title = 'Thông tin cá nhân']'.</msg>
+<status status="PASS" starttime="20221129 17:20:58.519" endtime="20221129 17:20:59.539"/>
+</kw>
+<status status="PASS" starttime="20221129 17:20:58.518" endtime="20221129 17:20:59.540"/>
+</kw>
+<kw name="Click btn go to change profile" library="Profile.Resource">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${btn_change}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20221129 17:20:59.542" level="INFO">Clicking element 'xpath: //a[text() ='Chỉnh sửa']'.</msg>
+<status status="PASS" starttime="20221129 17:20:59.541" endtime="20221129 17:20:59.784"/>
+</kw>
+<status status="PASS" starttime="20221129 17:20:59.540" endtime="20221129 17:20:59.784"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20221129 17:21:01.785" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20221129 17:20:59.785" endtime="20221129 17:21:01.785"/>
+</kw>
+<kw name="Get Window Handles" library="SeleniumLibrary">
+<var>${handles}</var>
+<doc>Returns all child window handles of the selected browser as a list.</doc>
+<msg timestamp="20221129 17:21:01.799" level="INFO">${handles} = ['CDwindow-3A087D6B42864E22F40DE7ABDBD15A49', 'CDwindow-E7A04034A2DF8913E7247AD14D8CBEC2']</msg>
+<status status="PASS" starttime="20221129 17:21:01.794" endtime="20221129 17:21:01.799"/>
+</kw>
+<kw name="Switch Window" library="SeleniumLibrary">
+<arg>${handles}[1]</arg>
+<doc>Switches to browser window matching ``locator``.</doc>
+<status status="PASS" starttime="20221129 17:21:01.800" endtime="20221129 17:21:01.950"/>
+</kw>
+<kw name="Click btn change password" library="Profile.Resource">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${btn_change_password}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20221129 17:21:01.955" level="INFO">Clicking element 'xpath: //a[@id = 'change-password']'.</msg>
+<status status="PASS" starttime="20221129 17:21:01.953" endtime="20221129 17:21:02.375"/>
+</kw>
+<status status="PASS" starttime="20221129 17:21:01.952" endtime="20221129 17:21:02.376"/>
+</kw>
+<kw name="Fill current password" library="Profile.Resource">
+<arg>Diu@123456</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${txt_current_password}</arg>
+<arg>${currentpassword}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221129 17:21:02.383" level="INFO">Typing text 'Diu@123456' into text field 'xpath://input[@id = 'Input_OldPassword']'.</msg>
+<status status="PASS" starttime="20221129 17:21:02.381" endtime="20221129 17:21:02.824"/>
+</kw>
+<status status="PASS" starttime="20221129 17:21:02.381" endtime="20221129 17:21:02.825"/>
+</kw>
+<kw name="Fill new password" library="Profile.Resource">
+<arg>Diu@123456</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${txt_new_password}</arg>
+<arg>${newpassword}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221129 17:21:02.864" level="INFO">Typing text 'Diu@123456' into text field 'xpath: //input[@id = 'Input_NewPassword']'.</msg>
+<status status="PASS" starttime="20221129 17:21:02.863" endtime="20221129 17:21:03.226"/>
+</kw>
+<status status="PASS" starttime="20221129 17:21:02.862" endtime="20221129 17:21:03.226"/>
+</kw>
+<kw name="Fill confirm password" library="Profile.Resource">
+<arg>Diu@123456</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${txt_confirm_new_password}</arg>
+<arg>${confirmpassword}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221129 17:21:03.252" level="INFO">Typing text 'Diu@123456' into text field 'xpath: //input[@id = 'Input_ConfirmPassword']'.</msg>
+<status status="PASS" starttime="20221129 17:21:03.250" endtime="20221129 17:21:03.717"/>
+</kw>
+<status status="PASS" starttime="20221129 17:21:03.250" endtime="20221129 17:21:03.717"/>
+</kw>
+<kw name="Click button submit change password" library="Profile.Resource">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${btn_update_password}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20221129 17:21:03.719" level="INFO">Clicking element 'xpath: //button[text()= 'Cập nhật mật khẩu']'.</msg>
+<status status="PASS" starttime="20221129 17:21:03.718" endtime="20221129 17:21:04.059"/>
+</kw>
+<status status="PASS" starttime="20221129 17:21:03.718" endtime="20221129 17:21:04.059"/>
+</kw>
+<kw name="Verify change password successfully" library="Profile.Resource">
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${result}</var>
+<arg>${alert_display_successfully}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20221129 17:21:04.109" level="INFO">${result} = ×
+Mật khẩu của bạn đã được thay đổi.</msg>
+<status status="PASS" starttime="20221129 17:21:04.063" endtime="20221129 17:21:04.109"/>
+</kw>
+<kw name="Strip String" library="String">
+<var>${result}</var>
+<arg>${result.replace('×','')}</arg>
+<doc>Remove leading and/or trailing whitespaces from the given string.</doc>
+<msg timestamp="20221129 17:21:04.112" level="INFO">${result} = Mật khẩu của bạn đã được thay đổi.</msg>
+<status status="PASS" starttime="20221129 17:21:04.109" endtime="20221129 17:21:04.112"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${result}</arg>
+<arg>Mật khẩu của bạn đã được thay đổi.</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20221129 17:21:04.112" endtime="20221129 17:21:04.112"/>
+</kw>
+<status status="PASS" starttime="20221129 17:21:04.062" endtime="20221129 17:21:04.112"/>
+</kw>
+<kw name="Close my browser" library="CommonResource" type="TEARDOWN">
+<kw name="Close All Browsers" library="SeleniumLibrary">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20221129 17:21:04.114" endtime="20221129 17:21:11.447"/>
+</kw>
+<status status="PASS" starttime="20221129 17:21:04.113" endtime="20221129 17:21:11.447"/>
+</kw>
+<tag>Login</tag>
+<status status="PASS" starttime="20221129 17:20:53.177" endtime="20221129 17:21:11.461"/>
+</test>
+<test id="s1-s5-t3" name="Change email" line="47">
+<kw name="Open my browser" library="CommonResource" type="SETUP">
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<arg>${chromedriver}</arg>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<arg>executable_path=${driver}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20221129 17:21:11.465" level="INFO">Opening browser 'chrome' to base url 'https://localhost:5002/'.</msg>
+<status status="PASS" starttime="20221129 17:21:11.464" endtime="20221129 17:21:13.893"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20221129 17:21:13.893" endtime="20221129 17:21:14.028"/>
+</kw>
+<status status="PASS" starttime="20221129 17:21:11.464" endtime="20221129 17:21:14.029"/>
+</kw>
+<kw name=" Click btn Login" library="Login.resource">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${btn_login}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20221129 17:21:14.036" level="INFO">Clicking element 'xpath://a[text() ='Đăng nhập']'.</msg>
+<status status="PASS" starttime="20221129 17:21:14.033" endtime="20221129 17:21:14.333"/>
+</kw>
+<status status="PASS" starttime="20221129 17:21:14.031" endtime="20221129 17:21:14.333"/>
+</kw>
+<kw name="Fill username" library="Login.resource">
+<arg>diu1</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${txt_usernamelg}</arg>
+<arg>${data}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221129 17:21:14.341" level="INFO">Typing text 'diu1' into text field 'xpath://input[@id ='Input_UserName']'.</msg>
+<status status="PASS" starttime="20221129 17:21:14.339" endtime="20221129 17:21:14.620"/>
+</kw>
+<status status="PASS" starttime="20221129 17:21:14.338" endtime="20221129 17:21:14.620"/>
+</kw>
+<kw name="Fill password" library="Login.resource">
+<arg>Diu@123456</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${txt_passwordlg}</arg>
+<arg>${data}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221129 17:21:14.630" level="INFO">Typing text 'Diu@123456' into text field 'xpath://input[@id ='Input_Password']'.</msg>
+<status status="PASS" starttime="20221129 17:21:14.630" endtime="20221129 17:21:14.853"/>
+</kw>
+<status status="PASS" starttime="20221129 17:21:14.629" endtime="20221129 17:21:14.853"/>
+</kw>
+<kw name="Click submit login" library="Login.resource">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${btn_login_submit}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20221129 17:21:14.855" level="INFO">Clicking element 'xpath://button[text() ='Đăng nhập']'.</msg>
+<status status="PASS" starttime="20221129 17:21:14.854" endtime="20221129 17:21:15.751"/>
+</kw>
+<status status="PASS" starttime="20221129 17:21:14.854" endtime="20221129 17:21:15.752"/>
+</kw>
+<kw name="Click to update account" library="Profile.Resource">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${my_profile}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20221129 17:21:15.756" level="INFO">Clicking element 'xpath://a[@title = 'Thông tin cá nhân']'.</msg>
+<status status="PASS" starttime="20221129 17:21:15.756" endtime="20221129 17:21:16.835"/>
+</kw>
+<status status="PASS" starttime="20221129 17:21:15.754" endtime="20221129 17:21:16.835"/>
+</kw>
+<kw name="Click btn go to change profile" library="Profile.Resource">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${btn_change}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20221129 17:21:16.837" level="INFO">Clicking element 'xpath: //a[text() ='Chỉnh sửa']'.</msg>
+<status status="PASS" starttime="20221129 17:21:16.836" endtime="20221129 17:21:17.058"/>
+</kw>
+<status status="PASS" starttime="20221129 17:21:16.836" endtime="20221129 17:21:17.059"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20221129 17:21:19.066" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20221129 17:21:17.059" endtime="20221129 17:21:19.066"/>
+</kw>
+<kw name="Get Window Handles" library="SeleniumLibrary">
+<var>${handles}</var>
+<doc>Returns all child window handles of the selected browser as a list.</doc>
+<msg timestamp="20221129 17:21:19.073" level="INFO">${handles} = ['CDwindow-D4DDE4CB346400F58DCABBEA71F6AAA5', 'CDwindow-41B26474845D7D7F555B69A398C69F9A']</msg>
+<status status="PASS" starttime="20221129 17:21:19.067" endtime="20221129 17:21:19.073"/>
+</kw>
+<kw name="Switch Window" library="SeleniumLibrary">
+<arg>${handles}[1]</arg>
+<doc>Switches to browser window matching ``locator``.</doc>
+<status status="PASS" starttime="20221129 17:21:19.074" endtime="20221129 17:21:19.200"/>
+</kw>
+<kw name="Click btn change email" library="Profile.Resource">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${btn_change_email}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20221129 17:21:19.217" level="INFO">Clicking element 'xpath://a[@id = 'email']'.</msg>
+<status status="PASS" starttime="20221129 17:21:19.209" endtime="20221129 17:21:19.494"/>
+</kw>
+<status status="PASS" starttime="20221129 17:21:19.203" endtime="20221129 17:21:19.494"/>
+</kw>
+<kw name="Update email" library="Profile.Resource">
+<arg>diu@gmail.com</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${txt_new_email}</arg>
+<arg>${new_email}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221129 17:21:19.502" level="INFO">Typing text 'diu@gmail.com' into text field 'xpath://input[@id = 'Input_NewEmail']'.</msg>
+<status status="PASS" starttime="20221129 17:21:19.501" endtime="20221129 17:21:19.667"/>
+</kw>
+<status status="PASS" starttime="20221129 17:21:19.500" endtime="20221129 17:21:19.667"/>
+</kw>
+<kw name="Click btn submit change email" library="Profile.Resource">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${btn_submit_change_email}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20221129 17:21:19.669" level="INFO">Clicking element 'xpath://button[@id = 'change-email-button']'.</msg>
+<status status="PASS" starttime="20221129 17:21:19.668" endtime="20221129 17:21:22.509"/>
+</kw>
+<status status="PASS" starttime="20221129 17:21:19.668" endtime="20221129 17:21:22.509"/>
+</kw>
+<kw name="Verify send email confirm new email" library="Profile.Resource">
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${result}</var>
+<arg>${alert_display_successfully}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20221129 17:21:22.596" level="INFO">${result} = ×
+Confirmation link to change email sent. Please check your email.</msg>
+<status status="PASS" starttime="20221129 17:21:22.514" endtime="20221129 17:21:22.596"/>
+</kw>
+<kw name="Strip String" library="String">
+<var>${result}</var>
+<arg>${result.replace('×','')}</arg>
+<doc>Remove leading and/or trailing whitespaces from the given string.</doc>
+<msg timestamp="20221129 17:21:22.598" level="INFO">${result} = Confirmation link to change email sent. Please check your email.</msg>
+<status status="PASS" starttime="20221129 17:21:22.596" endtime="20221129 17:21:22.599"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${result}</arg>
+<arg>Confirmation link to change email sent. Please check your email.</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20221129 17:21:22.599" endtime="20221129 17:21:22.599"/>
+</kw>
+<status status="PASS" starttime="20221129 17:21:22.513" endtime="20221129 17:21:22.599"/>
+</kw>
+<kw name="Close my browser" library="CommonResource" type="TEARDOWN">
+<kw name="Close All Browsers" library="SeleniumLibrary">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20221129 17:21:22.600" endtime="20221129 17:21:30.087"/>
+</kw>
+<status status="PASS" starttime="20221129 17:21:22.600" endtime="20221129 17:21:30.087"/>
+</kw>
+<tag>Login</tag>
+<status status="PASS" starttime="20221129 17:21:11.464" endtime="20221129 17:21:30.088"/>
+</test>
+<status status="PASS" starttime="20221129 17:20:37.417" endtime="20221129 17:21:30.089"/>
+</suite>
+<suite id="s1-s6" name="Register.Testcase" source="D:\diu\diu\AutoTest\Testcases\Register.Testcase.robot">
+<test id="s1-s6-t1" name="Register successfully" line="15">
+<kw name="Open my browser" library="CommonResource" type="SETUP">
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<arg>${chromedriver}</arg>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<arg>executable_path=${driver}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20221129 17:21:30.219" level="INFO">Opening browser 'chrome' to base url 'https://localhost:5002/'.</msg>
+<status status="PASS" starttime="20221129 17:21:30.218" endtime="20221129 17:21:33.988"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20221129 17:21:33.988" endtime="20221129 17:21:34.110"/>
+</kw>
+<status status="PASS" starttime="20221129 17:21:30.218" endtime="20221129 17:21:34.111"/>
+</kw>
+<kw name=" Click btn Login" library="Login.resource">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${btn_login}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20221129 17:21:34.114" level="INFO">Clicking element 'xpath://a[text() ='Đăng nhập']'.</msg>
+<status status="PASS" starttime="20221129 17:21:34.112" endtime="20221129 17:21:34.584"/>
+</kw>
+<status status="PASS" starttime="20221129 17:21:34.111" endtime="20221129 17:21:34.584"/>
+</kw>
+<kw name="Click btn register" library="Register.Resource">
+<kw name="Scroll Element Into View" library="SeleniumLibrary">
+<arg>${btn_register}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" starttime="20221129 17:21:34.586" endtime="20221129 17:21:35.009"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${btn_register}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20221129 17:21:35.010" level="INFO">Clicking element 'xpath://a[text()='Đăng ký tài khoản']'.</msg>
+<status status="PASS" starttime="20221129 17:21:35.009" endtime="20221129 17:21:35.304"/>
+</kw>
+<status status="PASS" starttime="20221129 17:21:34.585" endtime="20221129 17:21:35.304"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20221129 17:21:37.318" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20221129 17:21:35.306" endtime="20221129 17:21:37.318"/>
+</kw>
+<kw name="Fill txt_username" library="Register.Resource">
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<arg>document.getElementById("Input_username").value = Math.round(Math.random()*100000)</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<msg timestamp="20221129 17:21:37.322" level="INFO">Executing JavaScript:
+document.getElementById("Input_username").value = Math.round(Math.random()*100000)
+Without any arguments.</msg>
+<status status="PASS" starttime="20221129 17:21:37.320" endtime="20221129 17:21:37.335"/>
+</kw>
+<status status="PASS" starttime="20221129 17:21:37.320" endtime="20221129 17:21:37.336"/>
+</kw>
+<kw name="Get username" library="Register.Resource">
+<var>${username_in}</var>
+<kw name="Get Value" library="SeleniumLibrary">
+<var>${username_output}</var>
+<arg>${txt_username}</arg>
+<doc>Returns the value attribute of the element identified by ``locator``.</doc>
+<msg timestamp="20221129 17:21:37.398" level="INFO">${username_output} = 58163</msg>
+<status status="PASS" starttime="20221129 17:21:37.350" endtime="20221129 17:21:37.399"/>
+</kw>
+<msg timestamp="20221129 17:21:37.399" level="INFO">${username_in} = 58163</msg>
+<status status="PASS" starttime="20221129 17:21:37.349" endtime="20221129 17:21:37.399"/>
+</kw>
+<kw name="Fill txt_firstname" library="Register.Resource">
+<arg>huyen2</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${txt_firstname}</arg>
+<arg>${data}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221129 17:21:37.402" level="INFO">Typing text 'huyen2' into text field 'xpath: //input[@id='Input_FirstName']'.</msg>
+<status status="PASS" starttime="20221129 17:21:37.401" endtime="20221129 17:21:37.568"/>
+</kw>
+<status status="PASS" starttime="20221129 17:21:37.400" endtime="20221129 17:21:37.568"/>
+</kw>
+<kw name="Fill txt_lastname" library="Register.Resource">
+<arg>diu2</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${txt_lastname}</arg>
+<arg>${data}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221129 17:21:37.573" level="INFO">Typing text 'diu2' into text field 'xpath: //input[@id='Input_LastName']'.</msg>
+<status status="PASS" starttime="20221129 17:21:37.573" endtime="20221129 17:21:37.730"/>
+</kw>
+<status status="PASS" starttime="20221129 17:21:37.572" endtime="20221129 17:21:37.731"/>
+</kw>
+<kw name="Fill txt_dob" library="Register.Resource">
+<arg>12/12/1212</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${txt_dob}</arg>
+<arg>${data}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221129 17:21:37.732" level="INFO">Typing text '12/12/1212' into text field 'xpath: //input[@id='Input_Dob']'.</msg>
+<status status="PASS" starttime="20221129 17:21:37.731" endtime="20221129 17:21:37.851"/>
+</kw>
+<status status="PASS" starttime="20221129 17:21:37.731" endtime="20221129 17:21:37.852"/>
+</kw>
+<kw name="Fill txt_phonenumber" library="Register.Resource">
+<arg>09876543456</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${txt_phonenumber}</arg>
+<arg>${data}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221129 17:21:37.854" level="INFO">Typing text '09876543456' into text field 'xpath: //input[@id='Input_PhoneNumber']'.</msg>
+<status status="PASS" starttime="20221129 17:21:37.853" endtime="20221129 17:21:37.997"/>
+</kw>
+<status status="PASS" starttime="20221129 17:21:37.852" endtime="20221129 17:21:37.997"/>
+</kw>
+<kw name="Fill txt_email" library="Register.Resource">
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<arg>document.getElementById("Input_Email").value = Math.round(Math.random()*100000)+"@gmail.com"</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<msg timestamp="20221129 17:21:37.999" level="INFO">Executing JavaScript:
+document.getElementById("Input_Email").value = Math.round(Math.random()*100000)+"@gmail.com"
+Without any arguments.</msg>
+<status status="PASS" starttime="20221129 17:21:37.998" endtime="20221129 17:21:38.005"/>
+</kw>
+<status status="PASS" starttime="20221129 17:21:37.997" endtime="20221129 17:21:38.006"/>
+</kw>
+<kw name="Fill txt_password" library="Register.Resource">
+<arg>Diu@123456</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${txt_password}</arg>
+<arg>${data}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221129 17:21:38.008" level="INFO">Typing text 'Diu@123456' into text field 'xpath: //input[@id='Input_Password']'.</msg>
+<status status="PASS" starttime="20221129 17:21:38.007" endtime="20221129 17:21:38.167"/>
+</kw>
+<status status="PASS" starttime="20221129 17:21:38.006" endtime="20221129 17:21:38.168"/>
+</kw>
+<kw name="Get password" library="Register.Resource">
+<var>${Password_in}</var>
+<kw name="Get Value" library="SeleniumLibrary">
+<var>${password_output}</var>
+<arg>${txt_password}</arg>
+<doc>Returns the value attribute of the element identified by ``locator``.</doc>
+<msg timestamp="20221129 17:21:38.203" level="INFO">${password_output} = Diu@123456</msg>
+<status status="PASS" starttime="20221129 17:21:38.169" endtime="20221129 17:21:38.203"/>
+</kw>
+<msg timestamp="20221129 17:21:38.204" level="INFO">${Password_in} = Diu@123456</msg>
+<status status="PASS" starttime="20221129 17:21:38.169" endtime="20221129 17:21:38.204"/>
+</kw>
+<kw name="Fill txt_confirmpassword" library="Register.Resource">
+<arg>Diu@123456</arg>
+<kw name="Scroll Element Into View" library="SeleniumLibrary">
+<arg>${txt_confirmpassword}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" starttime="20221129 17:21:38.205" endtime="20221129 17:21:38.508"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${txt_confirmpassword}</arg>
+<arg>${data}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221129 17:21:38.509" level="INFO">Typing text 'Diu@123456' into text field 'xpath: //input[@id='Input_ConfirmPassword']'.</msg>
+<status status="PASS" starttime="20221129 17:21:38.508" endtime="20221129 17:21:38.626"/>
+</kw>
+<status status="PASS" starttime="20221129 17:21:38.204" endtime="20221129 17:21:38.627"/>
+</kw>
+<kw name="Click btn submit register" library="Register.Resource">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${btn_submit_register}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20221129 17:21:38.629" level="INFO">Clicking element 'xpath: //button[text()='Đăng ký']'.</msg>
+<status status="PASS" starttime="20221129 17:21:38.628" endtime="20221129 17:21:41.666"/>
+</kw>
+<status status="PASS" starttime="20221129 17:21:38.628" endtime="20221129 17:21:41.667"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20221129 17:21:44.707" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20221129 17:21:41.693" endtime="20221129 17:21:44.707"/>
+</kw>
+<kw name="Click confirm link" library="Register.Resource">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${confirm_link}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20221129 17:21:44.716" endtime="20221129 17:21:44.814"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${confirm_link}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20221129 17:21:44.816" level="INFO">Clicking element 'xpath://a[@id='confirm-link']'.</msg>
+<status status="PASS" starttime="20221129 17:21:44.814" endtime="20221129 17:21:45.249"/>
+</kw>
+<status status="PASS" starttime="20221129 17:21:44.715" endtime="20221129 17:21:45.250"/>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<arg>window.open('https://localhost:5002/');</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<msg timestamp="20221129 17:21:45.333" level="INFO">Executing JavaScript:
+window.open('https://localhost:5002/');
+Without any arguments.</msg>
+<status status="PASS" starttime="20221129 17:21:45.332" endtime="20221129 17:21:45.429"/>
+</kw>
+<kw name="Go To" library="SeleniumLibrary">
+<arg>https://localhost:5002/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20221129 17:21:45.444" level="INFO">Opening url 'https://localhost:5002/'</msg>
+<status status="PASS" starttime="20221129 17:21:45.444" endtime="20221129 17:21:46.794"/>
+</kw>
+<kw name="Get Window Handles" library="SeleniumLibrary">
+<var>${handles}</var>
+<doc>Returns all child window handles of the selected browser as a list.</doc>
+<msg timestamp="20221129 17:21:46.800" level="INFO">${handles} = ['CDwindow-2AEB64AC26973CA98D2C85E5B2A83E4D', 'CDwindow-FF2D3B027E796C81B369F973F37B66E3']</msg>
+<status status="PASS" starttime="20221129 17:21:46.794" endtime="20221129 17:21:46.800"/>
+</kw>
+<kw name="Switch Window" library="SeleniumLibrary">
+<arg>${handles}[1]</arg>
+<doc>Switches to browser window matching ``locator``.</doc>
+<status status="PASS" starttime="20221129 17:21:46.801" endtime="20221129 17:21:46.888"/>
+</kw>
+<kw name="Verify_can_login_with_account_just_register" library="Register.Resource">
+<arg>${username_in}</arg>
+<arg>${Password_in}</arg>
+<kw name=" Click btn Login" library="Login.resource">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${btn_login}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20221129 17:21:46.890" level="INFO">Clicking element 'xpath://a[text() ='Đăng nhập']'.</msg>
+<status status="PASS" starttime="20221129 17:21:46.889" endtime="20221129 17:21:47.123"/>
+</kw>
+<status status="PASS" starttime="20221129 17:21:46.889" endtime="20221129 17:21:47.123"/>
+</kw>
+<kw name="Fill username" library="Login.resource">
+<arg>${username_output}</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${txt_usernamelg}</arg>
+<arg>${data}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221129 17:21:47.127" level="INFO">Typing text '58163' into text field 'xpath://input[@id ='Input_UserName']'.</msg>
+<status status="PASS" starttime="20221129 17:21:47.125" endtime="20221129 17:21:47.299"/>
+</kw>
+<status status="PASS" starttime="20221129 17:21:47.123" endtime="20221129 17:21:47.299"/>
+</kw>
+<kw name="Fill password" library="Login.resource">
+<arg>${password_output}</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${txt_passwordlg}</arg>
+<arg>${data}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221129 17:21:47.301" level="INFO">Typing text 'Diu@123456' into text field 'xpath://input[@id ='Input_Password']'.</msg>
+<status status="PASS" starttime="20221129 17:21:47.300" endtime="20221129 17:21:47.455"/>
+</kw>
+<status status="PASS" starttime="20221129 17:21:47.300" endtime="20221129 17:21:47.456"/>
+</kw>
+<kw name="Click submit login" library="Login.resource">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${btn_login_submit}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20221129 17:21:47.458" level="INFO">Clicking element 'xpath://button[text() ='Đăng nhập']'.</msg>
+<status status="PASS" starttime="20221129 17:21:47.457" endtime="20221129 17:21:48.166"/>
+</kw>
+<status status="PASS" starttime="20221129 17:21:47.456" endtime="20221129 17:21:48.167"/>
+</kw>
+<status status="PASS" starttime="20221129 17:21:46.888" endtime="20221129 17:21:48.167"/>
+</kw>
+<kw name="Verify login successfully" library="Login.resource">
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>${btn_my_kb}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20221129 17:21:48.307" level="INFO">Element 'xpath://a[text() = 'Bài đăng của tôi']' is displayed.</msg>
+<status status="PASS" starttime="20221129 17:21:48.187" endtime="20221129 17:21:48.307"/>
+</kw>
+<status status="PASS" starttime="20221129 17:21:48.186" endtime="20221129 17:21:48.307"/>
+</kw>
+<kw name="Close my browser" library="CommonResource" type="TEARDOWN">
+<kw name="Close All Browsers" library="SeleniumLibrary">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20221129 17:21:48.309" endtime="20221129 17:21:55.118"/>
+</kw>
+<status status="PASS" starttime="20221129 17:21:48.308" endtime="20221129 17:21:55.118"/>
+</kw>
+<tag>Register</tag>
+<status status="PASS" starttime="20221129 17:21:30.217" endtime="20221129 17:21:55.119"/>
+</test>
+<status status="PASS" starttime="20221129 17:21:30.092" endtime="20221129 17:21:55.120"/>
+</suite>
+<suite id="s1-s7" name="Test" source="D:\diu\diu\AutoTest\Testcases\test.robot">
+<test id="s1-s7-t1" name="open test" line="8">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>chrome</arg>
+<arg>executable_path=${chromedriver}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20221129 17:21:55.128" level="INFO">Opening browser 'chrome' to base url 'https://localhost:5002/'.</msg>
+<status status="PASS" starttime="20221129 17:21:55.127" endtime="20221129 17:21:58.246"/>
+</kw>
+<status status="PASS" starttime="20221129 17:21:55.127" endtime="20221129 17:21:58.256"/>
+</test>
+<status status="PASS" starttime="20221129 17:21:55.122" endtime="20221129 17:21:58.261"/>
+</suite>
+<status status="FAIL" starttime="20221129 17:18:44.351" endtime="20221129 17:21:58.264"/>
+</suite>
+<statistics>
+<total>
+<stat pass="9" fail="3" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="3" skip="0">CreateKnowledgeBase</stat>
+<stat pass="2" fail="0" skip="0">Home</stat>
+<stat pass="4" fail="0" skip="0">Login</stat>
+<stat pass="1" fail="0" skip="0">Register</stat>
+</tag>
+<suite>
+<stat pass="9" fail="3" skip="0" id="s1" name="Testcases">Testcases</stat>
+<stat pass="0" fail="1" skip="0" id="s1-s1" name="CreateKnowledgeBase.Testcase">Testcases.CreateKnowledgeBase.Testcase</stat>
+<stat pass="1" fail="2" skip="0" id="s1-s2" name="DetailKb.Testcase">Testcases.DetailKb.Testcase</stat>
+<stat pass="2" fail="0" skip="0" id="s1-s3" name="Home.Testcase">Testcases.Home.Testcase</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s4" name="Login.Testcase">Testcases.Login.Testcase</stat>
+<stat pass="3" fail="0" skip="0" id="s1-s5" name="Profile.Testcase">Testcases.Profile.Testcase</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s6" name="Register.Testcase">Testcases.Register.Testcase</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s7" name="Test">Testcases.Test</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

@@ -180,16 +180,8 @@ namespace KnowledgeSpace.BackendServer.Controllers
             {
                 //Delete cache
                 await _cacheService.RemoveAsync(CacheConstants.RecentComments);
-                var commentVm = new CommentVm()
-                {
-                    Id = comment.Id,
-                    Content = comment.Content,
-                    CreateDate = comment.CreateDate,
-                    KnowledgeBaseId = comment.KnowledgeBaseId,
-                    LastModifiedDate = comment.LastModifiedDate,
-                    OwnerUserId = comment.OwnerUserId
-                };
-                return Ok(commentVm);
+                
+                return Ok();
             }
             return BadRequest(new ApiBadRequestResponse($"Delete comment failed"));
         }

@@ -197,16 +197,7 @@ namespace KnowledgeSpace.BackendServer.Controllers
             var result = await _context.SaveChangesAsync();
             if (result > 0)
             {
-                var functionvm = new FunctionVm()
-                {
-                    Id = function.Id,
-                    Name = function.Name,
-                    Url = function.Url,
-                    SortOrder = function.SortOrder,
-                    ParentId = function.ParentId,
-                    Icon = function.Icon
-                };
-                return Ok(functionvm);
+                return Ok();
             }
             return BadRequest(new ApiBadRequestResponse("Delete function failed"));
         }

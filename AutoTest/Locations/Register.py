@@ -1,0 +1,21 @@
+txt_username ="xpath: //input[@id='Input_username']"
+txt_firstname="xpath: //input[@id='Input_FirstName']"
+txt_lastname ="xpath: //input[@id='Input_LastName']"
+txt_dob = "xpath: //input[@id='Input_Dob']"
+txt_phonenumber ="xpath: //input[@id='Input_PhoneNumber']"
+txt_email ="xpath: //input[@id='Input_Email']"
+txt_password= "xpath: //input[@id='Input_Password']"
+txt_confirmpassword ="xpath: //input[@id='Input_ConfirmPassword']"
+
+btn_submit_register ="xpath: //button[text()='Đăng ký']"
+confirm_link ="xpath://a[@id='confirm-link']"
+
+input_username_error = "xpath: //span[@id = 'Input_username-error']"
+Input_FirstName_error ="xpath: //span[@id = 'Input_FirstName-error']"
+Input_LastName_error = "xpath: //span[@id = 'Input_LastName-error']"
+Input_Dob_error ="xpath: //span[@id = 'Input_Dob-error']"
+Input_PhoneNumber_error ="xpath: //span[@id = 'Input_PhoneNumber-error']"
+Input_Email_error ="xpath: //span[@id = 'Input_Email-error']"
+Input_Password_error ="xpath://span[@id = 'Input_Password-error']"
+Input_ConfirmPassword_error = "xpath: //span[@id = 'Input_ConfirmPassword-error']"
+

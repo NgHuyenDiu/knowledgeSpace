@@ -1,0 +1,6 @@
+btn_report ="xpath://button[contains(text() , 'Báo xấu')]"
+like_it = "xpath://span[@class='like-it']"
+txt_new_comment ="xpath://textarea[@id='txt_new_comment_content']"
+btn_send_commnet="xpath://input[@id='btn_send_comment']"
+txt_report = "xpath://textarea[@id = 'txt_report_content']"
+btn_send_report ="xpath://button[@id = 'btn_send_report']"

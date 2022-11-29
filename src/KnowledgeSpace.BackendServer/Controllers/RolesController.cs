@@ -143,12 +143,8 @@ namespace KnowledgeSpace.BackendServer.Controllers
 
             if (result.Succeeded)
             {
-                var rolevm = new RoleVm()
-                {
-                    Id = role.Id,
-                    Name = role.Name
-                };
-                return Ok(rolevm);
+               
+                return Ok();
             }
             return BadRequest(new ApiBadRequestResponse(result));
         }

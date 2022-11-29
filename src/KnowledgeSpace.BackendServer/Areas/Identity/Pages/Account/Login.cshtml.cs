@@ -86,7 +86,13 @@ namespace KnowledgeSpace.BackendServer.Areas.Identity.Pages.Account
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
               
                 var user = await _userManager.FindByNameAsync(Input.UserName);
-               
+
+                if (user == null)
+                {
+                    ModelState.AddModelError(string.Empty, "Tài khoản không tồn tại");
+                    return Page();
+                }
+
 
                 if (user.DeleteState == true)
                 {
