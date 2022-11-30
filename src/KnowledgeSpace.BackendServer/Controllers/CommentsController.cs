@@ -126,7 +126,8 @@ namespace KnowledgeSpace.BackendServer.Controllers
                 }
                 return CreatedAtAction(nameof(GetCommentDetail), new { id = knowledgeBaseId, commentId = comment.Id }, new CommentVm()
                 {
-                    Id = comment.Id
+                    Id = comment.Id,
+                    Content = comment.Content
                 });
             }
             else

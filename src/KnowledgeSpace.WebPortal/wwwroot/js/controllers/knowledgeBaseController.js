@@ -18,7 +18,7 @@
                 var template = $('#tmpl_comments').html();
                 var newComment = Mustache.render(template, {
                     id: response.id,
-                    content: content,
+                    content: response.content,
                     createDate: formatRelativeTime(),
                     ownerName: $('#hid_current_login_name').val()
                 });
@@ -70,12 +70,13 @@
                 var url = form.attr('action');
 
                 $.post(url, form.serialize()).done(function(response) {
-                    var content = $("#txt_reply_content_" + commentId).val();
+                    var content = $("#txt_reply_content_" + response.id).val();
                     var template = $('#tmpl_children_comments').html();
-
+                    //var template = $('#tmpl_comments').html();
                     var newComment = Mustache.render(template, {
-                        id: commentId,
-                        content: content,
+                        
+                        id: response.id,
+                        content: response.content,
                         createDate: formatRelativeTime(),
                         ownerName: $('#hid_current_login_name').val()
                     });
@@ -85,8 +86,10 @@
                     $('#reply_comment_' + commentId).html('');
                     $('#txt_captcha_reply_' + commentId).html('');
 
+                    
                     //Prepend new comment to children
                     $('#children_comments_' + commentId).prepend(newComment);
+                   
 
                     //Update number of comment
                     var numberOfComments = parseInt($('#hid_number_comments').val()) + 1;
@@ -97,7 +100,7 @@
                         .addClass('alert-success')
                         .html('Bình luận thành công')
                         .show();
-                }).error(function(err) {
+                }).error(function (err) {
                     $('#message-result-reply-' + commentId).html('');
                     if (err.status === 400 && err.responseText) {
                         var errMsgs = JSON.parse(err.responseText);
