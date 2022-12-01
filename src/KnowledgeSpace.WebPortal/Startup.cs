@@ -205,16 +205,6 @@ namespace KnowledgeSpace.WebPortal
 
             app.UseHttpsRedirection();
 
-            //app.UseCsp(opts => opts
-            //        .BlockAllMixedContent()
-            //        .StyleSources(s => s.Self())
-            //        .StyleSources(s => s.UnsafeInline())
-            //        .FontSources(s => s.Self())
-            //        .FormActions(s => s.Self())
-            //        .FrameAncestors(s => s.Self())
-            //        .ImageSources(s => s.Self())
-            //    .ScriptSources(s => s.UnsafeInline())
-            //    );
             app.UseStaticFiles();
 
             app.UseRouting();
@@ -244,11 +234,6 @@ namespace KnowledgeSpace.WebPortal
                     name: "Edit KB",
                     pattern: "/edit-kb/{id}",
                     new { controller = "Account", action = "EditKnowledgeBase" });
-            
-            //endpoints.MapControllerRoute(
-            //       name: "delete attachment",
-            //       pattern: "/{knowledgeBaseId}/del-att/{attachmentId}",
-            //       new { controller = "Account", action = "deleteAttachment" });
 
             endpoints.MapControllerRoute(
                     name: "List By Tag Id",
